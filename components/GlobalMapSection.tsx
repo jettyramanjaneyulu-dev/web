@@ -5,6 +5,7 @@ import {
   ComposableMap,
   Geographies,
   Geography,
+  type Geography as GeographyType,
 } from "react-simple-maps";
 
 const geoUrl =
@@ -53,12 +54,13 @@ const GlobalMapSection: React.FC = () => {
 
         {/* Map */}
         <div className="relative w-full flex justify-center">
-          <div className="relative w-full max-w-6xl
-                          h-[280px]
-                          sm:h-[360px]
-                          md:h-[420px]
-                          lg:h-[500px]">
-
+          <div
+            className="relative w-full max-w-6xl
+                       h-[280px]
+                       sm:h-[360px]
+                       md:h-[420px]
+                       lg:h-[500px]"
+          >
             <ComposableMap
               projection="geoMercator"
               projectionConfig={{
@@ -68,8 +70,8 @@ const GlobalMapSection: React.FC = () => {
               style={{ width: "100%", height: "100%" }}
             >
               <Geographies geography={geoUrl}>
-                {({ geographies }) =>
-                  geographies.map((geo) => {
+                {({ geographies }: { geographies: GeographyType[] }) =>
+                  geographies.map((geo: GeographyType) => {
                     const isHighlighted = COUNTRIES.some(
                       (c) => c.id === geo.id
                     );
