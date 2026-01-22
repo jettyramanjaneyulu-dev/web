@@ -5,8 +5,13 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-  type Geography as GeographyType,
 } from "react-simple-maps";
+
+/** ✅ Minimal geography type (Vercel-safe) */
+type RSMGeography = {
+  id: string;
+  rsmKey: string;
+};
 
 const geoUrl =
   "https://unpkg.com/world-atlas@2.0.2/countries-110m.json";
@@ -54,24 +59,15 @@ const GlobalMapSection: React.FC = () => {
 
         {/* Map */}
         <div className="relative w-full flex justify-center">
-          <div
-            className="relative w-full max-w-6xl
-                       h-[280px]
-                       sm:h-[360px]
-                       md:h-[420px]
-                       lg:h-[500px]"
-          >
+          <div className="relative w-full max-w-6xl h-[280px] sm:h-[360px] md:h-[420px] lg:h-[500px]">
             <ComposableMap
               projection="geoMercator"
-              projectionConfig={{
-                scale: 120,
-                center: [40, 25],
-              }}
+              projectionConfig={{ scale: 120, center: [40, 25] }}
               style={{ width: "100%", height: "100%" }}
             >
               <Geographies geography={geoUrl}>
-                {({ geographies }: { geographies: GeographyType[] }) =>
-                  geographies.map((geo: GeographyType) => {
+                {({ geographies }: { geographies: RSMGeography[] }) =>
+                  geographies.map((geo: RSMGeography) => {
                     const isHighlighted = COUNTRIES.some(
                       (c) => c.id === geo.id
                     );
@@ -84,7 +80,7 @@ const GlobalMapSection: React.FC = () => {
                         geography={geo}
                         fill={
                           isActive
-                            ? "#1D4ED8" // 🔥 blinking active
+                            ? "#1D4ED8"
                             : isHighlighted
                             ? "#60A5FA"
                             : "#E5E7EB"
@@ -112,7 +108,7 @@ const GlobalMapSection: React.FC = () => {
           </div>
         </div>
 
-        {/* 🔤 Country Names (Blink Sync) */}
+        {/* Country names */}
         <div className="mt-8 flex flex-wrap justify-center gap-4 sm:gap-6">
           {COUNTRIES.map((country, index) => {
             const isActive = index === activeIndex;
@@ -120,15 +116,11 @@ const GlobalMapSection: React.FC = () => {
             return (
               <div
                 key={country.id}
-                className={`
-                  px-5 py-2 rounded-full font-semibold text-sm sm:text-base
-                  transition-all duration-500
-                  ${
-                    isActive
-                      ? "bg-blue-600 text-white shadow-lg scale-110 animate-pulse"
-                      : "bg-blue-600/10 text-blue-700"
-                  }
-                `}
+                className={`px-5 py-2 rounded-full font-semibold transition-all duration-500 ${
+                  isActive
+                    ? "bg-blue-600 text-white shadow-lg scale-110 animate-pulse"
+                    : "bg-blue-600/10 text-blue-700"
+                }`}
               >
                 {country.name}
               </div>

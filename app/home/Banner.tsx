@@ -20,7 +20,7 @@ export default function HeroSection() {
           className="w-full h-full object-cover"
         >
           <source
-            src="/assets/namilifesciences%20(1).mp4"
+            src="/assets/namilifesciences.mp4"
             type="video/mp4"
           />
         </video>
