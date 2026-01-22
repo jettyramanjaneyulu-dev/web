@@ -43,11 +43,12 @@ export default function Header() {
             </Link>
 
             <div className="hidden lg:flex items-center space-x-8">
-              <NavLink href="#company">Company</NavLink>
-              <NavLink href="#expertise">Expertise</NavLink>
-              <NavLink href="#research">Blogs</NavLink>
-              <NavLink href="#news-media">News & Media</NavLink>
-              <NavLink href="#investors">Investors</NavLink>
+              <NavLink href="/about-us">About Us</NavLink>
+              <NavLink href="/products">Products</NavLink>
+              <NavLink href="/quality">Quality</NavLink>
+              <NavLink href="/infrastructure">Infrastructure</NavLink>
+              <NavLink href="/career">Career</NavLink>
+              <NavLink href="/reach-us">Reach Us</NavLink>
             </div>
           </div>
 
@@ -80,22 +81,24 @@ export default function Header() {
             className="fixed top-[97px] left-0 w-full z-50 bg-white/10 backdrop-blur-xl border-b border-white/20 lg:hidden"
           >
             <div className="flex flex-col px-6 py-6 space-y-6">
-              {[
-                ["Company", "#company"],
-                ["Expertise", "#expertise"],
-                ["Blogs", "#research"],
-                ["News & Media", "#news-media"],
-                ["Investors", "#investors"],
-              ].map(([label, link]) => (
-                <Link
-                  key={label}
-                  href={link}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-bold uppercase text-white hover:text-[#C93A7C]"
-                >
-                  {label}
-                </Link>
-              ))}
+           {[
+  ["About Us", "/about-us"],
+  ["Products", "/products"],
+  ["Quality", "/quality"],
+  ["Infrastructure", "/infrastructure"],
+  ["Career", "/career"],
+  ["Reach Us", "/reach-us"],
+].map(([label, link]) => (
+  <Link
+    key={label}
+    href={link}
+    onClick={() => setMobileMenuOpen(false)}
+    className="font-bold uppercase text-white hover:text-[#C93A7C]"
+  >
+    {label}
+  </Link>
+))}
+
 
               <Link
                 href="#contact"

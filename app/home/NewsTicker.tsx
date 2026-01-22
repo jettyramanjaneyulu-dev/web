@@ -27,7 +27,7 @@ export default function NewsTicker() {
 
             <div>
               <p className="text-xs tracking-widest uppercase text-[#fecf83] font-bold">
-                22 Dec 2025
+                22 Dec 2025.
               </p>
 
               <p className="mt-1 text-sm md:text-base text-white/90 leading-relaxed max-w-3xl">

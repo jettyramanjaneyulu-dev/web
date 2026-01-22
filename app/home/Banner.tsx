@@ -88,7 +88,7 @@ export default function HeroSection() {
           <HeroButton text="Jobs" />
           <HeroButton text="Partnering" />
           <HeroButton text="Portfolio" />
-          <HeroButton text="Brochure 📥" />
+          <HeroButton text="Brochure 🏷️" />
         </motion.div>
 
       </div>
