@@ -26,14 +26,15 @@ export default function Header() {
 
   return (
     <>
-      <nav className="sticky top-0 left-0 w-full z-40 backdrop-blur-xl bg-white/10 border-b border-white/20 shadow-lg">
+      <nav className="sticky top-0 left-0 w-full z-40 bg-[#315879] border-b border-white/20 shadow-lg">
+
         <div className="w-full px-8 flex justify-between items-center">
           {/* LEFT */}
           <div className="flex items-center gap-12">
             <Link href="/" className="flex items-center">
               <div className="relative w-40 h-16">
                 <Image
-                  src="/assets/logo.png"
+                  src="/assets/header/logo.png"
                   alt="Logo"
                   fill
                   className="object-contain"
@@ -99,7 +100,7 @@ export default function Header() {
               <Link
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#f0f0f0] via-[#0077b6] to-[#00b4d8] text-white font-bold"
+                className="inline-flex justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8] text-white font-bold"
               >
                 Get Quote Now <ArrowRight size={16} />
               </Link>
