@@ -31,11 +31,11 @@ export default function HeroSection() {
       </div>
 
       {/* Floating Accessibility Icon */}
-      <div className="absolute top-8 right-0 z-20 hidden md:block">
+      {/* <div className="absolute top-8 right-0 z-20 hidden md:block">
         <div className="bg-[#C93A7C] p-3 rounded-l-full shadow-lg cursor-pointer hover:bg-[#315879] hover:text-[#003865] transition-colors">
           <Accessibility size={24} className="text-[#003865]" />
         </div>
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-10">

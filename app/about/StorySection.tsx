@@ -1,14 +1,25 @@
 import Image from "next/image";
+import { BookOpen } from "lucide-react";
 
 export default function StorySection() {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-gradient-to-br from-pink-100 via-white to-pink-200">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
-        
-        <div>
-          <h2 className="text-3xl font-semibold mb-6">
-            About Nami Life Sciences
-          </h2>
+
+        {/* Text Content */}
+        <div
+          className="
+            bg-white/70 backdrop-blur-xl
+            rounded-2xl border border-white/40
+            shadow-lg p-8
+          "
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <BookOpen className="w-7 h-7 text-[#c93a7c]" />
+            <h2 className="text-3xl font-semibold text-[#c93a7c]">
+              About Nami Life Sciences
+            </h2>
+          </div>
 
           <p className="text-neutral-700 leading-relaxed mb-4">
             Nami Life Sciences is a technology-driven pharmaceutical and
@@ -30,7 +41,16 @@ export default function StorySection() {
           </p>
         </div>
 
-        <div className="relative h-[420px] rounded-xl overflow-hidden">
+        {/* Image */}
+        <div
+          className="
+            relative h-[420px]
+            rounded-2xl overflow-hidden
+            bg-white/30 backdrop-blur-xl
+            border border-white/40
+            shadow-xl
+          "
+        >
           <Image
             src="/assets/lab-1.jpeg"
             alt="Pharmaceutical R&D"

@@ -87,30 +87,31 @@ export default function ManufacturingSection() {
 
           {/* RIGHT IMAGE CIRCLE */}
           <div className="order-1 lg:order-2 relative flex justify-center">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl z-10"
-            >
-              {/* FIXED BACKGROUND IMAGE */}
-              <div
-                className="absolute inset-0 bg-no-repeat bg-cover bg-center md:bg-fixed"
-                style={{
-                  backgroundImage: "url('/assets/Manufacturing.jpeg')",
-                }}
-              />
+  <motion.div
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl z-10"
+  >
+    {/* Background Image */}
+    <div
+      className="absolute inset-0 bg-cover bg-center bg-fixed"
+      style={{
+        backgroundImage: "url('/assets/Manufacturing.jpeg')",
+      }}
+    />
 
-              {/* OVERLAY */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#C93A7C]/30 via-transparent to-transparent mix-blend-overlay pointer-events-none" />
-            </motion.div>
+    {/* ✅ Gradient Overlay (RESTORED) */}
+    <div className="absolute inset-0 bg-gradient-to-tr from-[#C93A7C]/30 via-transparent to-transparent mix-blend-overlay pointer-events-none" />
+  </motion.div>
 
-            {/* AMBIENT GLOW */}
-            <div className="absolute inset-0 flex items-center justify-center -z-10">
-              <div className="w-[110%] h-[110%] bg-[#C93A7C] blur-[80px] opacity-10 rounded-full" />
-            </div>
-          </div>
+  {/* ✅ Ambient Glow (RESTORED) */}
+  <div className="absolute inset-0 flex items-center justify-center -z-10">
+    <div className="w-[110%] h-[110%] bg-[#C93A7C] blur-[80px] opacity-10 rounded-full" />
+  </div>
+</div>
+
 
         </div>
       </div>
