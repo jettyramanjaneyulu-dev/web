@@ -1,65 +1,102 @@
 "use client";
 
-import { Layers, Cpu, Factory } from "lucide-react";
+import { Layers, Cpu, Factory, ArrowRight } from "lucide-react";
 
 const capabilities = [
   {
     title: "Formulation Development",
     description:
-      "Advanced pellet design, customized release profiles, and optimized drug performance.",
+      "Advanced pellet design, customized release profiles, and optimized drug performance engineered for precision delivery.",
     icon: Layers,
   },
   {
     title: "Technology-Driven Manufacturing",
     description:
-      "State-of-the-art infrastructure ensuring consistency, scalability, and compliance.",
+      "Digitally controlled, GMP-compliant infrastructure ensuring repeatability, scalability, and regulatory confidence.",
     icon: Cpu,
   },
   {
     title: "Commercial Manufacturing",
     description:
-      "End-to-end support from pilot scale to large-volume production.",
+      "Seamless scale-up from pilot batches to high-volume commercial production with consistent quality.",
     icon: Factory,
   },
 ];
 
 export default function CapabilitiesSection() {
   return (
-    <section className="bg-gradient-to-br from-pink-100 via-white to-pink-200 py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl text-[#c93a7c] font-semibold mb-12">
-          End-to-End Capabilities
-        </h2>
+    <section className="relative py-28 bg-gradient-to-br from-pink-100 via-white to-pink-200 overflow-hidden">
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {capabilities.map((item, index) => {
-            const Icon = item.icon;
+      {/* Background Accents */}
+      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 -right-32 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl" />
 
-            return (
-              <div
-                key={index}
-                className="
-                  bg-white/70 backdrop-blur-xl
-                  p-8 rounded-xl
-                  border border-white/40
-                  shadow-[0_10px_30px_rgba(0,0,0,0.08)]
-                  hover:shadow-[0_20px_50px_rgba(201,58,124,0.25)]
-                  hover:-translate-y-1
-                  transition-all duration-300
-                "
-              >
-                <Icon className="w-8 h-8 text-[#c93a7c] mb-4" />
+      <div className="relative max-w-7xl mx-auto px-6">
 
-                <h3 className="text-xl font-semibold mb-3">
-                  {item.title}
-                </h3>
+        {/* Heading */}
+        <div className="max-w-2xl mb-20">
+          <h2 className="text-4xl font-semibold text-[#c93a7c] mb-4">
+            End-to-End Capabilities
+          </h2>
+          <p className="text-neutral-700 text-lg">
+            Integrated expertise across formulation science, advanced
+            manufacturing, and commercial-scale production.
+          </p>
+        </div>
 
-                <p className="text-neutral-700 leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
+        {/* Capability Flow */}
+        <div className="relative">
+
+          {/* Vertical Spine */}
+          <div className="absolute left-6 top-0 h-full w-[2px] bg-gradient-to-b from-[#c93a7c] via-[#c93a7c]/40 to-transparent hidden md:block" />
+
+          <div className="space-y-14">
+            {capabilities.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={index}
+                  className={`
+                    relative grid md:grid-cols-[80px_1fr] gap-10 items-start
+                    ${index % 2 === 1 ? "md:ml-20" : ""}
+                  `}
+                >
+                  {/* Icon Node */}
+                  <div className="relative">
+                    <div className="w-14 h-14 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/50 shadow-lg flex items-center justify-center">
+                      <Icon className="w-7 h-7 text-[#c93a7c]" />
+                    </div>
+                  </div>
+
+                  {/* Content Card */}
+                  <div
+                    className="
+                      bg-white/70 backdrop-blur-xl
+                      border border-white/40
+                      rounded-3xl p-10
+                      shadow-xl
+                      hover:shadow-[0_30px_80px_rgba(201,58,124,0.25)]
+                      transition-all duration-300
+                    "
+                  >
+                    <h3 className="text-2xl font-semibold mb-4">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-neutral-700 leading-relaxed mb-6">
+                      {item.description}
+                    </p>
+
+                    <div className="flex items-center gap-2 text-[#c93a7c] text-sm font-medium">
+                      <span>Learn More</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

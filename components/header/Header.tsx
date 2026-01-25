@@ -32,12 +32,14 @@ export default function Header() {
   return (
     <>
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-40 w-full bg-[#315879] border-b border-white/20 shadow-lg">
-        <div className="px-8 flex justify-between items-center h-[96px]">
+      <nav className="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/10 border-b border-white/20 shadow-lg">
+        {/* subtle glass gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#315879]/60 via-[#315879]/40 to-[#315879]/60 pointer-events-none" />
 
+        <div className="relative px-8 flex justify-between items-center h-[76px]">
           {/* LEFT */}
           <div className="flex items-center gap-12">
-            <Link href="/" className="relative w-40 h-16">
+            <Link href="/" className="relative w-35 h-16">
               <Image
                 src="/assets/header/logo.png"
                 alt="Logo"
@@ -62,7 +64,7 @@ export default function Header() {
                 </div>
 
                 <div className="absolute left-0 top-full mt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                  <div className="bg-white rounded-xl shadow-xl w-60 py-3">
+                  <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-xl w-60 py-3">
                     <Link
                       href="/products/list"
                       className="block px-5 py-3 text-sm font-semibold text-gray-800 hover:bg-gray-100"
@@ -82,21 +84,27 @@ export default function Header() {
 
           {/* RIGHT */}
           <div className="flex items-center gap-4">
-            <Link
-              href="#contact"
-              className="hidden lg:inline-flex items-center gap-2 px-7 py-3 rounded-full bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8] text-white font-semibold text-sm shadow-lg hover:scale-105 transition"
-            >
-              Get Quote Now <ArrowRight size={16} />
-            </Link>
+  <div className="breathe-wrap hidden lg:inline-flex">
+    <Link
+      href="#contact"
+      className="inline-flex items-center gap-2 px-7 py-3 rounded-full
+                 bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
+                 text-white font-semibold text-sm shadow-lg
+                 hover:scale-105 transition"
+    >
+      Get Quote Now <ArrowRight size={16} />
+    </Link>
+  </div>
 
-            <button
-              className="lg:hidden text-white"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
+  <button
+    className="lg:hidden text-white"
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    aria-label="Toggle menu"
+  >
+    {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+  </button>
+</div>
+
         </div>
       </nav>
 
@@ -110,7 +118,6 @@ export default function Header() {
             className="fixed top-[96px] left-0 w-full z-50 bg-white/10 backdrop-blur-xl border-b border-white/20 lg:hidden text-white"
           >
             <div className="flex flex-col px-6 py-6 space-y-6">
-
               <Link
                 href="/about"
                 onClick={() => setMobileMenuOpen(false)}
@@ -119,7 +126,7 @@ export default function Header() {
                 About Us
               </Link>
 
-              {/* MOBILE PRODUCTS (CLICKABLE + ACCORDION) */}
+              {/* MOBILE PRODUCTS */}
               <div>
                 <div className="flex items-center justify-between">
                   <Link

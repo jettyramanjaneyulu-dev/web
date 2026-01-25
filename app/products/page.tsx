@@ -1,5 +1,5 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Sparkles, Activity, FlaskConical } from "lucide-react";
@@ -55,11 +55,12 @@ export default function ProductsPage() {
           </p>
         </motion.div>
 
+        {/* Simple Curve */}
         <div className="absolute bottom-0 left-0 w-full">
-          <svg viewBox="0 0 1440 90" className="w-full h-[90px]" preserveAspectRatio="none">
+          <svg viewBox="0 0 1440 100" className="w-full h-[100px]" preserveAspectRatio="none">
             <path
               fill="#ffffff"
-              d="M0,40 C120,70 320,90 520,70 760,40 920,20 1140,30 1280,40 1380,50 1440,55 L1440,90 L0,90 Z"
+              d="M0,50 C360,90 720,10 1080,50 1260,70 1440,50 1440,50 L1440,100 L0,100 Z"
             />
           </svg>
         </div>
@@ -72,11 +73,7 @@ export default function ProductsPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="
-            bg-white/70 backdrop-blur-xl
-            rounded-2xl border border-white/40
-            shadow-lg p-8 max-w-4xl
-          "
+          className="bg-white/70 backdrop-blur-xl rounded-2xl border border-white/40 shadow-lg p-8 max-w-4xl"
         >
           <p className="text-gray-700 text-lg">
             Nami Life Sciences offers a comprehensive portfolio of pharmaceutical
@@ -118,25 +115,22 @@ export default function ProductsPage() {
                 whileHover={{ y: -8 }}
                 className="
                   bg-white/70 backdrop-blur-xl
-                  rounded-xl p-6
-                  border border-white/40
+                  rounded-xl p-6 border border-white/40
                   shadow-[0_10px_30px_rgba(0,0,0,0.08)]
                   hover:shadow-[0_20px_50px_rgba(236,72,153,0.25)]
-                  transition-all duration-300
-                  flex gap-4 items-start
+                  transition-all duration-300 flex gap-4 items-start
                 "
               >
                 <Sparkles className="w-6 h-6 text-pink-500 mt-1" />
-                <h3 className="font-semibold text-gray-900 text-lg">
-                  {item}
-                </h3>
+                <h3 className="font-semibold text-gray-900 text-lg">{item}</h3>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* ================= THERAPEUTIC COVERAGE ================= */}
+ {/* ===================== FLOATING CAPSULES ===================== */}
+      <FloatingCapsules />
+      {/* ================= THERAPEUTIC COVERAGE (FIXED) ================= */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <motion.h2
           variants={fadeUp}
@@ -164,21 +158,30 @@ export default function ProductsPage() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              whileHover={{ scale: 1.03 }}
-              className="relative group rounded-xl p-[2px] overflow-hidden"
+              whileHover={{ scale: 1.04 }}
+              className="relative group rounded-xl p-[2px]"
             >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+              {/* Gradient Border */}
+              <div
                 className="
-                  absolute inset-0
-                  bg-[conic-gradient(from_0deg,#ec4899,#f472b6,#ec4899,#f9a8d4,#ec4899)]
-                  group-hover:opacity-0
+                  absolute inset-0 rounded-xl
+                  bg-gradient-to-r from-pink-400 via-pink-500 to-pink-400
+                  opacity-0 group-hover:opacity-100
                   transition-opacity duration-300
                 "
               />
 
-              <div className="relative z-10 bg-white/80 backdrop-blur-xl rounded-xl p-6 text-center border border-white/40">
+              {/* Card */}
+              <div
+                className="
+                  relative z-10 bg-white/80 backdrop-blur-xl
+                  rounded-xl p-6 text-center
+                  border border-transparent
+                  group-hover:border-pink-400
+                  transition-all duration-300
+                  shadow-sm group-hover:shadow-[0_15px_40px_rgba(236,72,153,0.35)]
+                "
+              >
                 <Activity className="w-6 h-6 text-pink-500 mx-auto mb-3" />
                 <p className="font-medium text-gray-800">{area}</p>
               </div>
@@ -194,12 +197,7 @@ export default function ProductsPage() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="
-            max-w-5xl mx-auto px-8 text-center
-            bg-white/70 backdrop-blur-xl
-            rounded-3xl border border-white/40
-            shadow-xl py-20
-          "
+          className="max-w-5xl mx-auto px-8 text-center bg-white/70 backdrop-blur-xl rounded-3xl border border-white/40 shadow-xl py-20"
         >
           <FlaskConical className="w-10 h-10 text-pink-500 mx-auto mb-6" />
 
@@ -226,3 +224,71 @@ export default function ProductsPage() {
     </main>
   );
 }
+
+
+/* ===================== FLOATING CAPSULES – FULL PAGE ===================== */
+
+const capsuleColors = [
+  "from-pink-400 to-rose-500",
+  "from-cyan-400 to-blue-500",
+  "from-purple-400 to-indigo-500",
+];
+
+type Capsule = {
+  x: number;
+  size: number;
+  duration: number;
+  delay: number;
+  color: string;
+};
+
+function FloatingCapsules() {
+  const [capsules, setCapsules] = useState<Capsule[]>([]);
+
+  useEffect(() => {
+    const generated = Array.from({ length: 18 }).map((_, i) => ({
+      x: Math.random() * 100,
+      size: 24 + Math.random() * 26,
+      duration: 22 + Math.random() * 18,
+      delay: Math.random() * 10,
+      color: capsuleColors[i % capsuleColors.length],
+    }));
+
+    setCapsules(generated);
+  }, []);
+
+  if (!capsules.length) return null;
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      {capsules.map((cap, i) => (
+        <motion.div
+          key={i}
+          initial={{
+            x: `${cap.x}vw`,
+            y: "110vh",
+            opacity: 0,
+            rotate: 0,
+          }}
+          animate={{
+            y: "-20vh",
+            opacity: [0, 0.35, 0.35, 0],
+            rotate: 360,
+          }}
+          transition={{
+            duration: cap.duration,
+            delay: cap.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
+          style={{
+            width: cap.size * 2,
+            height: cap.size,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+

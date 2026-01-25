@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { motion } from "framer-motion"; // ✅ ADD THIS
 import { products } from "@/data/products";
 import {
   Search,
@@ -8,6 +9,7 @@ import {
   X,
   PackageSearch,
 } from "lucide-react";
+
 
 const filters = [
   "All",
@@ -44,18 +46,33 @@ export default function ProductsListPage() {
     <main className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-pink-200">
 
       {/* ================= HERO ================= */}
-      <section className="relative py-24 text-center">
-        <div className="max-w-4xl mx-auto px-6 bg-white/60 backdrop-blur-xl rounded-3xl shadow-lg border border-white/40 py-16">
-          <h1 className="text-5xl font-extrabold text-pink-600 uppercase tracking-wide">
-            Product Portfolio
-          </h1>
-          <p className="mt-6 text-gray-700 text-lg">
-            Precision-engineered pharmaceutical pellets, advanced
-            release systems, combination formulations, and
-            nutraceutical beadlets.
-          </p>
-        </div>
-      </section>
+    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+  {/* ================= BACKGROUND IMAGE ================= */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage: "url('/assets/Whatwedo1.jpeg')",
+    }}
+  />
+
+  {/* ================= CONTENT (CENTER GLASS BOX) ================= */}
+  <div className="relative z-10 max-w-4xl mx-auto px-6">
+    <div className="bg-white/55 backdrop-blur-md rounded-3xl shadow-2xl border border-white/40 py-16 px-10 text-center">
+      <h1 className="text-5xl md:text-6xl font-extrabold text-pink-600 uppercase tracking-wide">
+        Product Portfolio
+      </h1>
+
+      <p className="mt-6 text-gray-700 text-lg leading-relaxed">
+        Precision-engineered pharmaceutical pellets, advanced
+        release systems, combination formulations, and
+        nutraceutical beadlets.
+      </p>
+    </div>
+  </div>
+
+  {/* ================= CURVED BOTTOM ================= */}
+  <div className="absolute bottom-0 left-0 w-full h-32 bg-white rounded-t-[100%]" />
+</section>
 
       {/* ================= CONTROLS ================= */}
       <section className="sticky top-0 z-30 backdrop-blur-xl">
@@ -140,10 +157,11 @@ export default function ProductsListPage() {
           </div>
         </div>
       </section>
-
+ {/* ===================== FLOATING CAPSULES ===================== */}
+      <FloatingCapsules />
       {/* ================= TABLE ================= */}
       <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/40 overflow-hidden">
+        <div className="backdrop-blur-0xl rounded-3xl shadow-2xl border border-black/40 overflow-hidden">
 
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
@@ -215,7 +233,7 @@ export default function ProductsListPage() {
       {/* ================= CTA ================= */}
       <section className="pb-24">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-xl border border-white/40 text-center py-20 px-6">
+          <div className="backdrop-blur-0xl rounded-3xl shadow-xl border border-black/40 text-center py-20 px-6">
             <h2 className="text-4xl font-extrabold text-pink-600 mb-6">
               Request Specifications & Samples
             </h2>
@@ -235,5 +253,71 @@ export default function ProductsListPage() {
       </section>
 
     </main>
+  );
+}
+
+/* ===================== FLOATING CAPSULES – FULL PAGE ===================== */
+
+const capsuleColors = [
+  "from-pink-400 to-rose-500",
+  "from-cyan-400 to-blue-500",
+  "from-purple-400 to-indigo-500",
+];
+
+type Capsule = {
+  x: number;
+  size: number;
+  duration: number;
+  delay: number;
+  color: string;
+};
+
+function FloatingCapsules() {
+  const [capsules, setCapsules] = useState<Capsule[]>([]);
+
+  useEffect(() => {
+    const generated = Array.from({ length: 18 }).map((_, i) => ({
+      x: Math.random() * 100,
+      size: 24 + Math.random() * 26,
+      duration: 22 + Math.random() * 18,
+      delay: Math.random() * 10,
+      color: capsuleColors[i % capsuleColors.length],
+    }));
+
+    setCapsules(generated);
+  }, []);
+
+  if (!capsules.length) return null;
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      {capsules.map((cap, i) => (
+        <motion.div
+          key={i}
+          initial={{
+            x: `${cap.x}vw`,
+            y: "110vh",
+            opacity: 0,
+            rotate: 0,
+          }}
+          animate={{
+            y: "-20vh",
+            opacity: [0, 0.35, 0.35, 0],
+            rotate: 360,
+          }}
+          transition={{
+            duration: cap.duration,
+            delay: cap.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
+          style={{
+            width: cap.size * 2,
+            height: cap.size,
+          }}
+        />
+      ))}
+    </div>
   );
 }

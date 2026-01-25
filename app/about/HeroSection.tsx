@@ -29,7 +29,7 @@ export default function HeroSection() {
             shadow-[0_30px_80px_rgba(0,0,0,0.25)]
           "
         >
-          {/* Lucide Icon */}
+          {/* Icon */}
           <Sparkles className="w-8 h-8 text-[#c93a7c] mb-6" />
 
           <h1 className="text-5xl md:text-6xl font-light text-[#c93a7c] leading-tight">
@@ -44,15 +44,15 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom Wave */}
+      {/* Bottom Simple Curve */}
       <div className="absolute bottom-0 left-0 w-full z-20">
         <svg
-          viewBox="0 0 1440 120"
-          className="w-full h-[120px]"
+          viewBox="0 0 1440 100"
+          className="w-full h-[100px]"
           preserveAspectRatio="none"
         >
           <path
-            d="M0,64 C240,120 480,0 720,32 960,64 1200,96 1440,32 L1440,120 L0,120 Z"
+            d="M0,50 C360,90 720,10 1080,50 1260,70 1440,50 1440,50 L1440,100 L0,100 Z"
             fill="#ffffff"
           />
         </svg>

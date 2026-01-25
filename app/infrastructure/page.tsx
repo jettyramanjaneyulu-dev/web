@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { motion } from "framer-motion";
 import {
   Factory,
@@ -13,129 +15,238 @@ export default function InfrastructurePage() {
   return (
     <main className="relative bg-[#f6f7fb] overflow-hidden">
 
-      {/* ================= HERO / BANNER ================= */}
-      <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
+{/* ================= HERO / BANNER ================= */}
+<section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
 
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('/assets/quality-banner.jpeg')", // replace if needed
-          }}
-        />
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage: "url('/assets/quality-banner.jpeg')",
+    }}
+  />
 
-        {/* Overlay */}
-        {/* <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" /> */}
-        <div className="absolute inset-0 bg-black/50 " />
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/50" />
 
-        {/* Content */}
+  {/* Content */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="relative z-10 text-center max-w-4xl px-6"
+  >
+    <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff4d9d] tracking-wide uppercase">
+      Infrastructure
+    </h1>
+    <p className="mt-6 text-lg text-white/90 leading-relaxed">
+      Advanced Facility. Integrated Capabilities.
+    </p>
+  </motion.div>
+
+  {/* ================= CURVED BOTTOM (NO LINE) ================= */}
+  <svg
+    className="absolute bottom-0 left-0 w-full h-32"
+    viewBox="0 0 1440 120"
+    preserveAspectRatio="none"
+  >
+    <path
+      d="M0 40C120 80 360 120 720 120C1080 120 1320 80 1440 40V120H0Z"
+      fill="#f6f7fb"
+    />
+  </svg>
+
+</section>
+
+
+      {/* ================= INTRO (PREMIUM DESIGN) ================= */}
+<section className="relative py-28 px-6 overflow-hidden">
+
+  {/* Floating Gradient Orbs */}
+  <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl" />
+  <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl" />
+
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-14 items-center"
+  >
+
+    {/* Left – Visual Accent */}
+    <div className="relative h-[260px] rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-[2px] shadow-2xl">
+      <div className="h-full w-full rounded-3xl bg-white flex flex-col justify-center p-10">
+        <span className="uppercase tracking-widest text-sm text-indigo-600 font-semibold">
+          About Nami Life Sciences
+        </span>
+        <h2 className="mt-4 text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+          Precision Manufacturing <br />
+          <span className="text-indigo-600">Built for Global Standards</span>
+        </h2>
+      </div>
+    </div>
+
+    {/* Right – Content */}
+    <div className="relative">
+      {/* Vertical Line */}
+      <div className="absolute -left-6 top-2 h-full w-[2px] bg-gradient-to-b from-indigo-600 to-pink-500 rounded-full" />
+
+      <p className="text-lg text-gray-700 leading-relaxed">
+        Nami Life Sciences operates a dedicated, state-of-the-art manufacturing
+        facility in India, purpose-built for pharmaceutical and nutraceutical
+        pellet manufacturing.
+      </p>
+
+      <p className="mt-6 text-gray-600 leading-relaxed">
+        Our infrastructure seamlessly supports development-scale to
+        commercial-scale production, ensuring exceptional accuracy,
+        operational efficiency, and uncompromised regulatory compliance.
+      </p>
+
+      {/* Highlight Tags */}
+      <div className="mt-8 flex flex-wrap gap-3">
+        {[
+          "GMP Compliant",
+          "Scalable Production",
+          "High Precision",
+          "Global Quality"
+        ].map((tag) => (
+          <span
+            key={tag}
+            className="px-4 py-2 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 border border-indigo-100"
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+  </motion.div>
+</section>
+
+{/* ===================== FLOATING CAPSULES ===================== */}
+      <FloatingCapsules />
+      {/* ================= INFRASTRUCTURE HIGHLIGHTS ================= */}
+<section className="relative py-28 px-6 overflow-hidden ]">
+
+  {/* Background Accents */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[1px] bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
+  <div className="absolute -top-32 -right-32 w-96 h-96 bg-pink-400/20 rounded-full blur-3xl" />
+  <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl" />
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* Section Header */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7 }}
+      className="text-center mb-20"
+    >
+      <span className="uppercase tracking-[0.3em] text-sm text-pink-600 font-semibold">
+        Our Capabilities
+      </span>
+      <h2 className="mt-4 text-4xl md:text-5xl font-extrabold text-gray-900">
+        Infrastructure <span className="text-pink-600">Highlights</span>
+      </h2>
+      <p className="mt-6 max-w-2xl mx-auto text-gray-600">
+        Designed for precision, scalability, and uncompromised pharmaceutical quality.
+      </p>
+    </motion.div>
+
+    {/* Highlights Flow */}
+    <div className="space-y-14">
+
+      {highlights.map((item, index) => (
         <motion.div
+          key={index}
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center max-w-4xl px-6"
-        >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff4d9d] tracking-wide uppercase">
-            Infrastructure
-          </h1>
-          <p className="mt-6 text-lg text-white/90 leading-relaxed">
-            Advanced Facility. Integrated Capabilities.
-          </p>
-        </motion.div>
-
-        {/* Bottom Wave */}
-        <svg
-          className="absolute bottom-0 left-0 w-full"
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M0 60L60 65C120 70 240 80 360 78C480 75 600 60 720 48C840 35 960 25 1080 30C1200 35 1320 55 1380 65L1440 75V120H0V60Z"
-            fill="#f6f7fb"
-          />
-        </svg>
-      </section>
-
-      {/* ================= INTRO ================= */}
-      <section className="relative py-20 px-6 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="bg-white/60 backdrop-blur-xl border border-white/30 rounded-3xl p-10 shadow-xl"
+          transition={{ duration: 0.6, delay: index * 0.1 }}
+          className={`relative group grid md:grid-cols-[120px_1fr] gap-10 items-start
+            ${index % 2 !== 0 ? "md:ml-24" : ""}`}
         >
-          <p className="text-gray-700 leading-relaxed text-lg">
-            Nami Life Sciences operates a dedicated, state-of-the-art
-            manufacturing facility in India, purpose-built for pharmaceutical
-            and nutraceutical pellet manufacturing.
-          </p>
 
-          <p className="mt-6 text-gray-600">
-            Our infrastructure enables development-scale to commercial-scale
-            production with accuracy, efficiency, and full regulatory
-            compliance.
-          </p>
-        </motion.div>
-      </section>
+          {/* Index + Icon */}
+          <div className="relative flex flex-col items-center">
+            <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-pink-500 to-indigo-600 flex items-center justify-center text-white shadow-xl">
+              <item.icon size={30} />
+            </div>
 
-      {/* ================= HIGHLIGHTS ================= */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-
-          <h2 className="text-3xl font-extrabold text-[#ff4d9d] uppercase mb-12 text-center">
-            Infrastructure Highlights
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            {highlights.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white/70 backdrop-blur-xl border border-white/40 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all"
-              >
-                <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-[#ff4d9d]/10 text-[#ff4d9d] mb-6">
-                  <item.icon size={28} />
-                </div>
-
-                <h3 className="font-bold text-lg mb-3 text-gray-900">
-                  {item.title}
-                </h3>
-
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
-
-          </div>
-        </div>
-      </section>
-
-      {/* ================= FOOT NOTE ================= */}
-      <section className="pb-24 px-6 max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="bg-gradient-to-r from-white/70 to-white/40 backdrop-blur-xl border border-white/30 rounded-3xl p-10 shadow-xl"
-        >
-          <p className="text-gray-700 leading-relaxed text-lg">
-            Every process is executed by experienced scientists, engineers, and
-            quality professionals — ensuring{" "}
-            <span className="font-semibold text-[#ff4d9d]">
-              precision in every pellet.
+            <span className="mt-4 text-4xl font-extrabold text-gray-200 group-hover:text-pink-500 transition">
+              {String(index + 1).padStart(2, "0")}
             </span>
-          </p>
+          </div>
+
+          {/* Content Card */}
+          <div className="relative">
+            {/* Gradient Border */}
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-pink-500 via-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 blur-sm transition" />
+
+            <div className="relative bg-white/80 backdrop-blur-xl border border-white/40 rounded-3xl p-10 shadow-lg group-hover:shadow-2xl transition">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                {item.title}
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed max-w-2xl">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+
         </motion.div>
-      </section>
+      ))}
+
+    </div>
+
+  </div>
+</section>
+
+
+    {/* ================= SIGNATURE FOOTNOTE ================= */}
+<section className="relative py-32 px-6 overflow-hidden">
+
+  {/* Ambient Background */}
+  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#fff0f7] to-transparent" />
+  <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#ff4d9d]/20 rounded-full blur-3xl" />
+
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+    className="relative max-w-4xl mx-auto text-center"
+  >
+    {/* Decorative Line */}
+    <div className="flex justify-center mb-10">
+      <span className="h-[3px] w-24 bg-gradient-to-r from-transparent via-[#ff4d9d] to-transparent rounded-full" />
+    </div>
+
+    {/* Statement */}
+    <p className="text-2xl md:text-3xl font-medium text-gray-900 leading-relaxed">
+      Every process is executed by experienced scientists, engineers,  
+      and quality professionals — ensuring
+    </p>
+
+    {/* Highlighted Line */}
+    <p className="mt-6 text-3xl md:text-4xl font-extrabold text-[#ff4d9d] tracking-tight">
+      precision in every pellet.
+    </p>
+
+    {/* Subtle Trust Cue */}
+    <motion.span
+      initial={{ width: 0 }}
+      whileInView={{ width: "140px" }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+      className="block mx-auto mt-10 h-[2px] bg-[#ff4d9d]/60 rounded-full"
+    />
+  </motion.div>
+</section>
+
     </main>
   );
 }
@@ -169,3 +280,69 @@ const highlights = [
     desc: "Controlled cleanroom facilities ensuring safety, hygiene, and compliance.",
   },
 ];
+
+      /* ===================== FLOATING CAPSULES – FULL PAGE ===================== */
+
+const capsuleColors = [
+  "from-pink-400 to-rose-500",
+  "from-cyan-400 to-blue-500",
+  "from-purple-400 to-indigo-500",
+];
+
+type Capsule = {
+  x: number;
+  size: number;
+  duration: number;
+  delay: number;
+  color: string;
+};
+
+function FloatingCapsules() {
+  const [capsules, setCapsules] = useState<Capsule[]>([]);
+
+  useEffect(() => {
+    const generated = Array.from({ length: 18 }).map((_, i) => ({
+      x: Math.random() * 100,
+      size: 24 + Math.random() * 26,
+      duration: 22 + Math.random() * 18,
+      delay: Math.random() * 10,
+      color: capsuleColors[i % capsuleColors.length],
+    }));
+
+    setCapsules(generated);
+  }, []);
+
+  if (!capsules.length) return null;
+
+  return (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      {capsules.map((cap, i) => (
+        <motion.div
+          key={i}
+          initial={{
+            x: `${cap.x}vw`,
+            y: "110vh",
+            opacity: 0,
+            rotate: 0,
+          }}
+          animate={{
+            y: "-20vh",
+            opacity: [0, 0.35, 0.35, 0],
+            rotate: 360,
+          }}
+          transition={{
+            duration: cap.duration,
+            delay: cap.delay,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
+          style={{
+            width: cap.size * 2,
+            height: cap.size,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
