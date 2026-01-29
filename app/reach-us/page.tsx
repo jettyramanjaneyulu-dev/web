@@ -230,75 +230,77 @@ export default function ReachUsPage() {
       </h2>
     </motion.div>
 
-    <div className="space-y-12">
+   <div className="space-y-10">
 
-      {/* ===== FACTORY MAP – FEATURED ===== */}
-      <motion.a
-        href="https://maps.app.goo.gl/LbcM7rQHYN8LaWCe8?g_st=iw"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ y: -6 }}
-        className="group relative block rounded-[36px] overflow-hidden bg-white/70 backdrop-blur-2xl border border-white/40 shadow-2xl"
-      >
-        {/* Visual Map Placeholder */}
-        <div className="relative h-64 md:h-72 bg-gradient-to-br from-gray-200 via-gray-100 to-gray-200 flex items-center justify-center">
+  {/* ===== LOCATION CARD ===== */}
+  {[
+    {
+      title: "Manufacturing Facility",
+      address:
+        "Plot No. 47B, Phase 3, Biotech Park, Mulugu, Karkapatla, Telangana – 502279",
+      link: "https://maps.app.goo.gl/GQjnKJLNBv9wmZDB6",
+      pinColor: "text-[#ff4d9d]",
+    },
+    {
+      title: "Hyderabad Corporate Office",
+      address: "Somajiguda, Hyderabad – 500082",
+      link: "https://maps.app.goo.gl/c3WinavtEennYdiM6",
+      pinColor: "text-purple-600",
+    },
+  ].map((item, index) => (
+    <motion.a
+      key={index}
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{
+        y: -6,
+        scale: 1.015,
+      }}
+      transition={{ type: "spring", stiffness: 160, damping: 18 }}
+      className="group relative block rounded-[28px] overflow-hidden bg-white border border-gray-200 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.35)]"
+    >
+      {/* MAP VISUAL */}
+      <div className="relative h-56 sm:h-64 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
+        <motion.div
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+        >
           <MapPin
-            size={64}
-            className="text-[#ff4d9d] drop-shadow-lg group-hover:scale-110 transition"
+            size={60}
+            className={`${item.pinColor} drop-shadow-xl`}
           />
+        </motion.div>
 
-          {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition" />
+        {/* depth overlay */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent" />
+      </div>
+
+      {/* CONTENT */}
+      <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+            {item.title}
+          </h3>
+          <p className="mt-2 text-gray-600 max-w-xl text-sm sm:text-base leading-relaxed">
+            {item.address}
+          </p>
         </div>
 
-        {/* Content */}
-        <div className="relative p-8 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">
-              Manufacturing Facility
-            </h3>
-            <p className="text-gray-600 max-w-xl leading-relaxed">
-              Plot No. 47B, Phase 3, Biotech Park, Mulugu, Karkapatla, Telangana – 502279
-            </p>
-          </div>
+        <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold shadow-lg group-hover:bg-gradient-to-r group-hover:from-[#ff4d9d] group-hover:to-purple-600 transition">
+          Open in Maps
+          <ExternalLink size={16} />
+        </span>
+      </div>
+    </motion.a>
+  ))}
 
-          <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#ff4d9d] to-purple-600 text-white font-semibold shadow-lg">
-            Open in Google Maps
-            <ExternalLink size={18} />
-          </span>
-        </div>
-      </motion.a>
+</div>
 
-      {/* ===== OFFICE MAP ===== */}
-      <motion.a
-        href="https://maps.app.goo.gl/c3WinavtEennYdiM6"
-        target="_blank"
-        rel="noopener noreferrer"
-        whileHover={{ y: -6 }}
-        className="group relative block rounded-[32px] overflow-hidden bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl"
-      >
-        <div className="relative h-56 bg-gradient-to-br from-gray-200 to-gray-100 flex items-center justify-center">
-          <MapPin
-            size={56}
-            className="text-purple-600 group-hover:scale-110 transition"
-          />
-        </div>
 
-        <div className="p-8 flex items-center justify-between">
-          <div>
-            <h3 className="text-xl font-bold text-gray-900">
-              Hyderabad Corporate Office
-            </h3>
-            <p className="text-gray-600 mt-1">
-              Somajiguda, Hyderabad – 500082
-            </p>
-          </div>
-
-          <ExternalLink className="text-purple-600" />
-        </div>
-      </motion.a>
-
-    </div>
   </div>
 </section>
 

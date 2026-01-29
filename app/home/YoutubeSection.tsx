@@ -6,10 +6,10 @@ export default function YouTubeSection() {
   return (
     <section className="py-24 bg-[#315879]">
       <div className="container mx-auto px-6 flex justify-center">
-        <div className="bg-white/40 backdrop-blur-2xl p-8 md:p-12 max-w-5xl w-full shadow-[0_25px_80px_rgba(0,0,0,0.25)] rounded-sm border border-white/30 relative overflow-hidden">
+        <div className="bg-white backdrop-blur-2xl p-8 md:p-12 max-w-5xl w-full rounded-sm border border-white relative overflow-hidden">
           
           {/* Decorative Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#C93A7C] via-[#f08560] to-[#C93A7C] opacity-30 blur-2xl pointer-events-none rounded-sm" />
+          <div className="absolute -inset-1  opacity-30 blur-2xl pointer-events-none rounded-sm" />
 
           {/* Heading */}
           <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 relative z-10">

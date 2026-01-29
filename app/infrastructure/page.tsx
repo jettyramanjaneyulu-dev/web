@@ -10,6 +10,7 @@ import {
   ShieldCheck,
   Layers,
 } from "lucide-react";
+import InfrastructureGalleryPage from "@/components/InfrastructureGallery";
 
 export default function InfrastructurePage() {
   return (
@@ -204,14 +205,14 @@ export default function InfrastructurePage() {
 
   </div>
 </section>
-
+<InfrastructureGalleryPage />
 
     {/* ================= SIGNATURE FOOTNOTE ================= */}
-<section className="relative py-32 px-6 overflow-hidden">
+<section className="relative py-16 px-6 overflow-hidden">
 
   {/* Ambient Background */}
   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#fff0f7] to-transparent" />
-  <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#ff4d9d]/20 rounded-full blur-3xl" />
+  <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-[#ff4d9d]/20 rounded-full blur-3xl" />
 
   <motion.div
     initial={{ opacity: 0, y: 50 }}
@@ -221,31 +222,32 @@ export default function InfrastructurePage() {
     className="relative max-w-4xl mx-auto text-center"
   >
     {/* Decorative Line */}
-    <div className="flex justify-center mb-10">
-      <span className="h-[3px] w-24 bg-gradient-to-r from-transparent via-[#ff4d9d] to-transparent rounded-full" />
+    <div className="flex justify-center mb-6">
+      <span className="h-[3px] w-20 bg-gradient-to-r from-transparent via-[#ff4d9d] to-transparent rounded-full" />
     </div>
 
     {/* Statement */}
-    <p className="text-2xl md:text-3xl font-medium text-gray-900 leading-relaxed">
+    <p className="text-xl md:text-2xl font-medium text-gray-900 leading-relaxed">
       Every process is executed by experienced scientists, engineers,  
       and quality professionals — ensuring
     </p>
 
     {/* Highlighted Line */}
-    <p className="mt-6 text-3xl md:text-4xl font-extrabold text-[#ff4d9d] tracking-tight">
+    <p className="mt-4 text-2xl md:text-3xl font-extrabold text-[#ff4d9d] tracking-tight">
       precision in every pellet.
     </p>
 
     {/* Subtle Trust Cue */}
     <motion.span
       initial={{ width: 0 }}
-      whileInView={{ width: "140px" }}
+      whileInView={{ width: "120px" }}
       viewport={{ once: true }}
       transition={{ delay: 0.6, duration: 0.8 }}
-      className="block mx-auto mt-10 h-[2px] bg-[#ff4d9d]/60 rounded-full"
+      className="block mx-auto mt-6 h-[2px] bg-[#ff4d9d]/60 rounded-full"
     />
   </motion.div>
 </section>
+
 
     </main>
   );
