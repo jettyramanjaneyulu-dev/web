@@ -99,6 +99,8 @@ export default function ManufacturingSection() {
       className="absolute inset-0 bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: "url('/assets/Manufacturing.jpeg')",
+        backgroundSize: "85%", // 🔍 increase size
+    backgroundRepeat: "no-repeat",
       }}
     />
 

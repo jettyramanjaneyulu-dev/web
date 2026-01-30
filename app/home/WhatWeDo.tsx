@@ -19,20 +19,26 @@ export default function WhatWeDoSection() {
     <section
       id="research"
       ref={sectionRef}
-      className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundColor: "#315879",
-        backgroundImage: "url('/assets/whatwedo-bg.png')",
-      }}
+      className="relative overflow-hidden min-h-screen"
     >
-      {/* ================= GRID WRAPPER ================= */}
+      {/* ================= BACKGROUND LAYER (FIXED RESPONSIVE ISSUE) ================= */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style={{
+          backgroundColor: "#315879",
+          backgroundImage: "url('/assets/whatwedo-bg.png')",
+        }}
+      />
+
+      {/* ================= CONTENT ================= */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-center">
 
         {/* ================= IMAGE : EDGE TO EDGE ================= */}
-        <div className="relative w-screen lg:w-full h-[300px] sm:h-[420px] md:h-[520px] lg:h-[650px]
-                        left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0
-                        flex items-center justify-center overflow-hidden order-2 lg:order-1">
-
+        <div
+          className="relative w-screen lg:w-full h-[300px] sm:h-[420px] md:h-[520px] lg:h-[650px]
+          left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0
+          flex items-center justify-center overflow-hidden order-2 lg:order-1"
+        >
           <motion.div
             style={{ rotate }}
             className="relative w-full h-full flex items-center justify-center"
@@ -58,7 +64,7 @@ export default function WhatWeDoSection() {
             <div className="flex items-center gap-4 mb-6">
               <h2
                 className="text-3xl md:text-4xl font-black text-[#C93A7C] uppercase tracking-wider"
-                style={{ fontFamily: "var(--font-orbitron)" }}
+                style={{ fontFamily: "Orbitron" }}
               >
                 What We Do
               </h2>
@@ -70,7 +76,7 @@ export default function WhatWeDoSection() {
             {/* Subtitle */}
             <h3
               className="text-lg md:text-2xl font-bold text-white/80 mb-6 leading-tight uppercase"
-              style={{ fontFamily: "var(--font-orbitron)" }}
+              style={{ fontFamily: "Orbitron" }}
             >
               We Engineer High-Precision Pellet Systems for Modern Drug Delivery Challenges.
             </h3>

@@ -22,7 +22,7 @@ export default function CareerPage() {
   <div
     className="absolute inset-0 bg-cover bg-center"
     style={{
-      backgroundImage: "url('/assets/quality-banner.jpeg')",
+      backgroundImage: "url('/assets/images/infra/infra7.png')",
     }}
   />
 

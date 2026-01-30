@@ -92,7 +92,7 @@ export default function QualityPage() {
       <section className="relative pt-32 pb-40 overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/quality-banner.jpeg')" }}
+          style={{ backgroundImage: "url('/assets/images/infra/infra3.png')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/10" />
 

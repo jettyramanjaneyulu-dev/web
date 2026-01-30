@@ -21,11 +21,11 @@ export default function Pharmaceuticals() {
               </div>
             </div>
 
-            <p className="text-lg mb-10">
+            <p className="text-lg mb-10 text-white">
               We combine youthful energy with seasoned industry experience...
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-6 text-white">
               {[
                 ["/assets/Pharmaceuticals.jpeg", "Pellet Formulations"],
                 ["/assets/Pharmaceuticals1.png", "MUPS Technology"],
@@ -52,13 +52,14 @@ export default function Pharmaceuticals() {
     transition={{ duration: 0.8 }}
     className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl z-10"
   >
-    {/* Background Image */}
-    <div
-      className="absolute inset-0 bg-cover bg-center bg-fixed"
-      style={{
-        backgroundImage: `url('/assets/Pharmaceuticals.jpeg')`,
-      }}
-    />
+   <div
+  className="absolute inset-0 bg-center bg-fixed"
+  style={{
+    backgroundImage: "url('/assets/Pharmaceuticals.jpeg')",
+    backgroundSize: "85%", // 🔍 increase size
+    backgroundRepeat: "no-repeat",
+  }}
+/>
 
     {/* ✅ Gradient Overlay (RESTORED) */}
     <div className="absolute inset-0 bg-gradient-to-tr from-[#C93A7C]/30 via-transparent to-transparent mix-blend-overlay pointer-events-none" />

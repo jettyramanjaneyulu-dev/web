@@ -4,7 +4,6 @@ import Image from "next/image";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
 
-/* ================= IMAGE DATA ================= */
 const infraImages = [
   "/assets/images/infra/infra.png",
   "/assets/images/infra/infra2.png",
@@ -16,20 +15,19 @@ const infraImages = [
   "/assets/images/infra/infra8.png",
 ];
 
-/* ================= PAGE ================= */
 export default function InfrastructureGalleryPage() {
   const controls = useAnimationControls();
-  const [duration, setDuration] = useState(18); // default desktop
+  const [duration, setDuration] = useState(18);
 
-  /* ================= RESPONSIVE SPEED ================= */
+  /* ===== RESPONSIVE SPEED (ALL DEVICES AUTO) ===== */
   useEffect(() => {
     const updateSpeed = () => {
       if (window.innerWidth < 640) {
-        setDuration(9);   // 📱 mobile → FAST
+        setDuration(9);      // mobile
       } else if (window.innerWidth < 1024) {
-        setDuration(13);  // 📱 tablet
+        setDuration(13);     // tablet
       } else {
-        setDuration(18);  // 💻 desktop
+        setDuration(18);     // desktop
       }
     };
 
@@ -38,8 +36,8 @@ export default function InfrastructureGalleryPage() {
     return () => window.removeEventListener("resize", updateSpeed);
   }, []);
 
-  /* ================= AUTO SCROLL ================= */
-  useEffect(() => {
+  /* ===== AUTO SCROLL (ALL DEVICES) ===== */
+  const startAutoScroll = () => {
     controls.start({
       x: ["0%", "-100%"],
       transition: {
@@ -48,27 +46,29 @@ export default function InfrastructureGalleryPage() {
         repeat: Infinity,
       },
     });
-  }, [controls, duration]);
+  };
+
+  useEffect(() => {
+    startAutoScroll();
+  }, [duration]);
 
   return (
-    <main className="relative min-h-screen bg-gray-50 overflow-hidden">
+    <main className="relative overflow-hidden bg-transparent">
 
-      {/* ================= BACKGROUND ACCENTS ================= */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[1px] bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-pink-400/20 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl" />
+      {/* subtle accents */}
+      <div className="absolute -top-40 -right-40 w-96 h-96 bg-pink-400/15 rounded-full blur-3xl" />
+      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-400/15 rounded-full blur-3xl" />
 
-      {/* ================= CONTENT ================= */}
-      <section className="relative py-24 px-4">
+      <section className="relative py-16 pb-8 px-4">
         <div className="max-w-7xl mx-auto">
 
-          {/* ================= HEADER ================= */}
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="uppercase tracking-[0.3em] text-sm text-pink-600 font-semibold">
               Facility Tour
@@ -78,71 +78,39 @@ export default function InfrastructureGalleryPage() {
               Infrastructure <span className="text-pink-600">Gallery</span>
             </h1>
 
-            <p className="mt-6 max-w-2xl mx-auto text-gray-600">
-              Explore our world-class pharmaceutical infrastructure through a
-              seamless visual experience.
+            <p className="mt-4 max-w-2xl mx-auto text-gray-600">
+              Explore our world-class pharmaceutical infrastructure.
             </p>
           </motion.div>
 
-          {/* ================= AUTO + MANUAL SLIDER ================= */}
+          {/* Slider */}
           <div className="relative overflow-hidden">
-
             <motion.div
-              className="flex gap-4 sm:gap-6 md:gap-8 cursor-grab active:cursor-grabbing select-none"
+              className="flex gap-6 cursor-grab active:cursor-grabbing select-none"
               animate={controls}
               drag="x"
-              dragElastic={0.12}
+              dragElastic={0.1}
               dragMomentum={false}
-
-              onDragStart={() => controls.stop()}
-
-              onDragEnd={() =>
-                controls.start({
-                  x: ["0%", "-100%"],
-                  transition: {
-                    duration,
-                    ease: "linear",
-                    repeat: Infinity,
-                  },
-                })
-              }
+              onPointerDown={() => controls.stop()}
+              onPointerUp={startAutoScroll}
+              onHoverStart={() => controls.stop()}
+              onHoverEnd={startAutoScroll}
             >
               {[...infraImages, ...infraImages].map((img, index) => (
                 <div
                   key={index}
-                  className="
-                    relative
-                    min-w-[220px]
-                    sm:min-w-[260px]
-                    md:min-w-[320px]
-                    lg:min-w-[360px]
-                    h-[180px]
-                    sm:h-[200px]
-                    md:h-[230px]
-                    lg:h-[260px]
-                    rounded-3xl
-                    overflow-hidden
-                    bg-white
-                    shadow-lg
-                  "
+                  className="relative min-w-[260px] md:min-w-[340px] h-[220px] md:h-[260px] rounded-3xl overflow-hidden bg-white shadow-lg"
                 >
-                  {/* Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/30 to-indigo-600/30 opacity-0 hover:opacity-100 blur-xl transition z-0" />
-
-                  {/* Image */}
                   <Image
                     src={img}
                     alt={`Infrastructure ${index + 1}`}
                     fill
-                    className="object-cover transition duration-700 hover:scale-105 z-10"
+                    className="object-cover transition duration-700 hover:scale-105"
                   />
-
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/10 z-20" />
+                  <div className="absolute inset-0 bg-black/10" />
                 </div>
               ))}
             </motion.div>
-
           </div>
         </div>
       </section>

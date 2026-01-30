@@ -98,9 +98,11 @@ export default function GlobalReach() {
                 className="absolute inset-0 bg-no-repeat md:bg-fixed"
                 style={{
                   backgroundImage: "url('/assets/Global.jpeg')",
-                  backgroundSize: "cover",
+               
                   backgroundPosition: "center",
                   backgroundAttachment: "fixed",
+                  backgroundSize: "85%", // 🔍 increase size
+    backgroundRepeat: "no-repeat",
                 }}
               />
 

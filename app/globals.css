@@ -20,17 +20,32 @@
 }
 
 @font-face {
-  font-family: "EfourDigital";
-  src: url("/fonts/efour-digital-font/Entertainment4DigitalFont-YWBo.ttf")
-       format("truetype");
-  font-weight: normal;
+  font-family: "Orbitron";
+  src: url("/fonts/orbitron/Orbitron-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("/fonts/orbitron/Orbitron-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("/fonts/orbitron/Orbitron-Bold.ttf") format("truetype");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "EfourDigital" !important;
+  font-family: "Orbitron" !important;
 }
 
 

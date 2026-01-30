@@ -452,7 +452,7 @@ export default function ProductsListPage() {
   <div
     className="absolute inset-0 bg-cover bg-center"
     style={{
-      backgroundImage: "url('/assets/Whatwedo1.jpeg')",
+      backgroundImage: "url('/assets/images/infra/infra5.png')",
     }}
   />
 

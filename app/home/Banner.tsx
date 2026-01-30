@@ -26,7 +26,7 @@ export default function HeroSection() {
         </video>
 
         {/* Overlays */}
-        <div className="absolute inset-0 bg-[#003865]/60 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[#003865]/30 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#003865] via-transparent to-transparent opacity-80" />
       </div>
 
@@ -78,18 +78,29 @@ export default function HeroSection() {
           </Link>
         </motion.div>
 
-        {/* Buttons */}
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-wrap gap-4 justify-center"
-        >
-          <HeroButton text="Jobs" />
-          <HeroButton text="Partnering" />
-          <HeroButton text="Portfolio" />
-          <HeroButton text="Brochure 🏷️" />
-        </motion.div>
+       {/* Buttons */}
+<motion.div
+  initial={{ y: 30, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.4 }}
+  className="flex flex-wrap gap-4 justify-center"
+>
+  <button onClick={() => window.open("/jobs", "_blank")}>
+    <HeroButton text="Jobs" />
+  </button>
+
+  <button onClick={() => window.open("/partnering", "_blank")}>
+    <HeroButton text="Partnering" />
+  </button>
+
+  <button onClick={() => window.open("/portfolio", "_blank")}>
+    <HeroButton text="Portfolio" />
+  </button>
+
+  <button onClick={() => window.open("/brochure", "_blank")}>
+    <HeroButton text="Brochure ⭳" />
+  </button>
+</motion.div>
 
       </div>
     </section>

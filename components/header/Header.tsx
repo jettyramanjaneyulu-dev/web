@@ -96,11 +96,11 @@ export default function Header() {
     </Link>
   </div>
 
-  <button
-    className="lg:hidden text-white"
-    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-    aria-label="Toggle menu"
-  >
+ <button
+  className="lg:hidden text-[#fff] hover:text-[#C93A7C] transition-colors"
+  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+  aria-label="Toggle menu"
+>
     {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
   </button>
 </div>
@@ -115,7 +115,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-[96px] left-0 w-full z-50 bg-white/10 backdrop-blur-xl border-b border-white/20 lg:hidden text-white"
+            className="fixed top-[76px] left-0 w-full z-50 bg-white/10 backdrop-blur-xl border-b border-white/20 lg:hidden text-[#00abd3]"
           >
             <div className="flex flex-col px-6 py-6 space-y-6">
               <Link

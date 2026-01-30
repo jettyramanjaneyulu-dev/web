@@ -23,7 +23,7 @@ export default function InfrastructurePage() {
   <div
     className="absolute inset-0 bg-cover bg-center"
     style={{
-      backgroundImage: "url('/assets/quality-banner.jpeg')",
+      backgroundImage: "url('/assets/images/infra/infra6.png')",
     }}
   />
 

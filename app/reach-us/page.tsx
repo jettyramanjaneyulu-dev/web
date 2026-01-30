@@ -13,6 +13,7 @@ import {
   Factory,
   ExternalLink,
 } from "lucide-react";
+import CompanyConnectSection from "@/components/CompanyConnectSection";
 
 export default function ReachUsPage() {
   return (
@@ -24,7 +25,7 @@ export default function ReachUsPage() {
   {/* Background Image */}
   <div
     className="absolute inset-0 bg-cover bg-center"
-    style={{ backgroundImage: "url('/assets/quality-banner.jpeg')" }}
+    style={{ backgroundImage: "url('/assets/images/infra/infra2.png')" }}
   />
 
   {/* Dark Overlay */}
@@ -62,59 +63,12 @@ export default function ReachUsPage() {
 
 
      {/* ================= COMPANY / CONNECT ================= */}
-<section className="relative py-24 px-6 overflow-hidden">
-
-  {/* Background Glow */}
-  <div className="absolute inset-0">
-    <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-pink-300/30 rounded-full blur-[120px]" />
-    <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] bg-purple-300/30 rounded-full blur-[120px]" />
-  </div>
-
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8 }}
-    className="relative max-w-5xl mx-auto"
-  >
-    <div className="relative  backdrop-blur-0xl border border-white/40 rounded-[32px] shadow-2xl overflow-hidden">
-
-      {/* Accent Strip */}
-      <div className="absolute left-0 top-0 h-full w-2 bg-gradient-to-b from-pink-500 to-purple-600" />
-
-      <div className="p-10 md:p-14 text-center">
-
-        <span className="inline-block mb-4 px-4 py-1 rounded-full text-sm font-medium bg-pink-100 text-pink-700">
-          Let’s Connect
-        </span>
-
-        <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-wide">
-          NAMI LIFESCIENCES PVT. LTD
-        </h2>
-
-        <p className="mt-5 text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          We welcome collaborations, strategic partnerships, and business
-          inquiries. Our team is ready to support your pharmaceutical and
-          nutraceutical manufacturing needs.
-        </p>
-
-        {/* CTA */}
-        <div className="mt-8 flex justify-center">
-          <button className="group relative px-8 py-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-            Get in Touch
-            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 bg-white/10 transition" />
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </motion.div>
-</section>
+<CompanyConnectSection/>
 
  {/* ===================== FLOATING CAPSULES ===================== */}
       <FloatingCapsules />
 
-     {/* ================= ADDRESSES – PREMIUM ================= */}
+   {/* ================= ADDRESSES – PREMIUM ================= */}
 <section className="relative py-24 px-6 overflow-hidden">
 
   {/* Background Effects */}
@@ -142,15 +96,14 @@ export default function ReachUsPage() {
 
     <div className="grid md:grid-cols-2 gap-10 items-stretch">
 
-      {/* ===== FACTORY – FEATURED ===== */}
+      {/* ===== MANUFACTURING FACILITY ===== */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative bg-gradient-to-br from-[#ff4d9d]/10 to-purple-100 backdrop-blur-0xl border border-white/50 rounded-[32px] p-10 shadow-2xl"
+        className="relative bg-gradient-to-br from-[#ff4d9d]/10 to-purple-100 border border-white/50 rounded-[32px] p-10 shadow-2xl"
       >
-        {/* Icon */}
         <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff4d9d] to-purple-600 text-white shadow-lg">
           <Factory size={28} />
         </div>
@@ -160,8 +113,8 @@ export default function ReachUsPage() {
         </h3>
 
         <p className="text-gray-700 leading-relaxed text-lg">
-          Plot No. 47B, Phase 3, Biotech Park,  
-          Mulugu, Karkapatla,  
+          Plot No. 47B, Phase 3, Biotech Park,<br />
+          Mulugu, Karkapatla,<br />
           Telangana – 502279
         </p>
 
@@ -171,26 +124,25 @@ export default function ReachUsPage() {
         </div>
       </motion.div>
 
-      {/* ===== OFFICE – CLEAN & ELEGANT ===== */}
+      {/* ===== CORPORATE OFFICE ===== */}
       <motion.div
         initial={{ opacity: 0, x: 40 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative bg-gradient-to-br from-[#ff4d9d]/10 backdrop-blur-0xl border border-white/40 rounded-[28px] p-10 shadow-xl"
+        className="relative bg-gradient-to-br from-[#ff4d9d]/10 to-purple-100 border border-white/50 rounded-[32px] p-10 shadow-2xl"
       >
-        <div className="flex items-center gap-4 mb-6">
-          <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-purple-100 text-purple-700">
-            <Building2 size={26} />
-          </div>
-          <h3 className="text-xl font-bold text-gray-900">
-            Corporate Office – Hyderabad
-          </h3>
+        <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-lg">
+          <Building2 size={28} />
         </div>
 
-        <p className="text-gray-600 leading-relaxed text-lg">
-          Suite 104, Thakur Mansion Lane,  
-          Somajiguda,  
+        <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          Corporate Office – Hyderabad
+        </h3>
+
+        <p className="text-gray-700 leading-relaxed text-lg">
+          Suite 104, Thakur Mansion Lane,<br />
+          Somajiguda,<br />
           Hyderabad – 500082
         </p>
 
@@ -203,8 +155,7 @@ export default function ReachUsPage() {
   </div>
 </section>
 
-
-     {/* ================= MAPS – PREMIUM LOCATE US ================= */}
+ {/* ================= MAPS – PREMIUM LOCATE US ================= */}
 <section className="relative py-28 px-6 overflow-hidden">
 
   {/* Ambient Background */}
@@ -230,77 +181,67 @@ export default function ReachUsPage() {
       </h2>
     </motion.div>
 
-   <div className="space-y-10">
+    <div className="space-y-10">
 
-  {/* ===== LOCATION CARD ===== */}
-  {[
-    {
-      title: "Manufacturing Facility",
-      address:
-        "Plot No. 47B, Phase 3, Biotech Park, Mulugu, Karkapatla, Telangana – 502279",
-      link: "https://maps.app.goo.gl/GQjnKJLNBv9wmZDB6",
-      pinColor: "text-[#ff4d9d]",
-    },
-    {
-      title: "Hyderabad Corporate Office",
-      address: "Somajiguda, Hyderabad – 500082",
-      link: "https://maps.app.goo.gl/c3WinavtEennYdiM6",
-      pinColor: "text-purple-600",
-    },
-  ].map((item, index) => (
-    <motion.a
-      key={index}
-      href={item.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{
-        y: -6,
-        scale: 1.015,
-      }}
-      transition={{ type: "spring", stiffness: 160, damping: 18 }}
-      className="group relative block rounded-[28px] overflow-hidden bg-white border border-gray-200 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.35)]"
-    >
-      {/* MAP VISUAL */}
-      <div className="relative h-56 sm:h-64 bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center">
-        <motion.div
-          animate={{ y: [0, -8, 0] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      {[
+        {
+          title: "Manufacturing Facility",
+          address:
+            "Plot No. 47B, Phase 3, Biotech Park, Mulugu, Karkapatla, Telangana – 502279",
+          mapEmbed:
+            "https://www.google.com/maps?q=Biotech+Park+Mulugu+Telangana&output=embed",
+          link: "https://maps.app.goo.gl/GQjnKJLNBv9wmZDB6",
+        },
+        {
+          title: "Hyderabad Corporate Office",
+          address: "Somajiguda, Hyderabad – 500082",
+          mapEmbed:
+            "https://www.google.com/maps?q=Somajiguda+Hyderabad&output=embed",
+          link: "https://maps.app.goo.gl/c3WinavtEennYdiM6",
+        },
+      ].map((item, index) => (
+        <motion.a
+          key={index}
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          whileHover={{ y: -6, scale: 1.015 }}
+          transition={{ type: "spring", stiffness: 160, damping: 18 }}
+          className="group relative block rounded-[28px] overflow-hidden bg-white border border-gray-200 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.35)]"
         >
-          <MapPin
-            size={60}
-            className={`${item.pinColor} drop-shadow-xl`}
-          />
-        </motion.div>
+          {/* MAP */}
+          <div className="relative h-56 sm:h-64 md:h-72 bg-slate-100">
+            <iframe
+              src={item.mapEmbed}
+              className="absolute inset-0 w-full h-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+            <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
+          </div>
 
-        {/* depth overlay */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent" />
-      </div>
+          {/* CONTENT */}
+          <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-gray-600 max-w-xl text-sm sm:text-base leading-relaxed">
+                {item.address}
+              </p>
+            </div>
 
-      {/* CONTENT */}
-      <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-        <div>
-          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-            {item.title}
-          </h3>
-          <p className="mt-2 text-gray-600 max-w-xl text-sm sm:text-base leading-relaxed">
-            {item.address}
-          </p>
-        </div>
-
-        <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold shadow-lg group-hover:bg-gradient-to-r group-hover:from-[#ff4d9d] group-hover:to-purple-600 transition">
-          Open in Maps
-          <ExternalLink size={16} />
-        </span>
-      </div>
-    </motion.a>
-  ))}
-
-</div>
-
-
+            <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold shadow-lg group-hover:bg-gradient-to-r group-hover:from-[#ff4d9d] group-hover:to-purple-600 transition">
+              Open in Maps
+              <ExternalLink size={16} />
+            </span>
+          </div>
+        </motion.a>
+      ))}
+    </div>
   </div>
 </section>
 
