@@ -94,7 +94,7 @@ export default function GlobalReach() {
               "
             >
               {/* Capsule Image */}
-              <div
+              {/* <div
                 className="absolute inset-0 bg-no-repeat md:bg-fixed"
                 style={{
                   backgroundImage: "url('/assets/Global.png')",
@@ -104,7 +104,8 @@ export default function GlobalReach() {
                   backgroundSize: "85%", // 🔍 increase size
     backgroundRepeat: "no-repeat",
                 }}
-              />
+              /> */}
+               <div className="absolute inset-0 bg-[url('/assets/Global.png')] bg-cover bg-center bg-no-repeat bg-fixed" />
 
               {/* Depth Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20 pointer-events-none" />

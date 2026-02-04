@@ -42,7 +42,7 @@ export default function Pharmaceuticals() {
             </div>
           </div>
 
-          {/* RIGHT */}
+          
          {/* RIGHT */}
 <div className="order-1 lg:order-2 relative flex justify-center">
   <motion.div
@@ -52,14 +52,7 @@ export default function Pharmaceuticals() {
     transition={{ duration: 0.8 }}
     className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-xl z-10"
   >
-   <div
-  className="absolute inset-0 bg-center bg-fixed"
-  style={{
-    backgroundImage: "url('/assets/Pharmaceuticals.jpeg')",
-    backgroundSize: "85%", // 🔍 increase size
-    backgroundRepeat: "no-repeat",
-  }}
-/>
+   <div className="absolute inset-0 bg-[url('/assets/Pharmaceuticals.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed" />
 
     {/* ✅ Gradient Overlay (RESTORED) */}
     <div className="absolute inset-0 bg-gradient-to-tr from-[#C93A7C]/30 via-transparent to-transparent mix-blend-overlay pointer-events-none" />

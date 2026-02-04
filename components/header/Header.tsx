@@ -36,18 +36,11 @@ export default function Header() {
   /* ------------------ NAVIGATION WITH EFFECT ------------------ */
   const navigateWithEffect = (href: string) => {
     setTransitioning(true);
-
-    // close mobile menu immediately
     setMobileMenuOpen(false);
     setMobileProductsOpen(false);
 
-    setTimeout(() => {
-      router.push(href);
-    }, 450);
-
-    setTimeout(() => {
-      setTransitioning(false);
-    }, 1100);
+    setTimeout(() => router.push(href), 450);
+    setTimeout(() => setTransitioning(false), 1100);
   };
 
   /* ------------------ DESKTOP ANIMATED LINK ------------------ */
@@ -77,7 +70,6 @@ export default function Header() {
         <div className="relative px-8 flex justify-between items-center h-[76px]">
           {/* LEFT */}
           <div className="flex items-center gap-12">
-            {/* Logo */}
             <button
               onClick={() => navigateWithEffect("/")}
               className="relative w-35 h-16"
@@ -95,7 +87,6 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-8">
               <AnimatedNavLink href="/about">About Us</AnimatedNavLink>
 
-              {/* PRODUCTS DROPDOWN */}
               <div className="relative group">
                 <div className="flex items-center gap-1">
                   <AnimatedNavLink href="/products">Products</AnimatedNavLink>
@@ -122,6 +113,7 @@ export default function Header() {
               <AnimatedNavLink href="/quality">Quality</AnimatedNavLink>
               <AnimatedNavLink href="/infrastructure">Infrastructure</AnimatedNavLink>
               <AnimatedNavLink href="/career">Career</AnimatedNavLink>
+              <AnimatedNavLink href="/gallery">Gallery</AnimatedNavLink>
               <AnimatedNavLink href="/reach-us">Reach Us</AnimatedNavLink>
             </div>
           </div>
@@ -155,26 +147,24 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="fixed top-[76px] left-0 w-full z-50
-                       bg-white/10 backdrop-blur-xl lg:hidden"
+                       bg-[#0b2b3f]/90 backdrop-blur-xl lg:hidden"
           >
-            <div className="flex flex-col px-6 py-6 space-y-6 text-white font-bold uppercase">
-              
+            <div className="flex flex-col items-center text-center
+                            px-6 py-8 space-y-7
+                            text-white font-bold uppercase">
+
               <button onClick={() => navigateWithEffect("/about")}>
                 About Us
               </button>
 
-              {/* MOBILE PRODUCTS DROPDOWN */}
-              <div>
-                <div className="flex items-center justify-between">
+              {/* PRODUCTS */}
+              <div className="flex flex-col items-center gap-3">
+                <div className="flex items-center justify-center gap-3">
                   <button onClick={() => navigateWithEffect("/products")}>
                     Products
                   </button>
 
-                  <button
-                    onClick={() =>
-                      setMobileProductsOpen(!mobileProductsOpen)
-                    }
-                  >
+                  <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)}>
                     <ChevronDown
                       size={18}
                       className={`transition-transform ${
@@ -190,13 +180,11 @@ export default function Header() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="ml-4 mt-3 overflow-hidden space-y-3"
+                      className="flex flex-col items-center gap-3 text-sm"
                     >
                       <button
-                        onClick={() =>
-                          navigateWithEffect("/products/list")
-                        }
-                        className="block text-white/90 hover:text-[#C93A7C]"
+                        onClick={() => navigateWithEffect("/products/list")}
+                        className="text-white/80 hover:text-[#C93A7C]"
                       >
                         Products List
                       </button>
@@ -217,14 +205,19 @@ export default function Header() {
                 Career
               </button>
 
+              <button onClick={() => navigateWithEffect("/gallery")}>
+                Gallery
+              </button>
+
               <button onClick={() => navigateWithEffect("/reach-us")}>
                 Reach Us
-              </button>
+              </button>             
 
               <Link
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="inline-flex justify-center gap-2 px-6 py-3 rounded-full
+                className="mt-6 inline-flex items-center justify-center gap-2
+                           px-8 py-4 rounded-full
                            bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
                            text-white font-bold"
               >

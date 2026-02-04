@@ -95,14 +95,15 @@ export default function ManufacturingSection() {
     className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-xl z-10"
   >
     {/* Background Image */}
-    <div
+    {/* <div
       className="absolute inset-0 bg-cover bg-center bg-fixed"
       style={{
         backgroundImage: "url('/assets/Manufacturing.png')",
         backgroundSize: "85%", // 🔍 increase size
     backgroundRepeat: "no-repeat",
       }}
-    />
+    /> */}
+    <div className="absolute inset-0 bg-[url('/assets/Manufacturing.png')] bg-cover bg-center bg-no-repeat bg-fixed" />
 
     {/* ✅ Gradient Overlay (RESTORED) */}
     <div className="absolute inset-0 bg-gradient-to-tr from-[#C93A7C]/30 via-transparent to-transparent mix-blend-overlay pointer-events-none" />
