@@ -80,7 +80,7 @@ const capabilities = [
 ];
 export default function ProductsPage() {
   return (
-    <main className="bg-gradient-to-br from-pink-100 via-white to-pink-200 overflow-hidden">
+    <main className="bg-white overflow-hidden">
 
       {/* ================= HERO SECTION ================= */}
       <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
@@ -187,7 +187,7 @@ export default function ProductsPage() {
               transition-all duration-300 flex gap-4 items-start
             "
           >
-            <Icon className="w-6 h-6 text-pink-500 mt-1" />
+            <Icon className="w-6 h-6 text-[#291684] mt-1" />
             <h3 className="font-semibold text-gray-600 text-lg">
               {item.name}
             </h3>
@@ -246,7 +246,7 @@ export default function ProductsPage() {
               shadow-sm group-hover:shadow-[0_15px_40px_rgba(236,72,153,0.35)]
             "
           >
-            <Icon className="w-6 h-6 text-pink-500 mx-auto mb-3" />
+            <Icon className="w-6 h-6 text-[#291684] mx-auto mb-3" />
             <p className="font-medium text-gray-800">{item.name}</p>
           </div>
         </motion.div>

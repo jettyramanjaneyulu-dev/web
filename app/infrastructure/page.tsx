@@ -64,8 +64,8 @@ export default function InfrastructurePage() {
 <section className="relative py-28 px-6 overflow-hidden">
 
   {/* Floating Gradient Orbs */}
-  <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl" />
-  <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl" />
+  {/* <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl" />
+  <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-indigo-300/30 rounded-full blur-3xl" /> */}
 
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -83,7 +83,7 @@ export default function InfrastructurePage() {
         </span>
         <h2 className="mt-4 text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
           Precision Manufacturing <br />
-          <span className="text-indigo-600">Built for Global Standards</span>
+          <span className="text-[#291684]">Built for Global Standards</span>
         </h2>
       </div>
     </div>
@@ -115,7 +115,7 @@ export default function InfrastructurePage() {
         ].map((tag) => (
           <span
             key={tag}
-            className="px-4 py-2 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 border border-indigo-100"
+            className="px-4 py-2 rounded-full text-sm font-medium bg-indigo-50 text-[#291684] border border-indigo-100"
           >
             {tag}
           </span>
@@ -132,9 +132,9 @@ export default function InfrastructurePage() {
 <section className="relative py-28 px-6 overflow-hidden ]">
 
   {/* Background Accents */}
-  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[1px] bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
+  {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[1px] bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
   <div className="absolute -top-32 -right-32 w-96 h-96 bg-pink-400/20 rounded-full blur-3xl" />
-  <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl" />
+  <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-indigo-400/20 rounded-full blur-3xl" /> */}
 
   <div className="relative max-w-7xl mx-auto">
 
@@ -211,8 +211,8 @@ export default function InfrastructurePage() {
 <section className="relative py-16 px-6 overflow-hidden">
 
   {/* Ambient Background */}
-  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#fff0f7] to-transparent" />
-  <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-[#ff4d9d]/20 rounded-full blur-3xl" />
+  {/* <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#fff0f7] to-transparent" />
+  <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-[#ff4d9d]/20 rounded-full blur-3xl" /> */}
 
   <motion.div
     initial={{ opacity: 0, y: 50 }}

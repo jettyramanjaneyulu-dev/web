@@ -181,7 +181,7 @@ export default function ReachUsPage() {
       </h2>
     </motion.div>
 
-    <div className="space-y-10">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
       {[
         {
@@ -201,48 +201,48 @@ export default function ReachUsPage() {
         },
       ].map((item, index) => (
         <motion.a
-          key={index}
-          href={item.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          whileHover={{ y: -6, scale: 1.015 }}
-          transition={{ type: "spring", stiffness: 160, damping: 18 }}
-          className="group relative block rounded-[28px] overflow-hidden bg-white border border-gray-200 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.35)]"
-        >
-          {/* MAP */}
-          <div className="relative h-56 sm:h-64 md:h-72 bg-slate-100">
-            <iframe
-              src={item.mapEmbed}
-              className="absolute inset-0 w-full h-full"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
-          </div>
+      key={index}
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -6, scale: 1.015 }}
+      transition={{ type: "spring", stiffness: 160, damping: 18 }}
+      className="group relative block rounded-[28px] overflow-hidden bg-white border border-gray-200 shadow-[0_20px_60px_-25px_rgba(0,0,0,0.35)]"
+    >
+      {/* MAP */}
+      <div className="relative h-56 sm:h-64 md:h-72 bg-slate-100">
+        <iframe
+          src={item.mapEmbed}
+          className="absolute inset-0 w-full h-full"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/10 to-transparent pointer-events-none" />
+      </div>
 
-          {/* CONTENT */}
-          <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-gray-600 max-w-xl text-sm sm:text-base leading-relaxed">
-                {item.address}
-              </p>
-            </div>
+      {/* CONTENT */}
+      <div className="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <div>
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+            {item.title}
+          </h3>
+          <p className="mt-2 text-gray-600 max-w-xl text-sm sm:text-base leading-relaxed">
+            {item.address}
+          </p>
+        </div>
 
-            <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold shadow-lg group-hover:bg-gradient-to-r group-hover:from-[#ff4d9d] group-hover:to-purple-600 transition">
-              Open in Maps
-              <ExternalLink size={16} />
-            </span>
-          </div>
-        </motion.a>
-      ))}
-    </div>
-  </div>
+        <span className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gray-900 text-white text-sm font-semibold shadow-lg group-hover:bg-gradient-to-r group-hover:from-[#ff4d9d] group-hover:to-purple-600 transition">
+          Open in Maps
+          <ExternalLink size={16} />
+        </span>
+      </div>
+    </motion.a>
+  ))}
+
+  </div></div>
 </section>
 
 

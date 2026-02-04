@@ -25,11 +25,9 @@ const capabilities = [
 
 export default function CapabilitiesSection() {
   return (
-    <section className="relative py-28 bg-gradient-to-br from-pink-100 via-white to-pink-200 overflow-hidden">
+    <section className="relative py-28 bg-white">
 
-      {/* Background Accents */}
-      <div className="absolute top-1/3 -left-32 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 -right-32 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl" />
+      
 
       <div className="relative max-w-7xl mx-auto px-6">
 

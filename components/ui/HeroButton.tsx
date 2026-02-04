@@ -1,10 +1,9 @@
-export default function HeroButton({
-  text,
-  onClick,
-}: {
+type HeroButtonProps = {
   text: string;
   onClick?: () => void;
-}) {
+};
+
+export default function HeroButton({ text, onClick }: HeroButtonProps) {
   return (
     <button
       onClick={onClick}
@@ -12,11 +11,9 @@ export default function HeroButton({
         px-8 py-3 rounded-full
         bg-transparent
         text-white
-        border border-white/50
-        hover:bg-[#C93A7C]
-        hover:border-[#C93A7C]
-        transition-all duration-300
-        uppercase tracking-widest text-sm
+        border border-white
+        hover:bg-white hover:text-black
+        transition
       "
     >
       {text}

@@ -445,7 +445,7 @@ export default function ProductsListPage() {
   }, [search, activeGroup, activePharmaFilter]);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-pink-200 text-black">
+    <main className="min-h-screen bg-white text-black">
  {/* ================= HERO ================= */}
     <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
   {/* ================= BACKGROUND IMAGE ================= */}

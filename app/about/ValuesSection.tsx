@@ -28,11 +28,11 @@ const values = [
 
 export default function ValuesSection() {
   return (
-    <section className="relative py-36 bg-gradient-to-br from-pink-100 via-white to-pink-200 overflow-hidden">
+    <section className="relative py-36 bg-white">
 
       {/* Ambient Science Blurs */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-pink-300/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-purple-300/30 rounded-full blur-3xl" />
+      {/* <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-pink-300/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-purple-300/30 rounded-full blur-3xl" /> */}
 
       <div className="relative max-w-6xl mx-auto px-6">
 

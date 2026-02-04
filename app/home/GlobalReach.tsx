@@ -90,14 +90,14 @@ export default function GlobalReach() {
                 w-[400px] h-64
                 md:w-[520px] md:h-[280px]
                 rounded-full overflow-hidden
-                shadow-2xl z-10
+                shadow-xl z-10
               "
             >
               {/* Capsule Image */}
               <div
                 className="absolute inset-0 bg-no-repeat md:bg-fixed"
                 style={{
-                  backgroundImage: "url('/assets/Global.jpeg')",
+                  backgroundImage: "url('/assets/Global.png')",
                
                   backgroundPosition: "center",
                   backgroundAttachment: "fixed",

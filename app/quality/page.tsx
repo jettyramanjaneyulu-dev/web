@@ -86,40 +86,55 @@ export default function QualityPage() {
   const [activeTab, setActiveTab] = useState(QUALITY_TABS[0]);
 
   return (
-    <main className="relative min-h-screen bg-gradient-to-br from-[#f7f8fc] via-white to-[#fde7f2] overflow-hidden">
+    <main className="relative min-h-screen bg-white overflow-hidden">
 
       {/* ===================== BANNER ===================== */}
-      <section className="relative pt-32 pb-40 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/images/infra/infra3.png')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/10" />
+<section className="relative pt-32 pb-40 overflow-hidden">
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: "url('/assets/images/infra/infra3.png')" }}
+  />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#c93a7c]">
-            Quality & Compliance
-          </h1>
-          <p className="mt-5 text-xl md:text-2xl font-semibold text-[#032a33]">
-            Precision. Consistency. Trust.
-          </p>
-          <p className="mt-6 max-w-3xl mx-auto text-white/90 leading-relaxed">
-            At Nami Life Sciences, quality is not a checkpoint — it is a culture
-            embedded across formulation, manufacturing, and delivery.
-          </p>
-        </div>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/20" />
 
-        <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]" />
+  {/* Content */}
+  <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    {/* 🔮 Transparent Glass Box */}
+    <div className="mx-auto max-w-4xl rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-2xl px-8 py-12">
+      <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#c93a7c]">
+        Quality & Compliance
+      </h1>
 
-        <div className="absolute bottom-0 left-0 w-full leading-none">
-          <svg viewBox="0 0 1440 100" className="w-full h-[100px]" preserveAspectRatio="none">
-            <path
-              d="M0,50 C360,90 720,10 1080,50 1260,70 1440,50 1440,50 L1440,100 L0,100 Z"
-              fill="#ffffff"
-            />
-          </svg>
-        </div>
-      </section>
+      <p className="mt-5 text-xl md:text-2xl font-semibold text-[#032a33]">
+        Precision. Consistency. Trust.
+      </p>
+
+      <p className="mt-6 max-w-3xl mx-auto text-white/90 leading-relaxed">
+        At Nami Life Sciences, quality is not a checkpoint — it is a culture
+        embedded across formulation, manufacturing, and delivery.
+      </p>
+    </div>
+  </div>
+
+  {/* Extra Soft Glass Layer */}
+  <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]" />
+
+  {/* Bottom Wave */}
+  <div className="absolute bottom-0 left-0 w-full leading-none">
+    <svg
+      viewBox="0 0 1440 100"
+      className="w-full h-[100px]"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M0,50 C360,90 720,10 1080,50 1260,70 1440,50 1440,50 L1440,100 L0,100 Z"
+        fill="#ffffff"
+      />
+    </svg>
+  </div>
+</section>
 
 
       {/* ===================== FLOATING CAPSULES ===================== */}
@@ -169,11 +184,27 @@ export default function QualityPage() {
           </h3>
 
           <div className="grid md:grid-cols-4 gap-8">
-            <ComplianceStep icon={<BadgeCheck />} title="GMP" desc="Good Manufacturing Practices" />
-            <ComplianceStep icon={<Scale />} title="DCA Telangana" desc="Drug Control Administration" />
-            <ComplianceStep icon={<ClipboardCheck />} title="CDSCO" desc="Central Drugs Standard Control Organisation" />
-            <ComplianceStep icon={<Factory />} title="Ministry of Health" desc="Government of India" />
-          </div>
+  <ComplianceStep
+    icon={<BadgeCheck className="text-[#291684]" />}
+    title="GMP"
+    desc="Good Manufacturing Practices"
+  />
+  <ComplianceStep
+    icon={<Scale className="text-[#291684]" />}
+    title="DCA Telangana"
+    desc="Drug Control Administration"
+  />
+  <ComplianceStep
+    icon={<ClipboardCheck className="text-[#291684]" />}
+    title="CDSCO"
+    desc="Central Drugs Standard Control Organisation"
+  />
+  <ComplianceStep
+    icon={<Factory className="text-[#291684]" />}
+    title="Ministry of Health"
+    desc="Government of India"
+  />
+</div>
         </div>
 
         {/* ===================== OUR QUALITY APPROACH ===================== */}
@@ -223,6 +254,7 @@ export default function QualityPage() {
             </div>
           </div>
         </div>
+
 
         {/* ===================== FOOT NOTE (BUTTON STYLE) ===================== */}
         <div className="flex justify-center">

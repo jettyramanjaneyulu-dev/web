@@ -3,11 +3,12 @@ import { BookOpen, Sparkles } from "lucide-react";
 
 export default function StorySection() {
   return (
-    <section className="relative py-28 overflow-hidden bg-gradient-to-br from-pink-100 via-white to-pink-200">
+    <section className="relative py-28 overflow-hidden bg-white">
+      {/* <section className="relative py-28 overflow-hidden bg-gradient-to-br from-pink-100 via-white to-pink-200"></section> */}
 
       {/* Decorative Blurs */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl" />
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl" />
+      {/* <div className="absolute -top-24 -left-24 w-96 h-96 bg-pink-300/30 rounded-full blur-3xl" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-300/30 rounded-full blur-3xl" /> */}
 
       <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
 

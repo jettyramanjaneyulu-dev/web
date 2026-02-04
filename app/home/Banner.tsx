@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Accessibility } from "lucide-react";
 import HeroButton from "@/components/ui/HeroButton";
 
 export default function HeroSection() {
@@ -29,13 +28,6 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[#003865]/30 mix-blend-multiply" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#003865] via-transparent to-transparent opacity-80" />
       </div>
-
-      {/* Floating Accessibility Icon */}
-      {/* <div className="absolute top-8 right-0 z-20 hidden md:block">
-        <div className="bg-[#C93A7C] p-3 rounded-l-full shadow-lg cursor-pointer hover:bg-[#315879] hover:text-[#003865] transition-colors">
-          <Accessibility size={24} className="text-[#003865]" />
-        </div>
-      </div> */}
 
       {/* Content */}
       <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-10">
@@ -78,30 +70,35 @@ export default function HeroSection() {
           </Link>
         </motion.div>
 
-       {/* Buttons */}
-<motion.div
-  initial={{ y: 30, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 0.8, delay: 0.4 }}
-  className="flex flex-wrap gap-4 justify-center"
->
-  <button onClick={() => window.open("/jobs", "_blank")}>
-    <HeroButton text="Jobs" />
-  </button>
+        {/* Buttons */}
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-wrap gap-4 justify-center"
+        >
+          <HeroButton
+            text="Jobs"
+            onClick={() => window.open("/career", "_blank")}
+          />
 
-  <button onClick={() => window.open("/partnering", "_blank")}>
-    <HeroButton text="Partnering" />
-  </button>
+          <HeroButton
+            text="Partnering"
+            onClick={() => window.open("/partnering", "_blank")}
+          />
 
-  <button onClick={() => window.open("/portfolio", "_blank")}>
-    <HeroButton text="Portfolio" />
-  </button>
+          <HeroButton
+            text="Portfolio"
+            onClick={() => window.open("/reach-us", "_blank")}
+          />
 
-  <button onClick={() => window.open("/brochure", "_blank")}>
-    <HeroButton text="Brochure ⭳" />
-  </button>
-</motion.div>
-
+          <HeroButton
+            text="Brochure ⭳"
+            onClick={() =>
+              window.open("/assets/pdf/nami-products.pdf", "_blank")
+            }
+          />
+        </motion.div>
       </div>
     </section>
   );

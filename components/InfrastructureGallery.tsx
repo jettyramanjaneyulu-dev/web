@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useAnimationControls } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const infraImages = [
   "/assets/images/infra/infra.png",
@@ -18,16 +19,17 @@ const infraImages = [
 export default function InfrastructureGalleryPage() {
   const controls = useAnimationControls();
   const [duration, setDuration] = useState(18);
+  const router = useRouter();
 
-  /* ===== RESPONSIVE SPEED (ALL DEVICES AUTO) ===== */
+  /* ===== RESPONSIVE SPEED ===== */
   useEffect(() => {
     const updateSpeed = () => {
       if (window.innerWidth < 640) {
-        setDuration(9);      // mobile
+        setDuration(9);
       } else if (window.innerWidth < 1024) {
-        setDuration(13);     // tablet
+        setDuration(13);
       } else {
-        setDuration(18);     // desktop
+        setDuration(18);
       }
     };
 
@@ -36,7 +38,7 @@ export default function InfrastructureGalleryPage() {
     return () => window.removeEventListener("resize", updateSpeed);
   }, []);
 
-  /* ===== AUTO SCROLL (ALL DEVICES) ===== */
+  /* ===== AUTO SCROLL ===== */
   const startAutoScroll = () => {
     controls.start({
       x: ["0%", "-100%"],
@@ -54,11 +56,6 @@ export default function InfrastructureGalleryPage() {
 
   return (
     <main className="relative overflow-hidden bg-transparent">
-
-      {/* subtle accents */}
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-pink-400/15 rounded-full blur-3xl" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-indigo-400/15 rounded-full blur-3xl" />
-
       <section className="relative py-16 pb-8 px-4">
         <div className="max-w-7xl mx-auto">
 
@@ -99,7 +96,10 @@ export default function InfrastructureGalleryPage() {
               {[...infraImages, ...infraImages].map((img, index) => (
                 <div
                   key={index}
-                  className="relative min-w-[260px] md:min-w-[340px] h-[220px] md:h-[260px] rounded-3xl overflow-hidden bg-white shadow-lg"
+                  onClick={() => router.push("/gallery")}
+                  className="relative min-w-[260px] md:min-w-[340px] h-[220px] md:h-[260px]
+                             rounded-3xl overflow-hidden bg-white shadow-lg
+                             cursor-pointer"
                 >
                   <Image
                     src={img}
@@ -112,6 +112,7 @@ export default function InfrastructureGalleryPage() {
               ))}
             </motion.div>
           </div>
+
         </div>
       </section>
     </main>

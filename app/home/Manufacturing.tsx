@@ -92,13 +92,13 @@ export default function ManufacturingSection() {
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8 }}
-    className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl z-10"
+    className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-xl z-10"
   >
     {/* Background Image */}
     <div
       className="absolute inset-0 bg-cover bg-center bg-fixed"
       style={{
-        backgroundImage: "url('/assets/Manufacturing.jpeg')",
+        backgroundImage: "url('/assets/Manufacturing.png')",
         backgroundSize: "85%", // 🔍 increase size
     backgroundRepeat: "no-repeat",
       }}

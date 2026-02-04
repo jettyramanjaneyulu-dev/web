@@ -63,11 +63,11 @@ export default function CareerPage() {
 <section className="relative py-28 px-6 overflow-hidden">
 
   {/* Soft Background Gradient */}
-  <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-white to-indigo-50" />
+  {/* <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-white to-indigo-50" /> */}
 
   {/* Decorative Science Orbs */}
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl" />
-  <div className="absolute bottom-0 -right-24 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl" />
+  {/* <div className="absolute -top-20 -left-20 w-72 h-72 bg-pink-300/20 rounded-full blur-3xl" />
+  <div className="absolute bottom-0 -right-24 w-96 h-96 bg-indigo-300/20 rounded-full blur-3xl" /> */}
 
   <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
@@ -186,41 +186,45 @@ export default function CareerPage() {
       </motion.div>
 
       {/* RIGHT — REASONS LIST */}
-      <div className="relative space-y-10">
+<div
+  className="relative space-y-10
+             max-h-[70vh] lg:max-h-[45vh]
+             overflow-y-auto pr-4
+             scrollbar-thin scrollbar-thumb-[#ff4d9d]/40 scrollbar-track-transparent"
+>
 
-        {/* Vertical Spine */}
-        <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#ff4d9d]/40 via-[#ff4d9d]/10 to-transparent" />
+  {/* Vertical Spine */}
+  <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#ff4d9d]/40 via-[#ff4d9d]/10 to-transparent" />
 
-        {reasons.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.12 }}
-            className="relative pl-20"
-          >
-            {/* Icon Node */}
-            <div className="absolute left-0 top-4 flex items-center justify-center w-12 h-12 rounded-xl bg-white shadow-lg border border-[#ff4d9d]/20 text-[#ff4d9d]">
-              <item.icon size={22} />
-            </div>
-
-            {/* Card */}
-            <div className="group bg-white/70 backdrop-blur-xl border border-white/40 rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all">
-              <h4 className="font-bold text-lg text-gray-900 mb-2">
-                {item.title}
-              </h4>
-              <p className="text-gray-600 leading-relaxed text-sm">
-                {item.desc}
-              </p>
-
-              {/* Hover Accent */}
-              <div className="mt-4 h-0.5 w-0 group-hover:w-20 bg-[#ff4d9d] transition-all duration-300 rounded-full" />
-            </div>
-          </motion.div>
-        ))}
-
+  {reasons.map((item, index) => (
+    <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.12 }}
+      className="relative pl-20"
+    >
+      {/* Icon Node */}
+      <div className="absolute left-0 top-4 flex items-center justify-center w-12 h-12 rounded-xl bg-white shadow-lg border border-[#ff4d9d]/20 text-[#ff4d9d]">
+        <item.icon size={22} />
       </div>
+
+      {/* Card */}
+      <div className="group bg-white/70 backdrop-blur-xl border border-white/40 rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all">
+        <h4 className="font-bold text-lg text-gray-900 mb-2">
+          {item.title}
+        </h4>
+        <p className="text-gray-600 leading-relaxed text-sm">
+          {item.desc}
+        </p>
+
+        {/* Hover Accent */}
+        <div className="mt-4 h-0.5 w-0 group-hover:w-20 bg-[#ff4d9d] transition-all duration-300 rounded-full" />
+      </div>
+    </motion.div>
+  ))}
+</div>
     </div>
   </div>
 </section>
@@ -229,8 +233,8 @@ export default function CareerPage() {
 <section className="relative pb-32 px-6 max-w-6xl mx-auto overflow-hidden">
 
   {/* Decorative Blurs */}
-  <div className="absolute -top-20 -left-20 w-72 h-72 bg-pink-400/20 rounded-full blur-3xl" />
-  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-indigo-400/20 rounded-full blur-3xl" />
+  {/* <div className="absolute -top-20 -left-20 w-72 h-72 bg-pink-400/20 rounded-full blur-3xl" />
+  <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-indigo-400/20 rounded-full blur-3xl" /> */}
 
   <motion.div
     initial={{ opacity: 0, y: 40 }}
@@ -279,8 +283,8 @@ export default function CareerPage() {
   <div className="absolute inset-0 " />
 
   {/* Decorative Blurs */}
-  <div className="absolute -top-24 -left-24 w-80 h-80 bg-pink-400/20 rounded-full blur-3xl" />
-  <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-indigo-400/20 rounded-full blur-3xl" />
+  {/* <div className="absolute -top-24 -left-24 w-80 h-80 bg-pink-400/20 rounded-full blur-3xl" />
+  <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-indigo-400/20 rounded-full blur-3xl" /> */}
 
   <div className="relative max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
 

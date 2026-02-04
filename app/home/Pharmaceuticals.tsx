@@ -50,7 +50,7 @@ export default function Pharmaceuticals() {
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
     transition={{ duration: 0.8 }}
-    className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl z-10"
+    className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-xl z-10"
   >
    <div
   className="absolute inset-0 bg-center bg-fixed"
