@@ -26,15 +26,20 @@ const NavLink = ({
   </Link>
 );
 
-/* ------------------ HEADER ------------------ */
 export default function Header() {
   const router = useRouter();
+
   const [transitioning, setTransitioning] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
+  /* ------------------ NAVIGATION WITH EFFECT ------------------ */
   const navigateWithEffect = (href: string) => {
     setTransitioning(true);
+
+    // close mobile menu immediately
+    setMobileMenuOpen(false);
+    setMobileProductsOpen(false);
 
     setTimeout(() => {
       router.push(href);
@@ -45,7 +50,7 @@ export default function Header() {
     }, 1100);
   };
 
-  /* ✅ NEW: Animated link (does NOT remove NavLink) */
+  /* ------------------ DESKTOP ANIMATED LINK ------------------ */
   const AnimatedNavLink = ({
     href,
     children,
@@ -72,7 +77,7 @@ export default function Header() {
         <div className="relative px-8 flex justify-between items-center h-[76px]">
           {/* LEFT */}
           <div className="flex items-center gap-12">
-            {/* Logo → animated */}
+            {/* Logo */}
             <button
               onClick={() => navigateWithEffect("/")}
               className="relative w-35 h-16"
@@ -100,7 +105,8 @@ export default function Header() {
                   />
                 </div>
 
-                <div className="absolute left-0 top-full mt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div className="absolute left-0 top-full mt-4 opacity-0 invisible
+                                group-hover:opacity-100 group-hover:visible transition-all duration-300">
                   <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-xl w-60 py-3">
                     <button
                       onClick={() => navigateWithEffect("/products/list")}
@@ -141,21 +147,89 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* MOBILE MENU */}
+      {/* ------------------ MOBILE MENU ------------------ */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-[76px] left-0 w-full z-50 bg-white/10 backdrop-blur-xl lg:hidden"
+            className="fixed top-[76px] left-0 w-full z-50
+                       bg-white/10 backdrop-blur-xl lg:hidden"
           >
-            <div className="flex flex-col px-6 py-6 space-y-6">
-              <button onClick={() => navigateWithEffect("/about")}>About Us</button>
-              <button onClick={() => navigateWithEffect("/products")}>Products</button>
-              <button onClick={() => navigateWithEffect("/quality")}>Quality</button>
-              <button onClick={() => navigateWithEffect("/career")}>Career</button>
-              <button onClick={() => navigateWithEffect("/reach-us")}>Reach Us</button>
+            <div className="flex flex-col px-6 py-6 space-y-6 text-white font-bold uppercase">
+              
+              <button onClick={() => navigateWithEffect("/about")}>
+                About Us
+              </button>
+
+              {/* MOBILE PRODUCTS DROPDOWN */}
+              <div>
+                <div className="flex items-center justify-between">
+                  <button onClick={() => navigateWithEffect("/products")}>
+                    Products
+                  </button>
+
+                  <button
+                    onClick={() =>
+                      setMobileProductsOpen(!mobileProductsOpen)
+                    }
+                  >
+                    <ChevronDown
+                      size={18}
+                      className={`transition-transform ${
+                        mobileProductsOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                <AnimatePresence>
+                  {mobileProductsOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="ml-4 mt-3 overflow-hidden space-y-3"
+                    >
+                      <button
+                        onClick={() =>
+                          navigateWithEffect("/products/list")
+                        }
+                        className="block text-white/90 hover:text-[#C93A7C]"
+                      >
+                        Products List
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <button onClick={() => navigateWithEffect("/quality")}>
+                Quality
+              </button>
+
+              <button onClick={() => navigateWithEffect("/infrastructure")}>
+                Infrastructure
+              </button>
+
+              <button onClick={() => navigateWithEffect("/career")}>
+                Career
+              </button>
+
+              <button onClick={() => navigateWithEffect("/reach-us")}>
+                Reach Us
+              </button>
+
+              <Link
+                href="#contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="inline-flex justify-center gap-2 px-6 py-3 rounded-full
+                           bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
+                           text-white font-bold"
+              >
+                Get Quote Now <ArrowRight size={16} />
+              </Link>
             </div>
           </motion.div>
         )}
