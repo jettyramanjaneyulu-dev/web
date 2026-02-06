@@ -19,12 +19,15 @@ export default function ReachUsPage() {
   return (
     <main className="relative bg-[#f6f7fb] overflow-hidden">
 
-   {/* ================= HERO ================= */}
-<section className="relative h-[70vh] md:h-[75vh] flex items-center justify-center overflow-hidden bg-[#f6f7fb]">
+  {/* ================= HERO ================= */}
+<section
+  className="relative flex items-center justify-center overflow-hidden bg-[#f6f7fb]
+             h-[60vh] sm:h-[65vh] md:h-[75vh]"
+>
 
   {/* Background Image */}
   <div
-    className="absolute inset-0 bg-cover bg-center"
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{ backgroundImage: "url('/assets/images/infra/infra2.png')" }}
   />
 
@@ -33,33 +36,44 @@ export default function ReachUsPage() {
 
   {/* Content */}
   <motion.div
-    initial={{ opacity: 0, y: 40 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="relative z-10 text-center max-w-4xl px-6"
+    className="relative z-10 text-center max-w-3xl px-4 sm:px-6"
   >
-    <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff4d9d] tracking-wide uppercase">
+    <h1
+      className="text-3xl sm:text-4xl md:text-5xl
+                 font-extrabold text-[#ff4d9d]
+                 tracking-wide uppercase"
+    >
       Reach Us
     </h1>
 
-    <p className="mt-6 text-base md:text-lg text-white/90">
+    <p
+      className="mt-4 sm:mt-6
+                 text-sm sm:text-base md:text-lg
+                 text-white/90"
+    >
       Let’s Build Better Solutions Together
     </p>
   </motion.div>
 
-  {/* Bottom Wave – GAP KILLER */}
+  {/* Bottom Wave – Responsive Gap Killer */}
   <svg
     className="absolute -bottom-[1px] left-0 w-full block"
     viewBox="0 0 1440 120"
     preserveAspectRatio="none"
   >
     <path
-      d="M0 60L60 65C120 70 240 80 360 78C480 75 600 60 720 48C840 35 960 25 1080 30C1200 35 1320 55 1380 65L1440 75V120H0V60Z"
+      d="M0 60L60 65C120 70 240 80 360 78C480 75 600 60 720 48
+         C840 35 960 25 1080 30C1200 35 1320 55 1380 65
+         L1440 75V120H0V60Z"
       fill="#f6f7fb"
     />
   </svg>
 
 </section>
+
 
 
      {/* ================= COMPANY / CONNECT ================= */}

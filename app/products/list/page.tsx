@@ -447,23 +447,54 @@ export default function ProductsListPage() {
   return (
     <main className="min-h-screen bg-white text-black">
  {/* ================= HERO ================= */}
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+<section className="relative min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden">
+
   {/* ================= BACKGROUND IMAGE ================= */}
   <div
-    className="absolute inset-0 bg-cover bg-center"
+    className="absolute inset-0 bg-cover bg-center scale-105"
     style={{
       backgroundImage: "url('/assets/images/infra/infra5.png')",
     }}
   />
 
+  {/* Optional overlay for readability */}
+  <div className="absolute inset-0 bg-black/20" />
+
   {/* ================= CONTENT (CENTER GLASS BOX) ================= */}
-  <div className="relative z-10 max-w-4xl mx-auto px-6">
-    <div className="bg-white/55 backdrop-blur-md rounded-3xl shadow-2xl border border-white/40 py-16 px-10 text-center">
-      <h1 className="text-5xl md:text-6xl font-extrabold text-pink-600 uppercase tracking-wide">
+  <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 flex justify-center">
+    <div
+      className="
+        w-full
+        max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
+        bg-white/60 backdrop-blur-lg
+        rounded-2xl sm:rounded-3xl
+        shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+        border border-white/40
+        py-8 sm:py-10 md:py-14
+        px-6 sm:px-8 md:px-10
+        text-center
+      "
+    >
+      <h1
+        className="
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
+          font-extrabold
+          text-pink-600
+          uppercase
+          tracking-wide
+        "
+      >
         Product Portfolio
       </h1>
 
-      <p className="mt-6 text-gray-700 text-lg leading-relaxed">
+      <p
+        className="
+          mt-4 sm:mt-5 md:mt-6
+          text-sm sm:text-base md:text-lg
+          text-gray-700
+          leading-relaxed
+        "
+      >
         Precision-engineered pharmaceutical pellets, advanced
         release systems, combination formulations, and
         nutraceutical beadlets.
@@ -472,8 +503,12 @@ export default function ProductsListPage() {
   </div>
 
   {/* ================= CURVED BOTTOM ================= */}
-  <div className="absolute bottom-0 left-0 w-full h-32 bg-white rounded-t-[100%]" />
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <div className="w-full h-[60px] sm:h-[80px] md:h-[100px] bg-white rounded-t-[100%]" />
+  </div>
+
 </section>
+
 
 {/* ================= products-list -start ================= */}
 {/* ================= CONTROLS ================= */}

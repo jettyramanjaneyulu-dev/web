@@ -17,34 +17,62 @@ export default function GalleryPage() {
   return (
     <main className="bg-white">
       {/* ================= HERO ================= */}
-      <section className="relative pt-32 pb-28 overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/assets/images/infra/infra5.png')" }}
-        />
-        <div className="absolute inset-0 bg-black/60" />
+<section className="relative overflow-hidden
+                    pt-24 sm:pt-28 md:pt-32
+                    pb-24 sm:pb-26 md:pb-28">
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-          <div className="bg-white/20 backdrop-blur-md rounded-2xl border border-white/30 px-8 py-10 shadow-xl">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-[#291684]">
-              Our Infrastructure
-            </h1>
-            <p className="mt-5 text-white/90 text-lg md:text-xl">
-              A glimpse into our world-class facilities and manufacturing excellence.
-            </p>
-          </div>
-        </div>
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style={{ backgroundImage: "url('/assets/images/infra/infra5.png')" }}
+  />
 
-        {/* Wave */}
-        <div className="absolute bottom-0 left-0 w-full">
-          <svg viewBox="0 0 1440 100" preserveAspectRatio="none" className="w-full h-[100px]">
-            <path
-              d="M0,40 C360,90 720,10 1080,50 1260,70 1440,40 1440,40 L1440,100 L0,100 Z"
-              fill="#ffffff"
-            />
-          </svg>
-        </div>
-      </section>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/60" />
+
+  {/* Content */}
+  <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+    <div
+      className="bg-white/20 backdrop-blur-md rounded-xl sm:rounded-2xl
+                 border border-white/30
+                 px-5 sm:px-8
+                 py-7 sm:py-10
+                 shadow-xl"
+    >
+      <h1
+        className="text-3xl sm:text-4xl md:text-6xl
+                   font-extrabold text-[#291684]"
+      >
+        Our Infrastructure
+      </h1>
+
+      <p
+        className="mt-3 sm:mt-5
+                   text-white/90
+                   text-base sm:text-lg md:text-xl
+                   leading-relaxed"
+      >
+        A glimpse into our world-class facilities and manufacturing excellence.
+      </p>
+    </div>
+  </div>
+
+  {/* Wave */}
+  <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg
+      viewBox="0 0 1440 100"
+      preserveAspectRatio="none"
+      className="w-full h-[70px] sm:h-[85px] md:h-[100px]"
+    >
+      <path
+        d="M0,40 C360,90 720,10 1080,50 1260,70 1440,40 1440,40
+           L1440,100 L0,100 Z"
+        fill="#ffffff"
+      />
+    </svg>
+  </div>
+</section>
+
 
       {/* ================= GALLERY ================= */}
       <section className="py-20 max-w-7xl mx-auto px-6">

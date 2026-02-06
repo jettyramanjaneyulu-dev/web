@@ -16,35 +16,39 @@ export default function CareerPage() {
     <main className="relative bg-[#f6f7fb] overflow-hidden">
 
  {/* ================= HERO / BANNER ================= */}
-<section className="relative h-[75vh] flex items-center justify-center overflow-hidden bg-[#f6f7fb]">
+<section className="relative flex items-center justify-center overflow-hidden bg-[#f6f7fb]
+                    h-[65vh] sm:h-[70vh] md:h-[75vh]">
 
   {/* Background Image */}
   <div
-    className="absolute inset-0 bg-cover bg-center"
+    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{
       backgroundImage: "url('/assets/images/infra/infra7.png')",
     }}
   />
 
-  {/* Overlay (no blur) */}
+  {/* Overlay */}
   <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
   {/* Content */}
   <motion.div
-    initial={{ opacity: 0, y: 40 }}
+    initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="relative z-10 text-center max-w-4xl px-6"
+    className="relative z-10 text-center max-w-3xl px-4 sm:px-6"
   >
-    <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff4d9d] tracking-wide uppercase">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold 
+                   text-[#ff4d9d] tracking-wide uppercase">
       Career
     </h1>
-    <p className="mt-6 text-lg text-white/90 leading-relaxed">
+
+    <p className="mt-4 sm:mt-6 text-base sm:text-lg 
+                  text-white/90 leading-relaxed">
       Grow With Science. Build With Innovation.
     </p>
   </motion.div>
 
-  {/* Bottom Wave — HARD FIX */}
+  {/* Bottom Wave */}
   <svg
     className="absolute -bottom-[1px] left-0 w-full block"
     viewBox="0 0 1440 120"
@@ -52,11 +56,13 @@ export default function CareerPage() {
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M0 40L60 45C120 50 240 60 360 58C480 55 600 40 720 30C840 20 960 15 1080 20C1200 25 1320 40 1380 48L1440 55V140H0Z"
+      d="M0 40L60 45C120 50 240 60 360 58C480 55 600 40 720 30
+         C840 20 960 15 1080 20C1200 25 1320 40 1380 48L1440 55V140H0Z"
       fill="#f6f7fb"
     />
   </svg>
 </section>
+
 
 
 {/* ================= INTRO / PEOPLE & CULTURE ================= */}

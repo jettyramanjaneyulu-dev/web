@@ -82,47 +82,76 @@ export default function ProductsPage() {
   return (
     <main className="bg-white overflow-hidden">
 
-      {/* ================= HERO SECTION ================= */}
-      <section className="relative w-full h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-        <Image
-          src="/assets/Core.jpeg"
-          alt="Pharmaceutical Pellets"
-          fill
-          priority
-          className="object-cover scale-105"
-        />
-        <div className="absolute inset-0 bg-black/40" />
+     {/* ================= HERO SECTION ================= */}
+<section className="relative w-full min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden">
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="
-            relative z-10 text-center px-8 max-w-4xl
-            bg-white/30 backdrop-blur-xl
-            rounded-3xl border border-white/40
-            shadow-[0_30px_80px_rgba(0,0,0,0.25)]
-            py-12
-          "
-        >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-pink-500 uppercase">
-            Products
-          </h1>
-          <p className="mt-4 text-white text-lg md:text-xl">
-            Pharmaceutical Pellets & Nutraceutical Beadlets
-          </p>
-        </motion.div>
+  {/* Background Image */}
+  <Image
+    src="/assets/Core.jpeg"
+    alt="Pharmaceutical Pellets"
+    fill
+    priority
+    sizes="100vw"
+    className="object-cover scale-105"
+  />
 
-        {/* Simple Curve */}
-        <div className="absolute bottom-0 left-0 w-full">
-          <svg viewBox="0 0 1440 100" className="w-full h-[100px]" preserveAspectRatio="none">
-            <path
-              fill="#ffffff"
-              d="M0,50 C360,90 720,10 1080,50 1260,70 1440,50 1440,50 L1440,100 L0,100 Z"
-            />
-          </svg>
-        </div>
-      </section>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 bg-black/40" />
+
+  {/* Content */}
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="
+      relative z-10
+      mx-4 sm:mx-6 md:mx-8
+      max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
+      text-center
+      bg-white/30 backdrop-blur-xl
+      rounded-2xl md:rounded-3xl
+      border border-white/40
+      shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+      px-6 sm:px-8 md:px-12
+      py-8 sm:py-10 md:py-12
+    "
+  >
+    <h1 className="
+      text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+      font-extrabold
+      text-pink-500
+      uppercase
+      tracking-wide
+    ">
+      Products
+    </h1>
+
+    <p className="
+      mt-3 sm:mt-4
+      text-sm sm:text-base md:text-lg lg:text-xl
+      text-white
+      leading-relaxed
+    ">
+      Pharmaceutical Pellets & Nutraceutical Beadlets
+    </p>
+  </motion.div>
+
+  {/* Bottom Curve */}
+  <div className="absolute bottom-0 left-0 w-full leading-none">
+    <svg
+      viewBox="0 0 1440 100"
+      preserveAspectRatio="none"
+      className="w-full h-[60px] sm:h-[80px] md:h-[100px]"
+    >
+      <path
+        fill="#ffffff"
+        d="M0,50 C360,90 720,10 1080,50 1260,70 1440,50 1440,50 L1440,100 L0,100 Z"
+      />
+    </svg>
+  </div>
+
+</section>
+
 
       {/* ================= INTRO ================= */}
 <section className="max-w-7xl mx-auto px-6 py-14">
@@ -252,6 +281,7 @@ export default function ProductsPage() {
         </motion.div>
       );
     })}
+    
   </div>
 </section>
 

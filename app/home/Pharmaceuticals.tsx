@@ -27,7 +27,7 @@ export default function Pharmaceuticals() {
 
             <div className="space-y-6 text-white">
               {[
-                ["/assets/Pharmaceuticals.jpeg", "Pellet Formulations"],
+                ["/assets/Formulations.jpeg", "Pellet Formulations"],
                 ["/assets/Pharmaceuticals1.png", "MUPS Technology"],
               ].map(([img, title]) => (
                 <div key={title} className="flex items-center gap-6">

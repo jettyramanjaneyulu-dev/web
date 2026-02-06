@@ -9,9 +9,9 @@ export default function Footer() {
     <footer className="relative bg-[#315879] overflow-hidden pt-24 pb-16">
 
       {/* ================= DECORATIVE SHAPES ================= */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#C93A7C]/40 rounded-full blur-3xl" />
+      {/* <div className="absolute -top-32 -left-32 w-96 h-96 bg-[#C93A7C]/40 rounded-full blur-3xl" />
       <div className="absolute top-1/3 -right-40 w-[420px] h-[420px] bg-[#f08560]/40 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-white/10 blur-[120px]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-white/10 blur-[120px]" /> */}
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 max-w-7xl mx-auto px-6">

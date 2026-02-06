@@ -88,45 +88,82 @@ export default function QualityPage() {
   return (
     <main className="relative min-h-screen bg-white overflow-hidden">
 
-      {/* ===================== BANNER ===================== */}
-<section className="relative pt-32 pb-40 overflow-hidden">
+     {/* ===================== BANNER ===================== */}
+<section className="relative pt-24 sm:pt-28 md:pt-32 pb-28 sm:pb-32 md:pb-40 overflow-hidden">
+
   {/* Background Image */}
   <div
-    className="absolute inset-0 bg-cover bg-center"
+    className="absolute inset-0 bg-cover bg-center scale-105"
     style={{ backgroundImage: "url('/assets/images/infra/infra3.png')" }}
   />
 
-  {/* Dark Overlay */}
-  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/20" />
+  {/* Dark Gradient Overlay */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/25" />
+
+  {/* Extra Soft Glass Layer */}
+  <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]" />
 
   {/* Content */}
-  <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+  <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center">
+
     {/* 🔮 Transparent Glass Box */}
-    <div className="mx-auto max-w-4xl rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-2xl px-8 py-12">
-      <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-[#c93a7c]">
+    <div
+      className="
+        mx-auto
+        w-full
+        max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
+        rounded-2xl sm:rounded-3xl
+        bg-white/25
+        backdrop-blur-lg
+        border border-white/30
+        shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+        px-6 sm:px-8 md:px-10
+        py-8 sm:py-10 md:py-12
+      "
+    >
+      <h1
+        className="
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
+          font-extrabold
+          tracking-tight
+          text-[#c93a7c]
+        "
+      >
         Quality & Compliance
       </h1>
 
-      <p className="mt-5 text-xl md:text-2xl font-semibold text-[#032a33]">
+      <p
+        className="
+          mt-3 sm:mt-4 md:mt-5
+          text-base sm:text-lg md:text-xl lg:text-2xl
+          font-semibold
+          text-[#032a33]
+        "
+      >
         Precision. Consistency. Trust.
       </p>
 
-      <p className="mt-6 max-w-3xl mx-auto text-white/90 leading-relaxed">
+      <p
+        className="
+          mt-4 sm:mt-5 md:mt-6
+          max-w-3xl mx-auto
+          text-sm sm:text-base md:text-lg
+          text-white/90
+          leading-relaxed
+        "
+      >
         At Nami Life Sciences, quality is not a checkpoint — it is a culture
         embedded across formulation, manufacturing, and delivery.
       </p>
     </div>
   </div>
 
-  {/* Extra Soft Glass Layer */}
-  <div className="absolute inset-0 bg-white/10 backdrop-blur-[2px]" />
-
   {/* Bottom Wave */}
   <div className="absolute bottom-0 left-0 w-full leading-none">
     <svg
       viewBox="0 0 1440 100"
-      className="w-full h-[100px]"
       preserveAspectRatio="none"
+      className="w-full h-[60px] sm:h-[80px] md:h-[100px]"
     >
       <path
         d="M0,50 C360,90 720,10 1080,50 1260,70 1440,50 1440,50 L1440,100 L0,100 Z"
@@ -134,7 +171,9 @@ export default function QualityPage() {
       />
     </svg>
   </div>
+
 </section>
+
 
 
       {/* ===================== FLOATING CAPSULES ===================== */}
@@ -166,7 +205,7 @@ export default function QualityPage() {
               style={{ perspective: "1200px" }}
             >
               <Image
-                src="/assets/Whatwedo.png"
+                src="/assets/quality.png"
                 alt="Quality Assurance Laboratory"
                 width={480}
                 height={360}

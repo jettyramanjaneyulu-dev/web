@@ -17,11 +17,17 @@ export default function InfrastructurePage() {
     <main className="relative bg-[#f6f7fb] overflow-hidden">
 
 {/* ================= HERO / BANNER ================= */}
-<section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
-
+<section
+  className="
+    relative
+    min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh]
+    flex items-center justify-center
+    overflow-hidden
+  "
+>
   {/* Background Image */}
   <div
-    className="absolute inset-0 bg-cover bg-center"
+    className="absolute inset-0 bg-cover bg-center scale-105"
     style={{
       backgroundImage: "url('/assets/images/infra/infra6.png')",
     }}
@@ -35,19 +41,41 @@ export default function InfrastructurePage() {
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="relative z-10 text-center max-w-4xl px-6"
+    className="
+      relative z-10
+      text-center
+      w-full
+      px-4 sm:px-6 md:px-8
+      max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
+    "
   >
-    <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff4d9d] tracking-wide uppercase">
+    <h1
+      className="
+        text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+        font-extrabold
+        text-[#ff4d9d]
+        tracking-wide
+        uppercase
+      "
+    >
       Infrastructure
     </h1>
-    <p className="mt-6 text-lg text-white/90 leading-relaxed">
+
+    <p
+      className="
+        mt-3 sm:mt-4 md:mt-6
+        text-sm sm:text-base md:text-lg
+        text-white/90
+        leading-relaxed
+      "
+    >
       Advanced Facility. Integrated Capabilities.
     </p>
   </motion.div>
 
-  {/* ================= CURVED BOTTOM (NO LINE) ================= */}
+  {/* ================= CURVED BOTTOM ================= */}
   <svg
-    className="absolute bottom-0 left-0 w-full h-32"
+    className="absolute bottom-0 left-0 w-full h-[60px] sm:h-[80px] md:h-[100px]"
     viewBox="0 0 1440 120"
     preserveAspectRatio="none"
   >
@@ -58,6 +86,7 @@ export default function InfrastructurePage() {
   </svg>
 
 </section>
+
 
 
       {/* ================= INTRO (PREMIUM DESIGN) ================= */}

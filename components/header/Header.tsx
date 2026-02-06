@@ -8,23 +8,39 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 
-/* ------------------ NAV LINK (kept as-is) ------------------ */
-const NavLink = ({
-  href,
+/* ------------------ ANIMATED MENU ITEM ------------------ */
+const AnimatedMenuItem = ({
   children,
-  className = "",
+  onClick,
+  mobile = false,
 }: {
-  href: string;
   children: React.ReactNode;
-  className?: string;
-}) => (
-  <Link
-    href={href}
-    className={`text-[#f0f0f0] hover:text-[#C93A7C] transition-colors uppercase text-sm font-bold tracking-wider ${className}`}
-  >
-    {children}
-  </Link>
-);
+  onClick?: () => void;
+  mobile?: boolean;
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`relative overflow-hidden px-2 py-1
+        uppercase text-sm font-bold tracking-wider
+        cursor-pointer
+        ${mobile ? "text-white" : "text-white"}`}
+    >
+      {/* GRADIENT HOVER */}
+      <motion.span
+        initial={mobile ? { y: "-100%" } : { x: "-100%" }}
+        whileHover={mobile ? { y: "100%" } : { x: "100%" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="absolute inset-0
+                   bg-gradient-to-r from-[#C93A7C] via-[#ff7ab6] to-[#C93A7C]
+                   opacity-50"
+      />
+      <span className="relative z-10 drop-shadow-md">
+        {children}
+      </span>
+    </button>
+  );
+};
 
 export default function Header() {
   const router = useRouter();
@@ -33,7 +49,6 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
-  /* ------------------ NAVIGATION WITH EFFECT ------------------ */
   const navigateWithEffect = (href: string) => {
     setTransitioning(true);
     setMobileMenuOpen(false);
@@ -42,24 +57,6 @@ export default function Header() {
     setTimeout(() => router.push(href), 450);
     setTimeout(() => setTransitioning(false), 1100);
   };
-
-  /* ------------------ DESKTOP ANIMATED LINK ------------------ */
-  const AnimatedNavLink = ({
-    href,
-    children,
-  }: {
-    href: string;
-    children: React.ReactNode;
-  }) => (
-    <button
-      onClick={() => navigateWithEffect(href)}
-      className="text-[#f0f0f0] hover:text-[#C93A7C]
-                 transition-colors uppercase text-sm
-                 font-bold tracking-wider bg-transparent"
-    >
-      {children}
-    </button>
-  );
 
   return (
     <>
@@ -72,7 +69,7 @@ export default function Header() {
           <div className="flex items-center gap-12">
             <button
               onClick={() => navigateWithEffect("/")}
-              className="relative w-35 h-16"
+              className="relative w-36 h-16"
             >
               <Image
                 src="/assets/header/logo.png"
@@ -85,11 +82,17 @@ export default function Header() {
 
             {/* DESKTOP MENU */}
             <div className="hidden lg:flex items-center gap-8">
-              <AnimatedNavLink href="/about">About Us</AnimatedNavLink>
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/about")}>
+                About Us
+              </AnimatedMenuItem>
 
               <div className="relative group">
                 <div className="flex items-center gap-1">
-                  <AnimatedNavLink href="/products">Products</AnimatedNavLink>
+                  <AnimatedMenuItem
+                    onClick={() => navigateWithEffect("/products")}
+                  >
+                    Products
+                  </AnimatedMenuItem>
                   <ChevronDown
                     size={16}
                     className="text-white transition-transform duration-300 group-hover:rotate-180"
@@ -97,12 +100,13 @@ export default function Header() {
                 </div>
 
                 <div className="absolute left-0 top-full mt-4 opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                group-hover:opacity-100 group-hover:visible transition-all">
                   <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-xl w-60 py-3">
                     <button
                       onClick={() => navigateWithEffect("/products/list")}
                       className="block w-full px-5 py-3 text-left
-                                 text-sm font-semibold text-gray-800 hover:bg-gray-100"
+                                 text-sm font-semibold text-gray-800
+                                 hover:bg-gray-100"
                     >
                       Products List
                     </button>
@@ -110,11 +114,25 @@ export default function Header() {
                 </div>
               </div>
 
-              <AnimatedNavLink href="/quality">Quality</AnimatedNavLink>
-              <AnimatedNavLink href="/infrastructure">Infrastructure</AnimatedNavLink>
-              <AnimatedNavLink href="/career">Career</AnimatedNavLink>
-              <AnimatedNavLink href="/gallery">Gallery</AnimatedNavLink>
-              <AnimatedNavLink href="/reach-us">Reach Us</AnimatedNavLink>
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/quality")}>
+                Quality
+              </AnimatedMenuItem>
+
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/infrastructure")}>
+                Infrastructure
+              </AnimatedMenuItem>
+
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/career")}>
+                Career
+              </AnimatedMenuItem>
+
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/gallery")}>
+                Gallery
+              </AnimatedMenuItem>
+
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/reach-us")}>
+                Reach Us
+              </AnimatedMenuItem>
             </div>
           </div>
 
@@ -124,7 +142,8 @@ export default function Header() {
               href="#contact"
               className="hidden lg:inline-flex items-center gap-2 px-7 py-3 rounded-full
                          bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
-                         text-white font-semibold text-sm shadow-lg hover:scale-105 transition"
+                         text-white font-semibold text-sm shadow-lg
+                         hover:scale-105 transition"
             >
               Get Quote Now <ArrowRight size={16} />
             </Link>
@@ -146,77 +165,90 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-[76px] left-0 w-full z-50
-                       bg-[#0b2b3f]/90 backdrop-blur-xl lg:hidden"
+            className="fixed top-[76px] left-0 w-full z-50 lg:hidden
+                       bg-white/10 backdrop-blur-2xl
+                       border-t border-white/20
+                       shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
           >
-            <div className="flex flex-col items-center text-center
+            {/* GLASS OVERLAY */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/30 pointer-events-none" />
+
+            <div className="relative flex flex-col items-center text-center
                             px-6 py-8 space-y-7
-                            text-white font-bold uppercase">
+                            text-white font-bold uppercase
+                            drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
 
-              <button onClick={() => navigateWithEffect("/about")}>
+              <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/about")}>
                 About Us
-              </button>
+              </AnimatedMenuItem>
 
-              {/* PRODUCTS */}
-              <div className="flex flex-col items-center gap-3">
-                <div className="flex items-center justify-center gap-3">
-                  <button onClick={() => navigateWithEffect("/products")}>
-                    Products
-                  </button>
+             {/* PRODUCTS (MOBILE) */}
+<div className="flex flex-col items-center gap-2">
+  <div className="flex items-center gap-2">
+    {/* Navigate */}
+    <button
+      onClick={() => navigateWithEffect("/products")}
+      className="font-bold uppercase text-white"
+    >
+      Products
+    </button>
 
-                  <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)}>
-                    <ChevronDown
-                      size={18}
-                      className={`transition-transform ${
-                        mobileProductsOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </button>
-                </div>
+    {/* Toggle submenu */}
+    <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)}>
+      <ChevronDown
+        size={18}
+        className={`transition-transform ${
+          mobileProductsOpen ? "rotate-180" : ""
+        }`}
+      />
+    </button>
+  </div>
 
-                <AnimatePresence>
-                  {mobileProductsOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="flex flex-col items-center gap-3 text-sm"
-                    >
-                      <button
-                        onClick={() => navigateWithEffect("/products/list")}
-                        className="text-white/80 hover:text-[#C93A7C]"
-                      >
-                        Products List
-                      </button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+  <AnimatePresence>
+    {mobileProductsOpen && (
+      <motion.div
+        initial={{ scaleY: 0, opacity: 0 }}
+        animate={{ scaleY: 1, opacity: 1 }}
+        exit={{ scaleY: 0, opacity: 0 }}
+        style={{ transformOrigin: "top" }}
+        className="overflow-hidden flex flex-col gap-3 text-sm mt-2"
+      >
+        <AnimatedMenuItem
+          mobile
+          onClick={() => navigateWithEffect("/products/list")}
+        >
+          Products List
+        </AnimatedMenuItem>
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
 
-              <button onClick={() => navigateWithEffect("/quality")}>
+
+              <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/quality")}>
                 Quality
-              </button>
+              </AnimatedMenuItem>
 
-              <button onClick={() => navigateWithEffect("/infrastructure")}>
+              <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/infrastructure")}>
                 Infrastructure
-              </button>
+              </AnimatedMenuItem>
 
-              <button onClick={() => navigateWithEffect("/career")}>
+              <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/career")}>
                 Career
-              </button>
+              </AnimatedMenuItem>
 
-              <button onClick={() => navigateWithEffect("/gallery")}>
+              <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/gallery")}>
                 Gallery
-              </button>
+              </AnimatedMenuItem>
 
-              <button onClick={() => navigateWithEffect("/reach-us")}>
+              <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/reach-us")}>
                 Reach Us
-              </button>             
+              </AnimatedMenuItem>
 
               <Link
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-6 inline-flex items-center justify-center gap-2
+                className="mt-6 inline-flex items-center gap-2
                            px-8 py-4 rounded-full
                            bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
                            text-white font-bold"
@@ -228,7 +260,6 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      {/* PAGE TRANSITION */}
       <PageTransition show={transitioning} />
     </>
   );
