@@ -6,12 +6,11 @@ import HeroButton from "@/components/ui/HeroButton";
 
 export default function HeroSection() {
   return (
-    /* --- Hero Section --- */
+    /* ================= HERO SECTION ================= */
     <section className="relative w-full h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden border border-white">
 
-      
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0 ">
+      {/* ================= BACKGROUND VIDEO ================= */}
+      <div className="absolute inset-0 z-0">
         <video
           autoPlay
           loop
@@ -19,20 +18,13 @@ export default function HeroSection() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source
-            src="/assets/namilifesciences.mp4"
-            type="video/mp4"
-          />
+          <source src="/assets/namilifesciences.mp4" type="video/mp4" />
         </video>
-
-        {/* Overlays */}
-        {/* <div className="absolute inset-0 bg-[#003865]/30 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#003865] via-transparent to-transparent opacity-80" /> */}
       </div>
 
-      {/* Content */}
+      {/* ================= CONTENT ================= */}
       <div className="container mx-auto px-6 relative z-10 text-center flex flex-col items-center mt-10">
-        
+
         {/* Heading */}
         <motion.h1
           initial={{ y: 30, opacity: 0 }}
@@ -56,7 +48,7 @@ export default function HeroSection() {
           <br className="hidden md:block" /> and MUPS formulations.
         </motion.p>
 
-        {/* Tagline Link */}
+        {/* Tagline */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -71,7 +63,7 @@ export default function HeroSection() {
           </Link>
         </motion.div>
 
-        {/* Buttons */}
+        {/* ================= BUTTONS ================= */}
         <motion.div
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -93,22 +85,22 @@ export default function HeroSection() {
             onClick={() => window.open("/reach-us", "_blank")}
           />
 
+          {/* Brochure Button with Image */}
           <HeroButton
-  text={
-    <span className="flex items-center gap-2">
-      Brochure
-      <img
-        src="/assets/broucher.png"
-        alt="Brochure"
-        className="w-6 h-6"
-      />
-    </span>
-  }
-  onClick={() =>
-    window.open("/assets/pdf/nami-products.pdf", "_blank")
-  }
-/>
-
+            text={
+              <span className="flex items-center gap-2">
+                Brochure
+                <img
+                  src="/assets/broucher.png"
+                  alt="Brochure"
+                  className="w-6 h-6"
+                />
+              </span>
+            }
+            onClick={() =>
+              window.open("/assets/pdf/nami-products.pdf", "_blank")
+            }
+          />
         </motion.div>
       </div>
     </section>
