@@ -11,6 +11,7 @@ import {
   Layers,
 } from "lucide-react";
 import InfrastructureGalleryPage from "@/components/InfrastructureGallery";
+import FloatingCapsules from "../about/FloatingCapsules";
 
 export default function InfrastructurePage() {
   return (
@@ -312,15 +313,11 @@ const highlights = [
   },
 ];
 
-      /* ===================== FLOATING CAPSULES – FULL PAGE ===================== */
 
-const capsuleColors = [
-  "from-pink-400 to-rose-500",
-  "from-cyan-400 to-blue-500",
-  "from-purple-400 to-indigo-500",
-];
 
-type Capsule = {
+/* ===================== FLOATING PELLETS – FULL PAGE ===================== */
+
+type Pellet = {
   x: number;
   size: number;
   duration: number;
@@ -328,49 +325,50 @@ type Capsule = {
   color: string;
 };
 
-function FloatingCapsules() {
-  const [capsules, setCapsules] = useState<Capsule[]>([]);
+const colors = ["#ec4899", "#22d3ee", "#a855f7"];
+
+
+function FloatingPellets() {
+  const [pellets, setPellets] = useState<Pellet[]>([]);
 
   useEffect(() => {
-    const generated = Array.from({ length: 18 }).map((_, i) => ({
-      x: Math.random() * 100,
-      size: 24 + Math.random() * 26,
-      duration: 22 + Math.random() * 18,
-      delay: Math.random() * 10,
-      color: capsuleColors[i % capsuleColors.length],
-    }));
-
-    setCapsules(generated);
+    setPellets(
+      Array.from({ length: 25 }).map((_, i) => ({
+        x: Math.random() * 100,
+        size: 8,
+        duration: 20 + Math.random() * 10,
+        delay: Math.random() * 10,
+        color: colors[i % colors.length],
+      }))
+    );
   }, []);
 
-  if (!capsules.length) return null;
-
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {capsules.map((cap, i) => (
+    <div
+      style={{
+        position: "fixed",
+        inset: 0,
+        pointerEvents: "none",
+        zIndex: 50, // ABOVE EVERYTHING
+      }}
+    >
+      {pellets.map((p, i) => (
         <motion.div
           key={i}
-          initial={{
-            x: `${cap.x}vw`,
-            y: "110vh",
-            opacity: 0,
-            rotate: 0,
-          }}
-          animate={{
-            y: "-20vh",
-            opacity: [0, 0.35, 0.35, 0],
-            rotate: 360,
-          }}
+          initial={{ y: "110vh", x: `${p.x}vw`, opacity: 0 }}
+          animate={{ y: "-20vh", opacity: [0, 1, 1, 0] }}
           transition={{
-            duration: cap.duration,
-            delay: cap.delay,
+            duration: p.duration,
+            delay: p.delay,
             repeat: Infinity,
             ease: "linear",
           }}
-          className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
           style={{
-            width: cap.size * 2,
-            height: cap.size,
+            width: p.size,
+            height: p.size,
+            backgroundColor: p.color,
+            borderRadius: "50%",
+            position: "absolute",
           }}
         />
       ))}

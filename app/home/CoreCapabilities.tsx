@@ -10,7 +10,7 @@ export default function CoreCapabilitiesSection() {
   return (
     <section
       id="expertise"
-      className="py-24 bg-[#315879] relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
       ref={sectionRef}
     >
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -21,10 +21,10 @@ export default function CoreCapabilitiesSection() {
           <div className="relative z-10">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
-                <ArrowRight size={20} className="text-[#f0f0f0]" />
+                <ArrowRight size={20} className="text-white" />
               </div>
               <h2
-                className="text-3xl md:text-3xl font-black text-[#f0f0f0] uppercase tracking-wider"
+                className="text-3xl md:text-3xl font-black uppercase tracking-wider text-[#014d8b]"
                 style={{ fontFamily: "var(--font-orbitron)" }}
               >
                 <span className="text-[#C93A7C]">QUALITY & COMPLIANCE:</span>
@@ -41,7 +41,7 @@ export default function CoreCapabilitiesSection() {
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 group">
                   <CheckCircle2 size={20} className="text-[#00abd3]" />
-                  <span className="text-lg text-[#f0f0f0] font-medium group-hover:text-[#C93A7C] transition-colors">
+                  <span className="text-lg font-medium text-[#014d8b] group-hover:text-[#C93A7C] transition-colors">
                     {item}
                   </span>
                 </li>
@@ -60,10 +60,10 @@ export default function CoreCapabilitiesSection() {
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
-                <ArrowRight size={20} className="text-[#f0f0f0]" />
+                <ArrowRight size={20} className="text-white" />
               </div>
               <h2
-                className="text-3xl md:text-3xl font-black text-[#f0f0f0] uppercase tracking-wider"
+                className="text-3xl md:text-3xl font-black uppercase tracking-wider text-[#014d8b]"
                 style={{ fontFamily: "var(--font-orbitron)" }}
               >
                 <span className="text-[#C93A7C]">CORE CAPABILITIES</span>
@@ -78,7 +78,7 @@ export default function CoreCapabilitiesSection() {
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 group">
                   <CheckCircle2 size={20} className="text-[#00abd3]" />
-                  <span className="text-lg text-[#f0f0f0] font-medium group-hover:text-[#C93A7C] transition-colors">
+                  <span className="text-lg font-medium text-[#014d8b] group-hover:text-[#C93A7C] transition-colors">
                     {item}
                   </span>
                 </li>

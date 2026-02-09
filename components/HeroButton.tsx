@@ -1,15 +1,37 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
-export default function HeroButton({ text }: { text: string }) {
+export type HeroButtonProps = {
+  text: ReactNode;
+  onClick?: () => void;
+  className?: string;
+};
+
+export default function HeroButton({
+  text,
+  onClick,
+  className = "",
+}: HeroButtonProps) {
   return (
-    <button className="px-8 py-3 rounded-full bg-[#003865] hover:bg-[#3b1f52] text-white transition-all font-bold tracking-wide text-sm flex items-center gap-2 group border border-white/10">
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.96 }}
+      onClick={onClick}
+      className={`
+        px-6 py-3
+        rounded-full
+        font-semibold
+        tracking-wide
+        transition-all
+        duration-300
+        bg-transparent
+        border
+        ${className}
+      `}
+    >
       {text}
-      <ArrowRight
-        className="text-[#d65d7a] group-hover:translate-x-1 transition-transform"
-        size={18}
-      />
-    </button>
+    </motion.button>
   );
 }

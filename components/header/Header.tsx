@@ -21,23 +21,19 @@ const AnimatedMenuItem = ({
   return (
     <button
       onClick={onClick}
-      className={`relative overflow-hidden px-2 py-1
+      className="relative overflow-hidden px-2 py-1
         uppercase text-sm font-bold tracking-wider
-        cursor-pointer
-        ${mobile ? "text-white" : "text-white"}`}
+        cursor-pointer text-[#014d8b]"
     >
-      {/* GRADIENT HOVER */}
       <motion.span
         initial={mobile ? { y: "-100%" } : { x: "-100%" }}
         whileHover={mobile ? { y: "100%" } : { x: "100%" }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className="absolute inset-0
-                   bg-gradient-to-r from-[#C93A7C] via-[#ff7ab6] to-[#C93A7C]
-                   opacity-50"
+          bg-gradient-to-r from-[#C93A7C] via-[#ff7ab6] to-[#C93A7C]
+          opacity-30"
       />
-      <span className="relative z-10 drop-shadow-md">
-        {children}
-      </span>
+      <span className="relative z-10">{children}</span>
     </button>
   );
 };
@@ -60,19 +56,26 @@ export default function Header() {
 
   return (
     <>
-      {/* NAVBAR */}
-      <nav className="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/10 border-b border-white/20 shadow-lg">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#315879]/60 via-[#315879]/40 to-[#315879]/60 pointer-events-none" />
-
+      {/* ================= NAVBAR ================= */}
+      <nav
+        className="
+          sticky top-0 z-40 w-full
+          bg-white/10
+          backdrop-blur-xl backdrop-saturate-150
+          border-b border-white/20
+          shadow-lg
+          transition-all duration-300
+        "
+      >
         <div className="relative px-8 flex justify-between items-center h-[76px]">
           {/* LEFT */}
           <div className="flex items-center gap-12">
             <button
               onClick={() => navigateWithEffect("/")}
-              className="relative w-36 h-16"
+              className="relative w-36 h-26"
             >
               <Image
-                src="/assets/header/logo.png"
+                src="/assets/footer-n-logo.png"
                 alt="Logo"
                 fill
                 priority
@@ -95,18 +98,18 @@ export default function Header() {
                   </AnimatedMenuItem>
                   <ChevronDown
                     size={16}
-                    className="text-white transition-transform duration-300 group-hover:rotate-180"
+                    className="text-[#014d8b] transition-transform duration-300 group-hover:rotate-180"
                   />
                 </div>
 
                 <div className="absolute left-0 top-full mt-4 opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible transition-all">
+                  group-hover:opacity-100 group-hover:visible transition-all">
                   <div className="bg-white/90 backdrop-blur-xl rounded-xl shadow-xl w-60 py-3">
                     <button
                       onClick={() => navigateWithEffect("/products/list")}
                       className="block w-full px-5 py-3 text-left
-                                 text-sm font-semibold text-gray-800
-                                 hover:bg-gray-100"
+                        text-sm font-semibold text-[#014d8b]
+                        hover:bg-white/60"
                     >
                       Products List
                     </button>
@@ -141,15 +144,15 @@ export default function Header() {
             <Link
               href="#contact"
               className="hidden lg:inline-flex items-center gap-2 px-7 py-3 rounded-full
-                         bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
-                         text-white font-semibold text-sm shadow-lg
-                         hover:scale-105 transition"
+                bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
+                text-white font-semibold text-sm shadow-lg
+                hover:scale-105 transition"
             >
               Get Quote Now <ArrowRight size={16} />
             </Link>
 
             <button
-              className="lg:hidden text-white"
+              className="lg:hidden text-[#014d8b]"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -158,72 +161,68 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* ------------------ MOBILE MENU ------------------ */}
+      {/* ================= MOBILE MENU ================= */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-[76px] left-0 w-full z-50 lg:hidden
-                       bg-white/10 backdrop-blur-2xl
-                       border-t border-white/20
-                       shadow-[0_20px_60px_rgba(0,0,0,0.4)]"
+            className="
+              fixed top-[76px] left-0 w-full z-50 lg:hidden
+              bg-white/10
+              backdrop-blur-2xl backdrop-saturate-150
+              border-t border-white/20
+              shadow-xl
+            "
           >
-            {/* GLASS OVERLAY */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-black/30 pointer-events-none" />
-
-            <div className="relative flex flex-col items-center text-center
-                            px-6 py-8 space-y-7
-                            text-white font-bold uppercase
-                            drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+            <div className="flex flex-col items-center text-center
+              px-6 py-8 space-y-7
+              text-[#014d8b] font-bold uppercase">
 
               <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/about")}>
                 About Us
               </AnimatedMenuItem>
 
-             {/* PRODUCTS (MOBILE) */}
-<div className="flex flex-col items-center gap-2">
-  <div className="flex items-center gap-2">
-    {/* Navigate */}
-    <button
-      onClick={() => navigateWithEffect("/products")}
-      className="font-bold uppercase text-white"
-    >
-      Products
-    </button>
+              {/* PRODUCTS (MOBILE) */}
+              <div className="flex flex-col items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => navigateWithEffect("/products")}
+                    className="font-bold uppercase text-[#014d8b]"
+                  >
+                    Products
+                  </button>
 
-    {/* Toggle submenu */}
-    <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)}>
-      <ChevronDown
-        size={18}
-        className={`transition-transform ${
-          mobileProductsOpen ? "rotate-180" : ""
-        }`}
-      />
-    </button>
-  </div>
+                  <button onClick={() => setMobileProductsOpen(!mobileProductsOpen)}>
+                    <ChevronDown
+                      size={18}
+                      className={`text-[#014d8b] transition-transform ${
+                        mobileProductsOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
 
-  <AnimatePresence>
-    {mobileProductsOpen && (
-      <motion.div
-        initial={{ scaleY: 0, opacity: 0 }}
-        animate={{ scaleY: 1, opacity: 1 }}
-        exit={{ scaleY: 0, opacity: 0 }}
-        style={{ transformOrigin: "top" }}
-        className="overflow-hidden flex flex-col gap-3 text-sm mt-2"
-      >
-        <AnimatedMenuItem
-          mobile
-          onClick={() => navigateWithEffect("/products/list")}
-        >
-          Products List
-        </AnimatedMenuItem>
-      </motion.div>
-    )}
-  </AnimatePresence>
-</div>
-
+                <AnimatePresence>
+                  {mobileProductsOpen && (
+                    <motion.div
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      animate={{ scaleY: 1, opacity: 1 }}
+                      exit={{ scaleY: 0, opacity: 0 }}
+                      style={{ transformOrigin: "top" }}
+                      className="overflow-hidden flex flex-col gap-3 text-sm mt-2"
+                    >
+                      <AnimatedMenuItem
+                        mobile
+                        onClick={() => navigateWithEffect("/products/list")}
+                      >
+                        Products List
+                      </AnimatedMenuItem>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
 
               <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/quality")}>
                 Quality
@@ -249,9 +248,9 @@ export default function Header() {
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="mt-6 inline-flex items-center gap-2
-                           px-8 py-4 rounded-full
-                           bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
-                           text-white font-bold"
+                  px-8 py-4 rounded-full
+                  bg-gradient-to-r from-[#18324d] via-[#0077b6] to-[#00b4d8]
+                  text-white font-bold"
               >
                 Get Quote Now <ArrowRight size={16} />
               </Link>

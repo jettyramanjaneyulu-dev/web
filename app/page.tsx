@@ -12,14 +12,14 @@ export default function HomePage() {
   return (
     <>
       <Banner />
-      <NewsTicker />
+      {/* <NewsTicker /> */}
       <Pharmaceuticals />
       <GlobalReach />
       <Manufacturing />
       <WhatWeDo />
       <CoreCapabilities />
       <Testimonials />
-      <YoutubeSection />
+      {/* <YoutubeSection /> */}
     </>
   );
 }

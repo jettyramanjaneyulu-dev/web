@@ -110,3 +110,11 @@ body {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+/* TEMP DEBUG — hide pill backgrounds */
+svg,
+[class*="pill"],
+[class*="capsule"],
+[class*="blob"],
+.background-shape {
+  display: none !important;
+}

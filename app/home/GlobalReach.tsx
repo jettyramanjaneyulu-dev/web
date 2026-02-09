@@ -9,7 +9,7 @@ export default function GlobalReach() {
   return (
     <section
       id="research"
-      className="py-24 bg-[#315879] overflow-hidden relative text-[#f0f0f0]"
+      className="py-24 bg-white overflow-hidden relative text-[#014d8b]"
     >
       <div className="container mx-auto relative">
         <div className="px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -18,33 +18,27 @@ export default function GlobalReach() {
           <div className="order-1 lg:order-2">
             <div className="flex items-center gap-4 mb-6">
               <h2
-                className="text-4xl font-black text-[#C93A7C] uppercase tracking-wider"
+                className="text-4xl font-black text-[#014d8b] uppercase tracking-wider"
                 style={{ fontFamily: "var(--font-orbitron)" }}
               >
                 Global Reach
               </h2>
-              <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
-                <ArrowRight
-                  size={24}
-                  className="text-[#f0f0f0] -rotate-45"
-                />
-              </div>
             </div>
 
-            <p className="text-lg leading-relaxed font-medium mb-10">
+            <p className="text-lg leading-relaxed font-medium mb-10 text-[#014d8b]">
               Currently, we serve clients across six countries and two
               continents. Our presence spans Iran, Egypt, India, Pakistan,
               Afghanistan, and Bangladesh.
             </p>
 
-            <h3 className="text-[#C93A7C] font-bold text-xs uppercase tracking-[0.15em] mb-6">
+            <h3 className="text-[#014d8b] font-bold text-xs uppercase tracking-[0.15em] mb-6">
               What We're Up To
             </h3>
 
             <div className="space-y-6">
               {/* Item 1 */}
               <div className="flex items-center gap-6 group cursor-pointer">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/20">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#014d8b]/20">
                   <Image
                     src="/assets/international_standards.png"
                     width={100}
@@ -53,15 +47,20 @@ export default function GlobalReach() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <span className="font-bold text-lg flex items-center gap-2 group-hover:text-[#C93A7C] transition-colors">
+                <span className="font-bold text-lg flex items-center gap-2 group-hover:text-[#C93A7C] transition-colors text-[#014d8b]">
                   International Standards
-                  <ArrowRight size={18} className="text-[#C93A7C]" />
+                  <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
+                    <ArrowRight
+                      size={24}
+                      className="text-[#f0f0f0] -rotate-45"
+                    />
+                  </div>
                 </span>
               </div>
 
               {/* Item 2 */}
               <div className="flex items-center gap-6 group cursor-pointer">
-                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white/20">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#014d8b]/20">
                   <Image
                     src="/assets/ethical_principles.png"
                     width={100}
@@ -70,9 +69,14 @@ export default function GlobalReach() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <span className="font-bold text-lg flex items-center gap-2 group-hover:text-[#C93A7C] transition-colors">
+                <span className="font-bold text-lg flex items-center gap-2 group-hover:text-[#C93A7C] transition-colors text-[#014d8b]">
                   Ethical Principles
-                  <ArrowRight size={18} className="text-[#C93A7C]" />
+                  <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
+                    <ArrowRight
+                      size={24}
+                      className="text-[#f0f0f0] -rotate-45"
+                    />
+                  </div>
                 </span>
               </div>
             </div>
@@ -93,25 +97,12 @@ export default function GlobalReach() {
                 shadow-xl z-10
               "
             >
-              {/* Capsule Image */}
-              {/* <div
-                className="absolute inset-0 bg-no-repeat md:bg-fixed"
-                style={{
-                  backgroundImage: "url('/assets/Global.png')",
-               
-                  backgroundPosition: "center",
-                  backgroundAttachment: "fixed",
-                  backgroundSize: "85%", // 🔍 increase size
-    backgroundRepeat: "no-repeat",
-                }}
-              /> */}
-               <div className="absolute inset-0 bg-[url('/assets/Global.png')] bg-cover bg-center bg-no-repeat bg-fixed" />
+              <div className="absolute inset-0 bg-[url('/assets/Global.png')] bg-cover bg-center bg-no-repeat bg-fixed" />
 
-              {/* Depth Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20 pointer-events-none" />
             </motion.div>
 
-            {/* Glow Effect */}
+            {/* Glow Effect (unchanged) */}
             <div
               className="
                 absolute top-1/2 left-1/2

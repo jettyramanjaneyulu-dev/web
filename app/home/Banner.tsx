@@ -7,10 +7,11 @@ import HeroButton from "@/components/ui/HeroButton";
 export default function HeroSection() {
   return (
     /* --- Hero Section --- */
-    <section className="relative w-full h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden border border-white">
+
       
       {/* Background Video */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 ">
         <video
           autoPlay
           loop
@@ -25,8 +26,8 @@ export default function HeroSection() {
         </video>
 
         {/* Overlays */}
-        <div className="absolute inset-0 bg-[#003865]/30 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#003865] via-transparent to-transparent opacity-80" />
+        {/* <div className="absolute inset-0 bg-[#003865]/30 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#003865] via-transparent to-transparent opacity-80" /> */}
       </div>
 
       {/* Content */}
@@ -49,7 +50,7 @@ export default function HeroSection() {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-3xl text-lg md:text-xl text-white mb-4 font-medium"
+          className="max-w-3xl text-lg md:text-xl text-[#014d8b] mb-4 font-medium"
         >
           A certified pharmaceutical company specializing in Pellets
           <br className="hidden md:block" /> and MUPS formulations.
@@ -64,7 +65,7 @@ export default function HeroSection() {
         >
           <Link
             href="#"
-            className="text-white text-xs md:text-sm font-bold tracking-widest uppercase hover:underline"
+            className="text-[#014d8b] text-xs md:text-sm font-bold tracking-widest uppercase hover:underline"
           >
             Innovation and Impact
           </Link>
@@ -93,11 +94,21 @@ export default function HeroSection() {
           />
 
           <HeroButton
-            text="Brochure ⭳"
-            onClick={() =>
-              window.open("/assets/pdf/nami-products.pdf", "_blank")
-            }
-          />
+  text={
+    <span className="flex items-center gap-2">
+      Brochure
+      <img
+        src="/assets/broucher.png"
+        alt="Brochure"
+        className="w-6 h-6"
+      />
+    </span>
+  }
+  onClick={() =>
+    window.open("/assets/pdf/nami-products.pdf", "_blank")
+  }
+/>
+
         </motion.div>
       </div>
     </section>
