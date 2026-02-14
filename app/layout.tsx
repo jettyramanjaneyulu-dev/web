@@ -27,19 +27,44 @@ const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Nami Life Sciences",
+export const metadata = {
+  title: "Pellet-Based Drug Delivery Manufacturer | Nami Life Sciences India",
   description:
-    "Nami Life Sciences is a certified pharmaceutical company specializing in Pellets and Multiple Unit Pellet System (MUPS).",
+    "Nami Life Sciences is a technology-driven pharmaceutical and nutraceutical company specializing in pellet-based drug delivery systems, SR, CR, DR, EC pellets, and MUPS manufacturing in India.",
   keywords: [
-    "Nami Life Sciences",
-    "pharmaceutical company",
-    "pellets manufacturer",
-    "MUPS manufacturer",
-    "global pharma supplier",
+    "pharmaceutical pellets manufacturer",
+    "nutraceutical pellets",
+    "pellet based drug delivery",
+    "SR pellets",
+    "CR pellets",
+    "enteric coated pellets",
+    "MUPS pellets",
+    "taste masked granules",
+    "pharma contract manufacturing India"
   ],
-  authors: [{ name: "Nami Life Sciences" }],
+  openGraph: {
+    title: "Precision in Every Pellet | Nami Life Sciences",
+    description:
+      "Advanced pharmaceutical and nutraceutical pellet manufacturing with global regulatory compliance.",
+    url: "https://www.namilifesciences.com",
+    siteName: "Nami Life Sciences",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Nami Life Sciences Manufacturing Facility",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
+
 
 export default function RootLayout({
   children,
