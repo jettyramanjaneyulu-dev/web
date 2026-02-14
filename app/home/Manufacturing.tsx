@@ -96,17 +96,17 @@ export default function ManufacturingSection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-xl z-10"
+              className="relative w-80 h-80 md:w-[520px] md:h-[520px] rounded-full overflow-hidden  z-10"
             >
               <div className="absolute inset-0 bg-[url('/assets/Manufacturing.png')] bg-cover bg-center bg-no-repeat bg-fixed" />
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[#C93A7C]/30 via-transparent to-transparent mix-blend-overlay pointer-events-none" />
+              {/* <div className="absolute inset-0 bg-gradient-to-tr from-[#C93A7C]/30 via-transparent to-transparent mix-blend-overlay pointer-events-none" /> */}
             </motion.div>
 
             {/* Ambient Glow */}
             <div className="absolute inset-0 flex items-center justify-center -z-10">
-              <div className="w-[110%] h-[110%] bg-[#C93A7C] blur-[80px] opacity-10 rounded-full" />
+              {/* <div className="w-[110%] h-[110%] bg-[#C93A7C] blur-[80px] opacity-10 rounded-full" /> */}
             </div>
           </div>
 

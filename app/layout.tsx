@@ -1,22 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Orbitron, Roboto } from "next/font/google";
 import "./globals.css";
-import { Orbitron, Roboto } from "next/font/google";
-import "./globals.css";
+
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
   subsets: ["latin"],
+  variable: "--font-geist-sans",
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
+  variable: "--font-geist-mono",
 });
-
-
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -33,41 +30,15 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Nami Life Sciences",
   description:
-    "Nami Life Sciences is a certified pharmaceutical company specializing in Pellets and Multiple Unit Pellet System (MUPS). With a strong focus on quality, safety, and innovation, the company delivers reliable pharmaceutical solutions to global partners across multiple countries.",
+    "Nami Life Sciences is a certified pharmaceutical company specializing in Pellets and Multiple Unit Pellet System (MUPS).",
   keywords: [
     "Nami Life Sciences",
     "pharmaceutical company",
-    "certified pharmaceutical manufacturer",
     "pellets manufacturer",
     "MUPS manufacturer",
-    "multiple unit pellet system",
-    "pharmaceutical pellets",
-    "drug delivery systems",
-    "innovative pharmaceutical solutions",
-    "quality pharmaceutical products",
     "global pharma supplier",
-    "pharmaceutical exports",
-    "pharma manufacturing company",
-    "pharma formulation development",
-    "high quality drug formulations",
-    "pharmaceutical innovation",
-    "pharma quality standards",
-    "safe pharmaceutical products",
-    "pharma research and development",
-    "pharma business partners",
-    "international pharmaceutical company",
-    "India pharmaceutical company",
-    "pharma solutions provider",
-    "pharmaceutical expertise",
-    "pharma compliance and certification",
-    "advanced pharma facilities",
-    "pharma process improvement",
-    "ethical pharmaceutical practices",
-    "global healthcare solutions",
-    "pharma manufacturing excellence",
-    "pellet-based drug delivery",
   ],
-  authors: [{ name: "Nami Life Sciences", url: "" }],
+  authors: [{ name: "Nami Life Sciences" }],
 };
 
 export default function RootLayout({
@@ -77,7 +48,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[#315879] text-[#f0f0f0]">
+      <body
+        className={`
+          ${geistSans.variable}
+          ${geistMono.variable}
+          ${orbitron.variable}
+          ${roboto.variable}
+          bg-[#315879]
+          text-[#f0f0f0]
+        `}
+      >
         <Header />
         {children}
         <Footer />

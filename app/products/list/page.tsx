@@ -747,7 +747,7 @@ function FloatingCapsules() {
           }}
           className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
           style={{
-            width: cap.size * 2,
+            width: cap.size,
             height: cap.size,
           }}
         />

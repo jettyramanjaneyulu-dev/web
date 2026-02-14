@@ -51,7 +51,7 @@ export default function CoreCapabilitiesSection() {
 
           {/* Ambient Glow Behind Left Column */}
           <div className="absolute inset-0 flex items-center justify-center -z-10">
-            <div className="w-[110%] h-[110%] bg-[#C93A7C] blur-[80px] opacity-10 rounded-full" />
+            {/* <div className="w-[110%] h-[110%] bg-[#C93A7C] blur-[80px] opacity-10 rounded-full" /> */}
           </div>
         </div>
 

@@ -46,13 +46,24 @@ export default function Header() {
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false);
 
   const navigateWithEffect = (href: string) => {
-    setTransitioning(true);
-    setMobileMenuOpen(false);
-    setMobileProductsOpen(false);
+  if (transitioning) return; // prevent double click
 
-    setTimeout(() => router.push(href), 450);
-    setTimeout(() => setTransitioning(false), 1100);
-  };
+  setTransitioning(true);
+  setMobileMenuOpen(false);
+  setMobileProductsOpen(false);
+
+  // wait for animation to finish
+  setTimeout(() => {
+    router.push(href);
+  }, 2300);
+
+  // unmount animation after redirect
+  setTimeout(() => {
+    setTransitioning(false);
+  }, 2400);
+};
+
+
 
   return (
     <>
@@ -165,18 +176,19 @@ export default function Header() {
       {/* ================= MOBILE MENU ================= */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="
-              fixed top-[76px] left-0 w-full z-50 lg:hidden
-              bg-white/10
-              backdrop-blur-2xl backdrop-saturate-150
-              border-t border-white/20
-              shadow-xl
-            "
-          >
+    <motion.div
+      initial={{ x: "-100vw" }}
+      animate={{ x: 0 }}
+      exit={{ x: "-100vw" }}
+      transition={{ duration: 0.45, ease: "easeInOut" }}
+      className="
+        fixed top-[76px] w-full z-50 lg:hidden
+        bg-white/10
+        backdrop-blur-2xl backdrop-saturate-150
+        border-t border-white/20
+        shadow-xl
+      "
+    >
             <div className="flex flex-col items-center text-center
               px-6 py-8 space-y-7
               text-[#014d8b] font-bold uppercase">
@@ -260,7 +272,8 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      <PageTransition show={transitioning} />
+      {transitioning && <PageTransition triggerSecond={undefined} />}
+
     </>
   );
 }

@@ -86,10 +86,10 @@ export default function ReachUsPage() {
 <section className="relative py-24 px-6 overflow-hidden">
 
   {/* Background Effects */}
-  <div className="absolute inset-0">
+  {/* <div className="absolute inset-0">
     <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-pink-300/30 blur-[120px]" />
     <div className="absolute top-1/3 right-0 w-[300px] h-[300px] bg-purple-300/30 blur-[120px]" />
-  </div>
+  </div> */}
 
   <div className="relative max-w-7xl mx-auto">
 
@@ -173,10 +173,10 @@ export default function ReachUsPage() {
 <section className="relative py-28 px-6 overflow-hidden">
 
   {/* Ambient Background */}
-  <div className="absolute inset-0">
+  {/* <div className="absolute inset-0">
     <div className="absolute left-0 top-1/3 w-[350px] h-[350px] bg-pink-300/30 blur-[140px]" />
     <div className="absolute right-0 top-1/2 w-[350px] h-[350px] bg-purple-300/30 blur-[140px]" />
-  </div>
+  </div> */}
 
   <div className="relative max-w-7xl mx-auto">
 
@@ -265,7 +265,7 @@ export default function ReachUsPage() {
 
   {/* Ambient Glow */}
   <div className="absolute inset-0">
-    <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-pink-300/30 blur-[140px]" />
+    {/* <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[420px] h-[420px] bg-pink-300/30 blur-[140px]" /> */}
   </div>
 
   <motion.div
@@ -424,7 +424,7 @@ function FloatingCapsules() {
           }}
           className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
           style={{
-            width: cap.size * 2,
+            width: cap.size,
             height: cap.size,
           }}
         />

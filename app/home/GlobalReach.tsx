@@ -94,16 +94,16 @@ export default function GlobalReach() {
                 w-[400px] h-64
                 md:w-[520px] md:h-[280px]
                 rounded-full overflow-hidden
-                shadow-xl z-10
+                 z-10
               "
             >
               <div className="absolute inset-0 bg-[url('/assets/Global.png')] bg-cover bg-center bg-no-repeat bg-fixed" />
 
-              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20 pointer-events-none" />
+              {/* <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20 pointer-events-none" /> */}
             </motion.div>
 
             {/* Glow Effect (unchanged) */}
-            <div
+            {/* <div
               className="
                 absolute top-1/2 left-1/2
                 -translate-x-1/2 -translate-y-1/2
@@ -111,7 +111,7 @@ export default function GlobalReach() {
                 bg-[#C93A7C] blur-[80px] opacity-15
                 -z-0 rounded-full
               "
-            />
+            /> */}
           </div>
         </div>
       </div>

@@ -13,10 +13,10 @@ export default function CompanyConnectSection() {
             <section className="relative py-24 px-6 overflow-hidden">
 
                 {/* Background Glow */}
-                <div className="absolute inset-0">
+                {/* <div className="absolute inset-0">
                     <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-pink-300/30 rounded-full blur-[120px]" />
                     <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] bg-purple-300/30 rounded-full blur-[120px]" />
-                </div>
+                </div> */}
 
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}

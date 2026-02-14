@@ -1,62 +1,107 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export default function PageTransition({ show }: { show: boolean }) {
+type PageTransitionProps = {
+  triggerSecond?: boolean;
+};
+
+export default function PageTransition({ triggerSecond }: PageTransitionProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkScreen = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    // Check if window is mobile size (usually < 768px)
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    
+    // Initial check
+    checkMobile();
 
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-    return () => window.removeEventListener("resize", checkScreen);
+    // Event listener for window resize
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Define variants based on device type
+  // Mobile: Left (-100%) to Right (100%)
+  // Desktop: Bottom (100%) to Top (-100%)
+  const animationVariants = {
+    initial: isMobile ? { x: "-100%", y: 0 } : { x: 0, y: "100%" },
+    animate: isMobile 
+      ? { x: ["-100%", "0%", "100%"], y: 0 } 
+      : { x: 0, y: ["100%", "0%", "-100%"] },
+  };
+
   return (
-    <AnimatePresence>
-      {show && (
-        <motion.div
-          /* Initial position */
-          initial={{
-            ...(isMobile ? { y: "-100%" } : { x: "-100%" }),
-            backgroundPosition: "0% 50%",
-          }}
+    <div className="fixed inset-0 z-[9999] overflow-hidden pointer-events-none">
+      {/* ================= PRIMARY PASS ================= */}
+      <motion.div
+        className="absolute inset-0 bg-[#0A4C8B] will-change-transform"
+        initial={animationVariants.initial}
+        animate={animationVariants.animate}
+        transition={{
+          duration: 0.9,
+          times: [0, 0.5, 1],
+          ease: "easeInOut",
+        }}
+      />
 
-          /* Animate in */
-          animate={{
-            ...(isMobile ? { y: "0%" } : { x: "0%" }),
-            backgroundPosition: ["0% 50%", "100% 50%"],
-          }}
+      <motion.div
+        className="absolute inset-0 bg-[#00B4D8] will-change-transform"
+        initial={animationVariants.initial}
+        animate={animationVariants.animate}
+        transition={{
+          duration: 0.9,
+          delay: 0.15,
+          times: [0, 0.5, 1],
+          ease: "easeInOut",
+        }}
+      />
 
-          /* Animate out */
-          exit={{
-            ...(isMobile ? { y: "100%" } : { x: "100%" }),
-            backgroundPosition: ["100% 50%", "0% 50%"],
-          }}
-
-          transition={{
-            duration: 0.35,
-            ease: "easeInOut",
-          }}
-
-          style={{
-            backgroundSize: "300% 300%",
-          }}
-
-          className="
-            fixed inset-0 z-[9999]
-            bg-gradient-to-r
-            from-[#18324d]
-            via-[#0077b6]
-            via-[#00b4d8]
-            to-[#f8b4c4]
-          "
+      {/* ================= LOGO FADE ================= */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center bg-black"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 1, 0] }}
+        transition={{
+          duration: 1.2,
+          times: [0, 0.35, 0.7, 1],
+          ease: "easeInOut",
+        }}
+      >
+        <img
+          src="/assets/footer-n-logo.png"
+          alt="Logo"
+          className="h-24 w-auto"
         />
+      </motion.div>
+
+      {/* ================= SECOND PASS (Optional Trigger) ================= */}
+      {triggerSecond && (
+        <>
+          <motion.div
+            className="absolute inset-0 bg-[#0A4C8B] will-change-transform"
+            initial={animationVariants.initial}
+            animate={animationVariants.animate}
+            transition={{
+              duration: 0.9,
+              delay: 0.3, // Slightly offset from the first pass
+              ease: "easeInOut",
+            }}
+          />
+
+          <motion.div
+            className="absolute inset-0 bg-[#00B4D8] will-change-transform"
+            initial={animationVariants.initial}
+            animate={animationVariants.animate}
+            transition={{
+              duration: 0.9,
+              delay: 0.45,
+              ease: "easeInOut",
+            }}
+          />
+        </>
       )}
-    </AnimatePresence>
+    </div>
   );
 }

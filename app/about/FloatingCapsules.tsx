@@ -58,7 +58,7 @@ export default function FloatingCapsules() {
           }}
           className={`absolute rounded-full bg-gradient-to-br ${cap.color}`}
           style={{
-            width: cap.size * 2,
+            width: cap.size ,
             height: cap.size,
             filter: "blur(0.5px)",
           }}

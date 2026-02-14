@@ -16,7 +16,7 @@ import {
 
 const therapeuticAreas = [
   { name: "Cardiovascular", icon: HeartPulse },
-  { name: "Gastrointestinal", icon: Pill },
+  { name: "Gastrointestinal", icon: HeartPulse },
   { name: "CNS", icon: Brain },
   { name: "Anti-inflammatory", icon: Flame },
   { name: "Respiratory", icon: Wind },
@@ -378,7 +378,7 @@ function FloatingCapsules() {
           }}
           className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
           style={{
-            width: cap.size * 2,
+            width: cap.size,
             height: cap.size,
           }}
         />
