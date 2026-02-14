@@ -16,10 +16,16 @@ export default function CareerPage() {
     <main className="relative bg-[#f6f7fb] overflow-hidden">
 
  {/* ================= HERO / BANNER ================= */}
-<section className="relative flex items-center justify-center overflow-hidden bg-[#f6f7fb]
-                    h-[65vh] sm:h-[70vh] md:h-[75vh]">
-
-  {/* Background Image */}
+<section
+  className="
+    relative
+    flex items-center justify-center
+    overflow-hidden
+    bg-[#f6f7fb]
+    h-[65vh] sm:h-[70vh] md:h-[75vh]
+  "
+>
+  {/* ================= BACKGROUND IMAGE ================= */}
   <div
     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
     style={{
@@ -30,25 +36,52 @@ export default function CareerPage() {
   {/* Overlay */}
   <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
-  {/* Content */}
+  {/* ================= CONTENT ================= */}
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="relative z-10 text-center max-w-3xl px-4 sm:px-6"
+    className="relative z-10 w-full flex justify-center px-4 sm:px-6"
   >
-    <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold 
-                   text-[#ff4d9d] tracking-wide uppercase">
-      Career
-    </h1>
+    {/* Glassy Box */}
+    <div
+      className="
+        text-center
+        max-w-3xl
+        bg-white/25 backdrop-blur-xl
+        border border-white/30
+        rounded-2xl sm:rounded-3xl
+        shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+        px-6 sm:px-10
+        py-8 sm:py-10
+      "
+    >
+      <h1
+        className="
+          text-3xl sm:text-4xl md:text-5xl
+          font-extrabold
+          text-[#ff4d9d]
+          tracking-wide
+          uppercase
+        "
+      >
+        Career
+      </h1>
 
-    <p className="mt-4 sm:mt-6 text-base sm:text-lg 
-                  text-white/90 leading-relaxed">
-      Grow With Science. Build With Innovation.
-    </p>
+      <p
+        className="
+          mt-4 sm:mt-6
+          text-base sm:text-lg
+          text-white/90
+          leading-relaxed
+        "
+      >
+        Grow With Science. Build With Innovation.
+      </p>
+    </div>
   </motion.div>
 
-  {/* Bottom Wave */}
+  {/* ================= BOTTOM WAVE ================= */}
   <svg
     className="absolute -bottom-[1px] left-0 w-full block"
     viewBox="0 0 1440 120"
@@ -62,6 +95,7 @@ export default function CareerPage() {
     />
   </svg>
 </section>
+
 
 
 
@@ -515,7 +549,7 @@ function FloatingCapsules() {
           }}
           className={`absolute rounded-full bg-gradient-to-br ${cap.color} blur-[0.4px]`}
           style={{
-            width: cap.size * 2,
+            width: cap.size ,
             height: cap.size,
           }}
         />

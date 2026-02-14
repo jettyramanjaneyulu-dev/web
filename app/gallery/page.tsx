@@ -43,7 +43,7 @@ export default function GalleryPage() {
         className="text-3xl sm:text-4xl md:text-6xl
                    font-extrabold text-[#291684]"
       >
-        Our Infrastructure
+        Our Infrastructure Gallery
       </h1>
 
       <p

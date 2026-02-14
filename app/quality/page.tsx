@@ -205,7 +205,7 @@ export default function QualityPage() {
               style={{ perspective: "1200px" }}
             >
               <Image
-                src="/assets/quality.png"
+                src="/assets/images/quality.png"
                 alt="Quality Assurance Laboratory"
                 width={480}
                 height={360}
@@ -302,8 +302,7 @@ export default function QualityPage() {
             px-10 py-6 rounded-full
             bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600
             text-white font-semibold text-lg
-            shadow-[0_20px_40px_rgba(236,72,153,0.35)]
-            hover:shadow-[0_25px_60px_rgba(236,72,153,0.55)]
+            
             transition-all duration-300
             hover:-translate-y-1
           ">

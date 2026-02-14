@@ -22,56 +22,70 @@ export default function InfrastructurePage() {
   className="
     relative
     min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh]
-    flex items-center justify-center
+    flex items-center
     overflow-hidden
   "
 >
-  {/* Background Image */}
+  {/* ================= BACKGROUND IMAGE ================= */}
   <div
     className="absolute inset-0 bg-cover bg-center scale-105"
     style={{
-      backgroundImage: "url('/assets/images/infra/infra6.png')",
+      backgroundImage: "url('/assets/images/infra.jpeg')",
     }}
   />
 
   {/* Dark Overlay */}
   <div className="absolute inset-0 bg-black/50" />
 
-  {/* Content */}
+  {/* ================= CONTENT ================= */}
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
     className="
       relative z-10
-      text-center
       w-full
-      px-4 sm:px-6 md:px-8
-      max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
+      px-4 sm:px-6 md:px-8 lg:px-20
+      flex justify-center lg:justify-start
     "
   >
-    <h1
+    {/* Glassy Box */}
+    <div
       className="
-        text-2xl sm:text-3xl md:text-4xl lg:text-5xl
-        font-extrabold
-        text-[#ff4d9d]
-        tracking-wide
-        uppercase
+       
+        max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
+        text-center
+        bg-white/25 backdrop-blur-xl
+        border border-white/30
+        rounded-2xl sm:rounded-3xl
+        shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+        px-6 sm:px-8 md:px-12
+        py-8 sm:py-10 md:py-12
       "
     >
-      Infrastructure
-    </h1>
+      <h1
+        className="
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+          font-extrabold
+          text-[#ff4d9d]
+          tracking-wide
+          uppercase
+        "
+      >
+        Infrastructure
+      </h1>
 
-    <p
-      className="
-        mt-3 sm:mt-4 md:mt-6
-        text-sm sm:text-base md:text-lg
-        text-white/90
-        leading-relaxed
-      "
-    >
-      Advanced Facility. Integrated Capabilities.
-    </p>
+      <p
+        className="
+          mt-3 sm:mt-4 md:mt-6
+          text-sm sm:text-base md:text-lg
+          text-white/90
+          leading-relaxed
+        "
+      >
+        Advanced Facility. Integrated Capabilities.
+      </p>
+    </div>
   </motion.div>
 
   {/* ================= CURVED BOTTOM ================= */}
@@ -85,8 +99,9 @@ export default function InfrastructurePage() {
       fill="#f6f7fb"
     />
   </svg>
-
 </section>
+
+
 
 
 

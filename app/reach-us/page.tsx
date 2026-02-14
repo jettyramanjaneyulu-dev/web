@@ -21,44 +21,73 @@ export default function ReachUsPage() {
 
   {/* ================= HERO ================= */}
 <section
-  className="relative flex items-center justify-center overflow-hidden bg-[#f6f7fb]
-             h-[60vh] sm:h-[65vh] md:h-[75vh]"
+  className="
+    relative
+    flex items-center
+    overflow-hidden
+    bg-[#f6f7fb]
+    h-[60vh] sm:h-[65vh] md:h-[75vh]
+  "
 >
-
-  {/* Background Image */}
+  {/* ================= BACKGROUND IMAGE ================= */}
   <div
     className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style={{ backgroundImage: "url('/assets/images/infra/infra2.png')" }}
+    style={{ backgroundImage: "url('/assets/images/reach-us.png')" }}
   />
 
   {/* Dark Overlay */}
   <div className="absolute inset-0 bg-black/50" />
 
-  {/* Content */}
+  {/* ================= CONTENT ================= */}
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="relative z-10 text-center max-w-3xl px-4 sm:px-6"
+    className="
+      relative z-10
+     
+      px-4 sm:px-6 lg:px-20
+      flex justify-center lg:justify-end
+    "
   >
-    <h1
-      className="text-3xl sm:text-4xl md:text-5xl
-                 font-extrabold text-[#ff4d9d]
-                 tracking-wide uppercase"
+    {/* Glassy Box */}
+    <div
+      className="
+        text-center
+        max-w-3xl w-full
+        bg-white/25 backdrop-blur-xl
+        border border-white/30
+        rounded-2xl sm:rounded-3xl
+        shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+        px-6 sm:px-10
+        py-8 sm:py-10
+      "
     >
-      Reach Us
-    </h1>
+      <h1
+        className="
+          text-3xl sm:text-4xl md:text-5xl
+          font-extrabold
+          text-[#ff4d9d]
+          tracking-wide
+          uppercase
+        "
+      >
+        Reach Us
+      </h1>
 
-    <p
-      className="mt-4 sm:mt-6
-                 text-sm sm:text-base md:text-lg
-                 text-white/90"
-    >
-      Let’s Build Better Solutions Together
-    </p>
+      <p
+        className="
+          mt-4 sm:mt-6
+          text-sm sm:text-base md:text-lg
+          text-white/90
+        "
+      >
+        Let’s Build Better Solutions Together
+      </p>
+    </div>
   </motion.div>
 
-  {/* Bottom Wave – Responsive Gap Killer */}
+  {/* ================= BOTTOM WAVE ================= */}
   <svg
     className="absolute -bottom-[1px] left-0 w-full block"
     viewBox="0 0 1440 120"
@@ -71,8 +100,8 @@ export default function ReachUsPage() {
       fill="#f6f7fb"
     />
   </svg>
-
 </section>
+
 
 
 
@@ -116,7 +145,7 @@ export default function ReachUsPage() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative bg-gradient-to-br from-[#ff4d9d]/10 to-purple-100 border border-white/50 rounded-[32px] p-10 shadow-2xl"
+        className="relative  border border-white/50 rounded-[32px] p-10 shadow-2xl"
       >
         <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#ff4d9d] to-purple-600 text-white shadow-lg">
           <Factory size={28} />
@@ -144,7 +173,7 @@ export default function ReachUsPage() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative bg-gradient-to-br from-[#ff4d9d]/10 to-purple-100 border border-white/50 rounded-[32px] p-10 shadow-2xl"
+        className="relative  border border-white/50 rounded-[32px] p-10 shadow-2xl"
       >
         <div className="w-16 h-16 mb-6 flex items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-lg">
           <Building2 size={28} />
@@ -160,7 +189,8 @@ export default function ReachUsPage() {
           Hyderabad – 500082
         </p>
 
-        <div className="mt-8 text-sm text-gray-500">
+        <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-pink-600">
+          <span className="w-2 h-2 rounded-full bg-pink-500 animate-pulse" />
           Business development & client coordination
         </div>
       </motion.div>

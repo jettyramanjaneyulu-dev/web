@@ -72,7 +72,7 @@ export default function PageTransition({ triggerSecond }: PageTransitionProps) {
         <img
           src="/assets/footer-n-logo.png"
           alt="Logo"
-          className="h-24 w-auto"
+          className="h-54 w-auto"
         />
       </motion.div>
 

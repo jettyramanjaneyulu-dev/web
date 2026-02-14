@@ -447,7 +447,7 @@ export default function ProductsListPage() {
   return (
     <main className="min-h-screen bg-white text-black">
  {/* ================= HERO ================= */}
-<section className="relative min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden">
+<section className="relative min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] lg:min-h-[85vh] flex items-center overflow-hidden">
 
   {/* ================= BACKGROUND IMAGE ================= */}
   <div
@@ -460,11 +460,11 @@ export default function ProductsListPage() {
   {/* Optional overlay for readability */}
   <div className="absolute inset-0 bg-black/20" />
 
-  {/* ================= CONTENT (CENTER GLASS BOX) ================= */}
-  <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 flex justify-center">
+  {/* ================= CONTENT (GLASS BOX) ================= */}
+  <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-20 flex justify-center lg:justify-start">
     <div
       className="
-        w-full
+        
         max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
         bg-white/60 backdrop-blur-lg
         rounded-2xl sm:rounded-3xl
@@ -472,7 +472,7 @@ export default function ProductsListPage() {
         border border-white/40
         py-8 sm:py-10 md:py-14
         px-6 sm:px-8 md:px-10
-        text-center
+        text-center lg:text-left
       "
     >
       <h1
@@ -508,6 +508,7 @@ export default function ProductsListPage() {
   </div>
 
 </section>
+
 
 
 {/* ================= products-list -start ================= */}

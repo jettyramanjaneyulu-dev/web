@@ -77,12 +77,12 @@ export default function HeroSection() {
 
           <HeroButton
             text="Partnering"
-            onClick={() => window.open("/partnering", "_blank")}
+            onClick={() => window.open("/reach-us", "_blank")}
           />
 
           <HeroButton
             text="Portfolio"
-            onClick={() => window.open("/reach-us", "_blank")}
+            onClick={() => window.open("/about", "_blank")}
           />
 
           {/* Brochure Button with Image */}

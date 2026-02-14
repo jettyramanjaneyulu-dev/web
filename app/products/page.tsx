@@ -83,11 +83,11 @@ export default function ProductsPage() {
     <main className="bg-white overflow-hidden">
 
      {/* ================= HERO SECTION ================= */}
-<section className="relative w-full min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] flex items-center justify-center overflow-hidden">
+<section className="relative w-full min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] flex items-center overflow-hidden">
 
   {/* Background Image */}
   <Image
-    src="/assets/Core.jpeg"
+    src="/assets/images/products.png"
     alt="Pharmaceutical Pellets"
     fill
     priority
@@ -98,43 +98,48 @@ export default function ProductsPage() {
   {/* Dark Overlay */}
   <div className="absolute inset-0 bg-black/40" />
 
-  {/* Content */}
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    className="
-      relative z-10
-      mx-4 sm:mx-6 md:mx-8
-      max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
-      text-center
-      bg-white/30 backdrop-blur-xl
-      rounded-2xl md:rounded-3xl
-      border border-white/40
-      shadow-[0_20px_60px_rgba(0,0,0,0.25)]
-      px-6 sm:px-8 md:px-12
-      py-8 sm:py-10 md:py-12
-    "
-  >
-    <h1 className="
-      text-2xl sm:text-3xl md:text-4xl lg:text-5xl
-      font-extrabold
-      text-pink-500
-      uppercase
-      tracking-wide
-    ">
-      Products
-    </h1>
+  {/* Content Wrapper */}
+  <div className="relative z-10 w-full flex justify-center lg:justify-start px-4 sm:px-6 lg:px-20">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="
+        
+        max-w-[92%] sm:max-w-xl md:max-w-3xl lg:max-w-4xl
+        text-center lg:text-left
+        bg-white/30 backdrop-blur-xl
+        rounded-2xl md:rounded-3xl
+        border border-white/40
+        shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+        px-6 sm:px-8 md:px-12
+        py-8 sm:py-10 md:py-12
+      "
+    >
+      <h1
+        className="
+          text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+          font-extrabold
+          text-pink-500
+          uppercase
+          tracking-wide
+        "
+      >
+        Products
+      </h1>
 
-    <p className="
-      mt-3 sm:mt-4
-      text-sm sm:text-base md:text-lg lg:text-xl
-      text-white
-      leading-relaxed
-    ">
-      Pharmaceutical Pellets & Nutraceutical Beadlets
-    </p>
-  </motion.div>
+      <p
+        className="
+          mt-3 sm:mt-4
+          text-sm sm:text-base md:text-lg lg:text-xl
+          text-white
+          leading-relaxed
+        "
+      >
+        Pharmaceutical Pellets & Nutraceutical Beadlets
+      </p>
+    </motion.div>
+  </div>
 
   {/* Bottom Curve */}
   <div className="absolute bottom-0 left-0 w-full leading-none">
@@ -154,7 +159,7 @@ export default function ProductsPage() {
 
 
       {/* ================= INTRO ================= */}
-<section className="max-w-7xl mx-auto px-6 py-14">
+<section className="max-w-6xl mx-auto px-6 py-14">
   <motion.div
     variants={fadeUp}
     initial="hidden"
@@ -170,8 +175,8 @@ export default function ProductsPage() {
     "
   >
     {/* subtle gradient glow */}
-    <div className="absolute -top-16 -left-16 w-64 h-64 bg-pink-400/20 rounded-full blur-3xl" />
-    <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-amber-300/20 rounded-full blur-3xl" />
+    {/* <div className="absolute -top-16 -left-16 w-64 h-64 bg-pink-400/20 rounded-full blur-3xl" />
+    <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-amber-300/20 rounded-full blur-3xl" /> */}
 
     <p className="relative z-10 text-gray-600 text-lg leading-relaxed">
       Nami Life Sciences offers a comprehensive portfolio of pharmaceutical
