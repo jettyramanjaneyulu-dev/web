@@ -35,9 +35,8 @@ export default function CoreCapabilitiesSection() {
               {[
                 "cGMP",
                 "ISO 9001 & ISO 14001",
-                "WHO-GMP & Wurster Process",
-                "MUPS (Multi-Unit Particulate Systems)",
-                "Powder Layering Technology",
+                
+                
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 group">
                   <CheckCircle2 size={20} className="text-[#00abd3]" />
@@ -75,6 +74,9 @@ export default function CoreCapabilitiesSection() {
                 "Pharmaceutical Pellets",
                 "Blended Pellet Systems",
                 "Nutra Spheres",
+                "WHO-GMP & Wurster Process",
+                "MUPS (Multi-Unit Particulate Systems)",
+                "Powder Layering Technology",
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 group">
                   <CheckCircle2 size={20} className="text-[#00abd3]" />

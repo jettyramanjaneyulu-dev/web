@@ -409,9 +409,9 @@ const products: Product[] =
 
 const GROUP_TABS = [
   { label: "All", value: "ALL" },
-  { label: "Pharmaceutical Pellets", value: "PHARMA" },
-  { label: "Blended / Combination Pellets", value: "COMBO" },
-  { label: "Nutra Spheres / Nutraceutical Products", value: "NUTRA" },
+  { label: "Individual Pellets", value: "PHARMA" },
+  { label: "Blended Pellets", value: "COMBO" },
+  { label: "Nutra Products", value: "NUTRA" },
 ] as const;
 
 const PHARMA_FILTERS = ["All", "SR", "DR", "EC", "MUPS", "IR"];
