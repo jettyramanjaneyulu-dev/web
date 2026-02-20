@@ -10,6 +10,7 @@ import YoutubeSection from "./home/YoutubeSection";
 import type { Metadata } from "next";
 /* ================= SEO META TAGS (HOMEPAGE) ================= */
 
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.yourdomain.com"),
   title: {
