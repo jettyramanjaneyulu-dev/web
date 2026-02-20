@@ -36,7 +36,7 @@ export async function GET(
 }
 
 /* =========================
-   UPDATE BLOG (IMAGE / PDF)
+   UPDATE BLOG
 ========================= */
 export async function PUT(
   req: Request,
@@ -47,7 +47,6 @@ export async function PUT(
     const { id } = params;
 
     const formData = await req.formData();
-
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     const file = formData.get("file") as File | null;
@@ -61,7 +60,6 @@ export async function PUT(
 
     let fileUrl: string | undefined;
 
-    /* ===== FILE UPLOAD ===== */
     if (file && file.size > 0) {
       const ext = file.name.split(".").pop();
       const fileName = `blog_${id}_${Date.now()}.${ext}`;
@@ -71,7 +69,6 @@ export async function PUT(
         .upload(fileName, file, { upsert: true });
 
       if (uploadError) {
-        console.error(uploadError);
         return NextResponse.json(
           { error: "File upload failed" },
           { status: 500 }
@@ -85,15 +82,8 @@ export async function PUT(
       fileUrl = data.publicUrl;
     }
 
-    /* ===== UPDATE DATABASE ===== */
-    const updatePayload: any = {
-      title,
-      content,
-    };
-
-    if (fileUrl) {
-      updatePayload.file_url = fileUrl;
-    }
+    const updatePayload: any = { title, content };
+    if (fileUrl) updatePayload.file_url = fileUrl;
 
     const { data, error } = await supabase
       .from("posts")
