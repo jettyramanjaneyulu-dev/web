@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { supabase } from "@/lib/supabase";
+import { getSupabaseServerClient } from "@/lib/supabaseServer";
 
 export async function POST(req: Request) {
   try {
@@ -13,8 +13,10 @@ export async function POST(req: Request) {
       );
     }
 
-    // Check existing admin
-    const { data: existing } = await supabase
+    const supabase = getSupabaseServerClient();
+
+    // 1️⃣ Check existing admin
+    const { data: existing, error: checkError } = await supabase
       .from("admins")
       .select("id")
       .eq("email", email)
@@ -23,23 +25,35 @@ export async function POST(req: Request) {
     if (existing) {
       return NextResponse.json(
         { message: "Admin already exists" },
-        { status: 400 }
+        { status: 409 }
       );
     }
 
-    const hashed = await bcrypt.hash(password, 10);
+    if (checkError && checkError.code !== "PGRST116") {
+      // PGRST116 = no rows found (safe to ignore)
+      throw checkError;
+    }
 
-    const { error } = await supabase.from("admins").insert([
+    // 2️⃣ Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // 3️⃣ Insert admin
+    const { error: insertError } = await supabase.from("admins").insert([
       {
         name,
         email,
-        password: hashed,
+        password: hashedPassword,
       },
     ]);
 
-    if (error) throw error;
+    if (insertError) {
+      throw insertError;
+    }
 
-    return NextResponse.json({ message: "Admin created" });
+    return NextResponse.json(
+      { message: "Admin created successfully" },
+      { status: 201 }
+    );
   } catch (err) {
     console.error("REGISTER ERROR:", err);
     return NextResponse.json(

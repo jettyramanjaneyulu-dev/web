@@ -2,11 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 
 export function getSupabaseServerClient() {
   const url = process.env.SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  if (!url || !serviceKey) {
+  if (!url || !key) {
     throw new Error("Supabase environment variables are missing");
   }
 
-  return createClient(url, serviceKey);
+  return createClient(url, key);
 }
