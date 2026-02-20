@@ -182,10 +182,17 @@ const products: Product[] =
     category: "SR",
     group: "PHARMA",
   },
+  
   {
     name: "Itraconazole Pellets",
     strength: "22%, 40%, 44%",
     category: "IR",
+    group: "PHARMA",
+  },
+   {
+    name: "Indomethacin SR Pellets ",
+    strength: "27.5%",
+    category: "SR",
     group: "PHARMA",
   },
   {
@@ -207,6 +214,20 @@ const products: Product[] =
     group: "PHARMA",
   },
   {
+    name: "Galantamine Pellets",
+    strength: "8%",
+    category: "IR",
+    group: "PHARMA",
+  },
+
+   {
+    name: "Ilaprazole Pellets",
+    strength: "8%",
+    category: "IR",
+    group: "PHARMA",
+  },
+
+  {
     name: "Linaclotide Pellets",
     strength: "72 mcg, 145 mcg, 290 mcg",
     category: "IR",
@@ -218,6 +239,42 @@ const products: Product[] =
     category: "IR",
     group: "PHARMA",
   },
+   {
+    name: "Methylphenidate ER Pellets ",
+    strength: "11%, 40%, 60%, 80%",
+    category: "ER",
+    group: "PHARMA",
+  },
+  {
+    name: "Memantine SR Pellets ",
+    strength: "14%",
+    category: "ER",
+    group: "PHARMA",
+  },
+  {
+    name: "Thiocolchicoside Pellets",
+    strength: "4%, 8%",
+    category: "IR",
+    group: "PHARMA",
+  },
+  {
+    name: "Tolterodine Pellets",
+    strength: "1.5%",
+    category: "IR",
+    group: "PHARMA",
+  },
+   {
+    name: "Mesalamine Pellets",
+    strength: "60%, 90%, 96%",
+    category: "IR",
+    group: "PHARMA",
+  },
+   {
+    name: "Metoprolol SR Pellets",
+    strength: "66%",
+    category: "SR",
+    group: "PHARMA",
+  },
   {
     name: "Metformin HCl DC Granules",
     strength: "90%",
@@ -225,8 +282,26 @@ const products: Product[] =
     group: "PHARMA",
   },
   {
+    name: "Nicardipine Pellets",
+    strength: "22%",
+    category: "IR",
+    group: "PHARMA",
+  },
+  {
+    name: "Nifedipine ER Pellets",
+    strength: "3.5%, 11%",
+    category: "ER",
+    group: "PHARMA",
+  },
+  {
+    name: "Nitroglycerine Pellets",
+    strength: "1.4%, 2.5%",
+    category: "IR",
+    group: "PHARMA",
+  },
+  {
     name: "Omeprazole EC Pellets",
-    strength: "7.5%, 10%, 15%, 22.5%",
+    strength: "20%, 22.5%",
     category: "EC",
     group: "PHARMA",
   },
@@ -236,7 +311,78 @@ const products: Product[] =
     category: "MUPS",
     group: "PHARMA",
   },
-
+  {
+    name: "Orlistat Pellets",
+    strength: "50%, 60%",
+    category: "IR",
+    group: "PHARMA",
+  },
+  {
+    name: "Pancreatin Pellets",
+    strength: "60%, 70%",
+    category: "IR",
+    group: "PHARMA",
+  },
+   {
+    name: "Phenylephrine HCl SR Pellets ",
+    strength: "10%",
+    category: "SR",
+    group: "PHARMA",
+  },
+  {
+    name: "Potassium Chloride SR Pellets ",
+    strength: "88%",
+    category: "SR",
+    group: "PHARMA",
+  },
+  {
+    name: "Propranolol HCl SR Pellets",
+    strength: "20%",
+    category: "SR",
+    group: "PHARMA",
+  },
+  {
+    name: "Rabeprazole Sodium EC Pellets",
+    strength: "8.5%, 10%, 11.2% 15%, 20%, 22%",
+    category: "EC",
+    group: "PHARMA",
+  },
+  {
+    name: "Rosuvastatin Pellets ",
+    strength: "7.5%, 10%, 15%, 20%",
+    category: "IR",
+    group: "PHARMA",
+  },
+  {
+    name: "Sertraline IR Pellets ",
+    strength: "20%",
+    category: "IR",
+    group: "PHARMA",
+  },
+  {
+    name: "Tacrolimus IR Pellets  ",
+    strength: "0.5%, 1.5%",
+    category: "IR",
+    group: "PHARMA",
+  },
+  {
+    name: "Tamsulosin HCl SR Pellets ",
+    strength: "0.2%, 0.4%",
+    category: "SR",
+    group: "PHARMA",
+  },
+  {
+    name: "Trimetazidine ER Pellets ",
+    strength: "55%",
+    category: "ER",
+    group: "PHARMA",
+  },
+   {
+    name: "Venlafaxine HCl SR Pellets ",
+    strength: "20%, 33%, 35%, 40%",
+    category: "SR",
+    group: "PHARMA",
+  },
   // COMBO PRODUCTS
 
   {
@@ -411,10 +557,24 @@ const GROUP_TABS = [
   { label: "All", value: "ALL" },
   { label: "Individual Pellets", value: "PHARMA" },
   { label: "Blended Pellets", value: "COMBO" },
-  { label: "Nutra Products", value: "NUTRA" },
+  { label: "Nutra Spheres", value: "NUTRA" },
 ] as const;
 
-const PHARMA_FILTERS = ["All", "SR", "DR", "EC", "MUPS", "IR"];
+const PHARMA_FILTERS = [
+  "All",
+  "SR",
+  "DR",
+  "EC",
+  "MUPS",
+  "IR",
+  "ER",
+  "EC",
+  "DC",
+  "DDR",
+  "DR",
+  "Taste Masked",
+];
+
 
 /* ================= COMPONENT ================= */
 
@@ -424,6 +584,13 @@ export default function ProductsListPage() {
     useState<"ALL" | ProductGroup>("ALL");
   const [activePharmaFilter, setActivePharmaFilter] =
     useState("All");
+
+
+const isBlended = activeGroup === "COMBO";
+
+
+
+
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -577,20 +744,21 @@ export default function ProductsListPage() {
       {/* Pharma Filters */}
       {(activeGroup === "PHARMA" || activeGroup === "ALL") && (
         <div className="flex flex-wrap justify-center gap-2">
-          {PHARMA_FILTERS.map((f) => (
-            <button
-              key={f}
-              onClick={() => setActivePharmaFilter(f)}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full border transition
-                ${
-                  activePharmaFilter === f
-                    ? "bg-pink-500 text-white"
-                    : "bg-white text-black border-black/20 hover:text-pink-600"
-                }`}
-            >
-              {f}
-            </button>
-          ))}
+          {PHARMA_FILTERS.map((f, index) => (
+  <button
+    key={`${f}-${index}`}   // ✅ UNIQUE key
+    onClick={() => setActivePharmaFilter(f)}
+    className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm rounded-full border transition
+      ${
+        activePharmaFilter === f
+          ? "bg-pink-500 text-white"
+          : "bg-white text-black border-black/20 hover:text-pink-600"
+      }`}
+  >
+    {f}
+  </button>
+))}
+
         </div>
       )}
     </div>
@@ -615,13 +783,17 @@ export default function ProductsListPage() {
     <div className="overflow-x-auto">
       <table className="min-w-[640px] w-full text-black text-sm sm:text-base">
         <thead className="bg-pink-100">
-          <tr>
-            <th className="p-4 sm:p-5 text-left font-bold">#</th>
-            <th className="p-4 sm:p-5 text-left font-bold">Product Name</th>
-            <th className="p-4 sm:p-5 text-left font-bold">Strength</th>
-            <th className="p-4 sm:p-5 text-left font-bold">Category</th>
-          </tr>
-        </thead>
+  <tr>
+    <th className="p-4 sm:p-5 text-left font-bold">#</th>
+    <th className="p-4 sm:p-5 text-left font-bold">Product Name</th>
+    <th className="p-4 sm:p-5 text-left font-bold">Strength</th>
+    <th className="p-4 sm:p-5 text-left font-bold">
+  {isBlended ? "Therapeutic Area" : "Category"}
+</th>
+
+  </tr>
+</thead>
+
 
         <tbody>
           {filteredProducts.map((p, i) => (

@@ -228,21 +228,23 @@ export default function ReachUsPage() {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
       {[
+       {
+  title: "Manufacturing Facility",
+  address:
+    "Plot No. 47B, Phase 3, Biotech Park, Mulugu, Karkapatla, Telangana – 502279",
+  mapEmbed:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1519.1749865378013!2d78.72872190291021!3d17.682657845688375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb7f00580c0e1f%3A0xdcc7ffd55552fff7!2sNami%20life%20science!5e1!3m2!1sen!2sin!5m2!1sen!2sin",
+  link: "https://maps.app.goo.gl/jrMj17T7NwxyvAVB9",
+},
+
         {
-          title: "Manufacturing Facility",
-          address:
-            "Plot No. 47B, Phase 3, Biotech Park, Mulugu, Karkapatla, Telangana – 502279",
-          mapEmbed:
-            "https://www.google.com/maps?q=Biotech+Park+Mulugu+Telangana&output=embed",
-          link: "https://maps.app.goo.gl/GQjnKJLNBv9wmZDB6",
-        },
-        {
-          title: "Hyderabad Corporate Office",
-          address: "Somajiguda, Hyderabad – 500082",
-          mapEmbed:
-            "https://www.google.com/maps?q=Somajiguda+Hyderabad&output=embed",
-          link: "https://maps.app.goo.gl/c3WinavtEennYdiM6",
-        },
+  title: "Hyderabad Corporate Office",
+  address: "Suite 104, Thakur Mansionlane, Somajiguda, Hyderabad – 500082",
+  mapEmbed:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.3200389005306!2d78.4524951749357!3d17.42757218346642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90b51f147925%3A0x402b5b0be859b6ef!2s104%2C%20Thakur%20Mansion%20Ln%2C%20Durga%20Nagar%20Colony%2C%20Somajiguda%2C%20Hyderabad%2C%20Telangana%20500082!5e1!3m2!1sen!2sin!5m2!1sen!2sin",
+  link: "https://maps.app.goo.gl/edpLjxGKFB9bURot6",
+},
+
       ].map((item, index) => (
         <motion.a
       key={index}

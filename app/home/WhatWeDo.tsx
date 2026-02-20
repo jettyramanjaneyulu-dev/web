@@ -19,26 +19,45 @@ export default function WhatWeDoSection() {
     <section
       id="research"
       ref={sectionRef}
-      className="relative overflow-hidden min-h-screen bg-white"
+      className="
+        relative overflow-hidden
+        min-h-screen lg:min-h-[110vh]
+        bg-white
+      "
     >
-     
-        {/* ================= BACKGROUND LAYER (FIXED RESPONSIVE ISSUE) ================= */}
+      {/* ================= BACKGROUND LAYER (FIXED RESPONSIVE ISSUE) ================= */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        className="
+          absolute inset-0
+          bg-cover bg-center bg-no-repeat
+          z-0
+          pointer-events-none
+          min-h-full
+        "
         style={{
-         
           backgroundImage: "url('/assets/whatwedo-bg.png')",
         }}
       />
+
+      {/* Optional transparent overlay to stabilize layout */}
+      <div className="absolute inset-0 z-[1]" />
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-center">
 
         {/* ================= IMAGE : EDGE TO EDGE ================= */}
         <div
-          className="relative w-screen lg:w-full h-[300px] sm:h-[420px] md:h-[520px] lg:h-[650px]
-          left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0
-          flex items-center justify-center overflow-hidden order-2 lg:order-1"
+          className="
+            relative
+            w-screen lg:w-full
+            h-[300px] sm:h-[420px] md:h-[520px] lg:h-[650px]
+            left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0
+            flex items-center justify-center overflow-hidden
+            order-2 lg:order-1
+
+            /* ✅ added top space ONLY for responsive */
+            pt-10 sm:pt-16 md:pt-20 lg:pt-0
+          "
         >
           <motion.div
             style={{ rotate }}

@@ -148,6 +148,12 @@ export default function Header() {
               <AnimatedMenuItem onClick={() => navigateWithEffect("/reach-us")}>
                 Reach Us
               </AnimatedMenuItem>
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/blog")}>
+                Blog
+              </AnimatedMenuItem>
+              <AnimatedMenuItem onClick={() => navigateWithEffect("/admin/login")}>
+                Admin
+              </AnimatedMenuItem>
             </div>
           </div>
 
@@ -255,6 +261,12 @@ export default function Header() {
 
               <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/reach-us")}>
                 Reach Us
+              </AnimatedMenuItem>
+              <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/blog")}>
+                Blog
+              </AnimatedMenuItem>
+               <AnimatedMenuItem mobile onClick={() => navigateWithEffect("/admin/login")}>
+                Admin
               </AnimatedMenuItem>
 
               <Link
