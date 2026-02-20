@@ -2,34 +2,39 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
 
 export default function AdminLogin() {
   const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
 
-async function handleLogin(e: React.FormEvent) {
-  e.preventDefault();
-  setError("");
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
+      const data = await res.json();
 
-  if (error) {
-    setError(error.message);
-    return;
+      if (!res.ok) {
+        setError(data.message || "Invalid credentials");
+        return;
+      }
+
+      // ✅ success → go to dashboard
+      router.replace("/admin/dashboard");
+    } catch (err) {
+      setError("Something went wrong");
+    }
   }
-
-  router.replace("/admin/dashboard");
-}
-
 
   return (
     <div
@@ -76,6 +81,7 @@ async function handleLogin(e: React.FormEvent) {
           placeholder="admin@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
           style={{
             width: "100%",
             padding: "12px",
@@ -89,7 +95,6 @@ async function handleLogin(e: React.FormEvent) {
             background: "rgba(255,255,255,0.9)",
           }}
         />
-        
 
         {/* Password */}
         <label style={{ fontSize: "13px", opacity: 0.85 }}>
@@ -101,25 +106,22 @@ async function handleLogin(e: React.FormEvent) {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
             style={{
               width: "100%",
-              padding: "12px 46px 12px 12px", // space for eye
+              padding: "12px 46px 12px 12px",
               marginTop: "6px",
               borderRadius: "10px",
               border: "none",
               outline: "none",
               fontSize: "14px",
               color: "#000",
-WebkitTextFillColor: "#000",
-
               background: "rgba(255,255,255,0.9)",
             }}
           />
 
-          {/* Eye Icon */}
           <button
             type="button"
-            aria-label="Toggle password visibility"
             onClick={() => setShowPassword(!showPassword)}
             style={{
               position: "absolute",
@@ -129,55 +131,20 @@ WebkitTextFillColor: "#000",
               background: "transparent",
               border: "none",
               cursor: "pointer",
-              padding: "6px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              color: "#0072ff",
+              fontSize: "14px",
             }}
           >
-            {showPassword ? (
-              // Eye Off
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#0072ff"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-5.05 0-9.27-3.11-11-8 1.21-3.06 3.56-5.43 6.5-6.68" />
-                <path d="M1 1l22 22" />
-                <path d="M9.9 4.24A10.94 10.94 0 0 1 12 4c5.05 0 9.27 3.11 11 8a11.05 11.05 0 0 1-2.12 3.44" />
-              </svg>
-            ) : (
-              // Eye
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#0072ff"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-            )}
+            {showPassword ? "🙈" : "👁️"}
           </button>
         </div>
 
-        {/* Error */}
         {error && (
           <p style={{ color: "#ffb3b3", fontSize: "13px", marginBottom: "10px" }}>
             {error}
           </p>
         )}
 
-        {/* Button */}
         <button
           type="submit"
           style={{
@@ -197,7 +164,6 @@ WebkitTextFillColor: "#000",
           Sign In
         </button>
 
-        {/* Register */}
         <p
           style={{
             marginTop: "18px",
