@@ -13,6 +13,7 @@ type Blog = {
   file_url?: string | null;
 };
 
+
 export default function BlogsGridPage() {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
