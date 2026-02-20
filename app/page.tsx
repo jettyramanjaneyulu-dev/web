@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "Precision-engineered pharmaceutical pellets and nutraceutical solutions.",
 };
 
+
 /* ================= PAGE COMPONENT ================= */
 
 export default function HomePage() {

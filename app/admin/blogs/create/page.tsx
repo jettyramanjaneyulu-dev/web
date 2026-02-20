@@ -7,6 +7,7 @@ export default function CreateBlogPage() {
       style={{ backgroundColor: '#193f62' }}
       className="min-h-screen pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative"
     >
+      
       {/* Header Area */}
       <div className="mx-auto max-w-4xl mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="z-10">

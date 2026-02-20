@@ -45,6 +45,7 @@ export default function CapabilitiesSection() {
         {/* Capability Flow */}
         <div className="relative">
 
+
           {/* Vertical Spine */}
           <div className="absolute left-6 top-0 h-full w-[2px] bg-gradient-to-b from-[#c93a7c] via-[#c93a7c]/40 to-transparent hidden md:block" />
 

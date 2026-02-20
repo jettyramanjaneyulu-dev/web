@@ -127,6 +127,7 @@ export default function BlogsGridPage() {
                 )}
               </a>
             )}
+            
           </div>
         ))}
       </div>

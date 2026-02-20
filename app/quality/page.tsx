@@ -198,6 +198,7 @@ export default function QualityPage() {
             </p>
           </div>
 
+
           <div className="relative flex justify-center">
             <div
               className="relative rounded-3xl  

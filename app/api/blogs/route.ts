@@ -18,6 +18,7 @@ export async function POST(req: Request) {
   try {
     const formData = await req.formData();
 
+    
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     const file = formData.get("file") as File | null;
