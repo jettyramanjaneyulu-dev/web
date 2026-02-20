@@ -1,11 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
-
-// Supabase server client
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+import { getSupabaseServerClient } from "@/lib/supabaseServer";
 
 // Simple slug generator
 const slugify = (text: string) =>
@@ -14,11 +8,14 @@ const slugify = (text: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
+/* =========================
+   CREATE BLOG
+========================= */
 export async function POST(req: Request) {
   try {
-    const formData = await req.formData();
+    const supabase = getSupabaseServerClient();
 
-    
+    const formData = await req.formData();
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     const file = formData.get("file") as File | null;
@@ -33,10 +30,10 @@ export async function POST(req: Request) {
     const slug = slugify(title);
     let fileUrl: string | null = null;
 
-    // ✅ Upload file if exists
-    if (file) {
-      const fileExt = file.name.split(".").pop();
-      const fileName = `${crypto.randomUUID()}.${fileExt}`;
+    /* ===== FILE UPLOAD ===== */
+    if (file && file.size > 0) {
+      const ext = file.name.split(".").pop();
+      const fileName = `${crypto.randomUUID()}.${ext}`;
 
       const { error: uploadError } = await supabase.storage
         .from("blog-files")
@@ -58,20 +55,18 @@ export async function POST(req: Request) {
         .from("blog-files")
         .getPublicUrl(fileName);
 
-      fileUrl = data.publicUrl; // ✅ FIXED
+      fileUrl = data.publicUrl;
     }
 
-    // ✅ Insert into DB
-    const { error: dbError } = await supabase
-      .from("posts")
-      .insert([
-        {
-          title,
-          slug,
-          content,
-          file_url: fileUrl,
-        },
-      ]);
+    /* ===== INSERT DATABASE ===== */
+    const { error: dbError } = await supabase.from("posts").insert([
+      {
+        title,
+        slug,
+        content,
+        file_url: fileUrl,
+      },
+    ]);
 
     if (dbError) {
       console.error(dbError);
@@ -81,9 +76,9 @@ export async function POST(req: Request) {
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true }, { status: 201 });
   } catch (err) {
-    console.error("API ERROR:", err);
+    console.error("BLOG CREATE ERROR:", err);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
