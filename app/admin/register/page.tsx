@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-
 const inputStyle: React.CSSProperties = {
   width: "100%",
   padding: "13px 46px 13px 13px",
@@ -26,38 +25,43 @@ export default function AdminRegister() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
- async function handleRegister(e: React.FormEvent) {
-  e.preventDefault();
-  setError("");
-  setSuccess("");
+  async function handleRegister(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+    setLoading(true);
 
-  try {
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    });
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      setError(data.message || "Registration failed");
-      return;
+      if (!res.ok) {
+        setError(data.message || "Registration failed");
+        setLoading(false);
+        return;
+      }
+
+      setSuccess("Admin account created successfully");
+      setLoading(false);
+
+      setTimeout(() => {
+        router.replace("/admin/login");
+      }, 1500);
+    } catch (err) {
+      console.error("REGISTER FETCH ERROR:", err);
+      setError("Server error. Please try again.");
+      setLoading(false);
     }
-
-    setSuccess("Admin account created successfully. Redirecting...");
-    setTimeout(() => {
-      router.replace("/admin/login");
-    }, 1500);
-  } catch (err) {
-    setError("Something went wrong");
   }
-}
 
   return (
     <div
@@ -84,58 +88,38 @@ export default function AdminRegister() {
           color: "#fff",
         }}
       >
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "26px",
-            fontSize: "24px",
-            fontWeight: 600,
-          }}
-        >
+        <h2 style={{ textAlign: "center", marginBottom: "26px" }}>
           Create Admin
         </h2>
 
-        {/* Name */}
-        <label style={{ fontSize: "13px", opacity: 0.85 }}>
-          Full Name
-        </label>
+        <label>Full Name</label>
         <input
-          placeholder="John Doe"
           value={name}
           onChange={(e) => setName(e.target.value)}
           style={inputStyle}
           required
         />
 
-        {/* Email */}
-        <label style={{ fontSize: "13px", opacity: 0.85 }}>
-          Email Address
-        </label>
+        <label>Email Address</label>
         <input
           type="email"
-          placeholder="admin@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           style={inputStyle}
           required
         />
 
-        {/* Password */}
-        <label style={{ fontSize: "13px", opacity: 0.85 }}>
-          Password
-        </label>
+        <label>Password</label>
         <div style={{ position: "relative" }}>
           <input
             type={showPassword ? "text" : "password"}
-            placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             style={inputStyle}
-            required
             minLength={6}
+            required
           />
 
-          {/* Eye toggle */}
           <button
             type="button"
             onClick={() => setShowPassword(!showPassword)}
@@ -147,7 +131,6 @@ export default function AdminRegister() {
               background: "transparent",
               border: "none",
               cursor: "pointer",
-              padding: "6px",
             }}
           >
             {showPassword ? "🙈" : "👁️"}
@@ -155,53 +138,41 @@ export default function AdminRegister() {
         </div>
 
         {error && (
-          <p style={{ color: "#fecaca", fontSize: "13px", marginBottom: "12px" }}>
+          <p style={{ color: "#fecaca", fontSize: "13px" }}>
             {error}
           </p>
         )}
 
         {success && (
-          <p style={{ color: "#bbf7d0", fontSize: "13px", marginBottom: "12px" }}>
+          <p style={{ color: "#bbf7d0", fontSize: "13px" }}>
             {success}
           </p>
         )}
 
         <button
           type="submit"
+          disabled={loading}
           style={{
             width: "100%",
             padding: "13px",
             marginTop: "10px",
             borderRadius: "12px",
             border: "none",
-            background: "linear-gradient(135deg, #22d3ee, #2563eb)",
+            background: loading
+              ? "#64748b"
+              : "linear-gradient(135deg, #22d3ee, #2563eb)",
             color: "#fff",
             fontSize: "15px",
             fontWeight: 600,
-            cursor: "pointer",
-            boxShadow: "0 10px 25px rgba(37,99,235,0.45)",
+            cursor: loading ? "not-allowed" : "pointer",
           }}
         >
-          Create Account
+          {loading ? "Creating..." : "Create Account"}
         </button>
 
-        <p
-          style={{
-            marginTop: "18px",
-            fontSize: "13px",
-            textAlign: "center",
-            opacity: 0.9,
-          }}
-        >
+        <p style={{ marginTop: "18px", fontSize: "13px", textAlign: "center" }}>
           Already have an account?{" "}
-          <a
-            href="/admin/login"
-            style={{
-              color: "#22d3ee",
-              textDecoration: "none",
-              fontWeight: 500,
-            }}
-          >
+          <a href="/admin/login" style={{ color: "#22d3ee" }}>
             Login
           </a>
         </p>
