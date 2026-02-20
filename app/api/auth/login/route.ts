@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { supabase } from "@/lib/supabase";
+import { getSupabaseServerClient } from "@/lib/supabaseServer";
 
 export async function POST(req: Request) {
   try {
@@ -14,7 +14,9 @@ export async function POST(req: Request) {
       );
     }
 
-    // 1️⃣ Find admin in Supabase
+    const supabase = getSupabaseServerClient();
+
+    // 1️⃣ Find admin
     const { data: admin, error } = await supabase
       .from("admins")
       .select("*")
@@ -49,7 +51,7 @@ export async function POST(req: Request) {
     res.cookies.set("admin_token", token, {
       httpOnly: true,
       sameSite: "lax",
-      secure: false, // set true in production
+      secure: process.env.NODE_ENV === "production",
       path: "/",
     });
 
