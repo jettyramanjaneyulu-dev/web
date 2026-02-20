@@ -18,6 +18,7 @@ export default function Footer() {
       <div className="absolute left-0 bottom-40 w-[420px] h-[420px] bg-[#2CBEC4]
                       rounded-[70%_30%_50%_50%]" />
 
+
       {/* Right Purple Shape */}
       <div className="absolute -right-40 bottom-0 w-[600px] h-[600px] bg-[#4B2E83]
                       rounded-[40%_60%_30%_70%]" />

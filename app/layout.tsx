@@ -10,10 +10,12 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
 });
 
+
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
 });
+
 
 const orbitron = Orbitron({
   subsets: ["latin"],

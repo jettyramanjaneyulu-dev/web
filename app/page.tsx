@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 };
 
 
+
 /* ================= PAGE COMPONENT ================= */
 
 export default function HomePage() {

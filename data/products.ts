@@ -22,6 +22,7 @@ export const products: Product[] = [
     group: "Combination",
   },
 
+  
   // --- Nutraceutical ---
   { name: "Curcumin Capsules", category: "Nutra", group: "Nutraceutical" },
   { name: "Omega-3 Fish Oil Capsules", category: "Nutra", group: "Nutraceutical" },

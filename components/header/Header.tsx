@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X, ChevronDown } from "lucide-react";
 import PageTransition from "@/components/PageTransition";
 
+
 /* ------------------ ANIMATED MENU ITEM ------------------ */
 const AnimatedMenuItem = ({
   children,
