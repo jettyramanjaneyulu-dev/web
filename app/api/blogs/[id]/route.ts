@@ -6,11 +6,11 @@ import { getSupabaseServerClient } from "@/lib/supabaseServer";
 ========================= */
 export async function GET(
   _req: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await context.params;
     const supabase = getSupabaseServerClient();
-    const { id } = params;
 
     const { data, error } = await supabase
       .from("posts")
@@ -40,11 +40,11 @@ export async function GET(
 ========================= */
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await context.params;
     const supabase = getSupabaseServerClient();
-    const { id } = params;
 
     const formData = await req.formData();
     const title = formData.get("title") as string;
@@ -60,6 +60,7 @@ export async function PUT(
 
     let fileUrl: string | undefined;
 
+    /* ===== FILE UPLOAD ===== */
     if (file && file.size > 0) {
       const ext = file.name.split(".").pop();
       const fileName = `blog_${id}_${Date.now()}.${ext}`;
@@ -82,6 +83,7 @@ export async function PUT(
       fileUrl = data.publicUrl;
     }
 
+    /* ===== UPDATE DATABASE ===== */
     const updatePayload: any = { title, content };
     if (fileUrl) updatePayload.file_url = fileUrl;
 
