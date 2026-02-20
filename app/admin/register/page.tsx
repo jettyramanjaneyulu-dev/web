@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+
 
 const inputStyle: React.CSSProperties = {
   width: "100%",
@@ -27,23 +27,26 @@ export default function AdminRegister() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  async function handleRegister(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
+ async function handleRegister(e: React.FormEvent) {
+  e.preventDefault();
+  setError("");
+  setSuccess("");
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          name, // stored in user_metadata
-        },
-      },
+  try {
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+      }),
     });
 
-    if (error) {
-      setError(error.message);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setError(data.message || "Registration failed");
       return;
     }
 
@@ -51,7 +54,10 @@ export default function AdminRegister() {
     setTimeout(() => {
       router.replace("/admin/login");
     }, 1500);
+  } catch (err) {
+    setError("Something went wrong");
   }
+}
 
   return (
     <div
