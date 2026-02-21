@@ -1,5 +1,11 @@
 import { NextResponse } from "next/server";
-import { getSupabaseServerClient } from "@/lib/supabaseServer";
+import { createClient } from "@supabase/supabase-js";
+
+// ✅ SERVICE ROLE CLIENT (SERVER ONLY)
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 // Simple slug generator
 const slugify = (text: string) =>
@@ -8,14 +14,10 @@ const slugify = (text: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 
-/* =========================
-   CREATE BLOG
-========================= */
 export async function POST(req: Request) {
   try {
-    const supabase = getSupabaseServerClient();
-
     const formData = await req.formData();
+
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
     const file = formData.get("file") as File | null;
@@ -38,9 +40,8 @@ export async function POST(req: Request) {
       const { error: uploadError } = await supabase.storage
         .from("blog-files")
         .upload(fileName, file, {
-          cacheControl: "3600",
-          upsert: false,
           contentType: file.type,
+          upsert: false,
         });
 
       if (uploadError) {
