@@ -8,99 +8,99 @@ type PageTransitionProps = {
 };
 
 export default function PageTransition({ triggerSecond }: PageTransitionProps) {
-  // null = not detected yet
   const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
-  // Detect device BEFORE paint
   useLayoutEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
     setIsMobile(mq.matches);
   }, []);
 
-  // ⛔ Do not render animation until device is known
   if (isMobile === null) return null;
 
-  // Animation direction
-  // Mobile  : LEFT ➜ RIGHT
-  // Desktop : BOTTOM ➜ TOP
+  // Direction logic (UNCHANGED)
   const initial = isMobile
     ? { x: "-100%", y: 0 }
     : { x: 0, y: "100%" };
 
   const animate = isMobile
+    ? { x: "0%", y: 0 }
+    : { x: 0, y: "0%" };
+
+  const exit = isMobile
     ? { x: "100%", y: 0 }
     : { x: 0, y: "-100%" };
 
+  const D = 0.45; // base duration
+
   return (
     <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
-      {/* ================= PRIMARY PASS ================= */}
+      {/* ===== SLIDE 1 : DARK BLUE ===== */}
       <motion.div
-        key={isMobile ? "mobile-primary" : "desktop-primary"}
-        className="absolute inset-0 bg-[#0A4C8B] will-change-transform"
+        className="absolute inset-0 bg-[#0A4C8B]"
         initial={initial}
         animate={animate}
-        transition={{
-          duration: 0.9,
-          ease: "easeInOut",
-        }}
+        exit={exit}
+        transition={{ duration: D, ease: "easeInOut" }}
       />
 
+      {/* ===== SLIDE 2 : LIGHT BLUE ===== */}
       <motion.div
-        key={isMobile ? "mobile-secondary" : "desktop-secondary"}
-        className="absolute inset-0 bg-[#00B4D8] will-change-transform"
+        className="absolute inset-0 bg-[#00B4D8]"
         initial={initial}
         animate={animate}
-        transition={{
-          duration: 0.9,
-          delay: 0.15,
-          ease: "easeInOut",
-        }}
+        exit={exit}
+        transition={{ duration: D, delay: D, ease: "easeInOut" }}
       />
 
-      {/* ================= LOGO FADE ================= */}
+      {/* ===== SLIDE 3 : IMAGE ===== */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center bg-black"
         initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 1, 1, 0] }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{
-          duration: 1.2,
-          times: [0, 0.35, 0.7, 1],
+          duration: 0.35,
+          delay: D * 2,
           ease: "easeInOut",
         }}
       >
         <img
           src="/assets/footer-n-logo.png"
           alt="Logo"
-          className="h-75 w-auto"
+          className="h-74 w-auto"
         />
       </motion.div>
 
-      {/* ================= SECOND PASS (OPTIONAL) ================= */}
-      {triggerSecond && (
+      {/* ===== SLIDE 4 & 5 : SECOND PASS ===== */}
+     
         <>
+          {/* Dark Blue */}
           <motion.div
             className="absolute inset-0 bg-[#0A4C8B]"
             initial={initial}
             animate={animate}
+            exit={exit}
             transition={{
-              duration: 0.9,
-              delay: 0.3,
+              duration: D,
+              delay: D * 2.7,
               ease: "easeInOut",
             }}
           />
 
+          {/* Light Blue */}
           <motion.div
             className="absolute inset-0 bg-[#00B4D8]"
             initial={initial}
             animate={animate}
+            exit={exit}
             transition={{
-              duration: 0.9,
-              delay: 0.45,
+              duration: D,
+              delay: D * 3.7,
               ease: "easeInOut",
             }}
           />
         </>
-      )}
+     
     </div>
   );
 }

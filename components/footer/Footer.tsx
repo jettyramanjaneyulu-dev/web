@@ -6,7 +6,7 @@ import { ChevronUp, Linkedin, Instagram, Twitter, Facebook } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden pt-40 pb-24 bg-white">
+    <footer className="relative overflow-hidden pt-10 pb-24 bg-white">
 
       {/* ================= MERCK STYLE BACKGROUND SHAPES ================= */}
 

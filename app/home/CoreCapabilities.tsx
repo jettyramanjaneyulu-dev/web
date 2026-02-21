@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { CheckCircle2, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 export default function CoreCapabilitiesSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -10,66 +9,32 @@ export default function CoreCapabilitiesSection() {
   return (
     <section
       id="expertise"
-      className="py-24 bg-white relative overflow-hidden"
       ref={sectionRef}
+      className="py-24 bg-white relative overflow-hidden"
     >
-      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+      {/* FULL WIDTH WRAPPER */}
+      <div className="w-full px-6 lg:px-20 relative z-10">
 
-        {/* ================= LEFT COLUMN: Quality & Compliance ================= */}
-        <div className="order-1 lg:order-2 relative flex justify-center">
+        {/* GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_80px_1fr] gap-y-20 items-start">
 
-          <div className="relative z-10">
-            <div className="flex items-center gap-4 mb-6">
+          {/* ================= LEFT COLUMN ================= */}
+          <div>
+            {/* Heading */}
+            <div className="flex items-center gap-4 mb-10">
               <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
                 <ArrowRight size={20} className="text-white" />
               </div>
               <h2
-                className="text-3xl md:text-3xl font-black uppercase tracking-wider text-[#014d8b]"
+                className="text-[28px] font-black uppercase tracking-wider text-[#C93A7C]"
                 style={{ fontFamily: "var(--font-orbitron)" }}
               >
-                <span className="text-[#C93A7C]">QUALITY & COMPLIANCE:</span>
+                CORE CAPABILITIES
               </h2>
             </div>
 
-            <ul className="space-y-4 pl-4">
-              {[
-                "cGMP",
-                "ISO 9001 & ISO 14001",
-                
-                
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 group">
-                  <CheckCircle2 size={20} className="text-[#00abd3]" />
-                  <span className="text-lg font-medium text-[#014d8b] group-hover:text-[#C93A7C] transition-colors">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Ambient Glow Behind Left Column */}
-          <div className="absolute inset-0 flex items-center justify-center -z-10">
-            {/* <div className="w-[110%] h-[110%] bg-[#C93A7C] blur-[80px] opacity-10 rounded-full" /> */}
-          </div>
-        </div>
-
-        {/* ================= RIGHT COLUMN: Core Capabilities ================= */}
-        <div className="order-2 relative">
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
-                <ArrowRight size={20} className="text-white" />
-              </div>
-              <h2
-                className="text-3xl md:text-3xl font-black uppercase tracking-wider text-[#014d8b]"
-                style={{ fontFamily: "var(--font-orbitron)" }}
-              >
-                <span className="text-[#C93A7C]">CORE CAPABILITIES</span>
-              </h2>
-            </div>
-
-            <ul className="space-y-4 pl-4">
+            {/* List */}
+            <ul className="space-y-6 pl-2">
               {[
                 "Pharmaceutical Pellets",
                 "Blended Pellet Systems",
@@ -78,17 +43,51 @@ export default function CoreCapabilitiesSection() {
                 "MUPS (Multi-Unit Particulate Systems)",
                 "Powder Layering Technology",
               ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 group">
-                  <CheckCircle2 size={20} className="text-[#00abd3]" />
-                  <span className="text-lg font-medium text-[#014d8b] group-hover:text-[#C93A7C] transition-colors">
+                <li key={i} className="flex items-center gap-4">
+                  <span className="w-4 h-4 rounded-full bg-[#00abd3]" />
+                  <span className="text-[18px] font-medium text-[#014d8b]">
                     {item}
                   </span>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
 
+          {/* ================= SPACER ================= */}
+          <div className="hidden lg:block" />
+
+          {/* ================= RIGHT COLUMN ================= */}
+          <div>
+            {/* Heading */}
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-10 h-10 rounded-full bg-[#C93A7C] flex items-center justify-center">
+                <ArrowRight size={20} className="text-white" />
+              </div>
+              <h2
+                className="text-[28px] font-black uppercase tracking-wider text-[#C93A7C]"
+                style={{ fontFamily: "var(--font-orbitron)" }}
+              >
+                QUALITY & COMPLIANCE
+              </h2>
+            </div>
+
+            {/* List */}
+            <ul className="space-y-6 pl-2">
+              {[
+                "cGMP",
+                "ISO 9001 & ISO 14001",
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-4">
+                  <span className="w-4 h-4 rounded-full bg-[#00abd3]" />
+                  <span className="text-[18px] font-medium text-[#014d8b]">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
       </div>
     </section>
   );

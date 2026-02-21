@@ -14,11 +14,7 @@ export default function AdminSidebar() {
           Blogs
         </Link>
 
-        {/* <form action="/api/auth/logout" method="POST">
-          <button className="text-red-400 hover:text-red-300 mt-10">
-            Logout
-          </button>
-        </form> */}
+       
       </nav>
     </aside>
   );

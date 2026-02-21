@@ -178,7 +178,7 @@ export default function ProductsPage() {
     {/* <div className="absolute -top-16 -left-16 w-64 h-64 bg-pink-400/20 rounded-full blur-3xl" />
     <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-amber-300/20 rounded-full blur-3xl" /> */}
 
-    <p className="relative z-10 text-gray-600 text-lg leading-relaxed">
+    <p className="relative z-10 font-bold text-gray-600 text-lg leading-relaxed">
       Nami Life Sciences offers a comprehensive portfolio of pharmaceutical
       and nutraceutical pellets, developed to meet diverse therapeutic
       requirements with precision and scalability.

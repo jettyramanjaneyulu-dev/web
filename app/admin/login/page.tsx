@@ -17,10 +17,11 @@ export default function AdminLogin() {
 
     try {
       const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email, password }),
+  credentials: "include",   // 🔥 THIS LINE FIXES EVERYTHING
+});
 
       const data = await res.json();
 
@@ -30,7 +31,7 @@ export default function AdminLogin() {
       }
 
       // ✅ success → go to dashboard
-      router.replace("/admin/dashboard");
+      window.location.href = "/admin/dashboard";
     } catch (err) {
       setError("Something went wrong");
     }
@@ -48,7 +49,8 @@ export default function AdminLogin() {
       }}
     >
       <form
-        onSubmit={handleLogin}
+        onSubmit={handleLogin }
+        
         style={{
           width: "100%",
           maxWidth: "380px",
@@ -61,6 +63,7 @@ export default function AdminLogin() {
           color: "#fff",
         }}
       >
+        
         <h2
           style={{
             textAlign: "center",

@@ -69,14 +69,14 @@ export default function HeroSection() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-5"
+          className="mb-0"
         >
           <Link
-            href="/infrastructure"
-            className="text-[#014d8b] text-xs md:text-sm font-bold tracking-widest uppercase hover:underline"
-          >
-            Innovation and Impact
-          </Link>
+  href="/infrastructure"
+  className="text-[#014d8b] text-[16px] md:text-[18px] lg:text-[22px] font-bold tracking-widest uppercase hover:underline"
+>
+  Innovation and Impact
+</Link>
         </motion.div></motion.div>
 
         {/* ================= BUTTONS ================= */}
